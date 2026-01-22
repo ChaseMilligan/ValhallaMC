@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ValhallaMC SMP</title>
+  <meta name="description" content="ValhallaMC SMP v2 — info, rules, commands, and map link." />
+  <link rel="icon" href="server-icon_1.png" type="image/png">
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --panel: #111824;
+      --text: #e7eefc;
+      --muted: #a8b4cc;
+      --line: #22304a;
+      --accent: #7dd3fc;
+      --accent2: #a78bfa;
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 125%;
+      height: 125%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.15;
+    }
+
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 22px 16px 50px;
+      position: relative;
+      z-index: 1
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--radius);
+    }
+
+    .brand {
+      font-weight: 900;
+      letter-spacing: .2px
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      border-color: rgba(125, 211, 252, .45)
+    }
+
+    .hero {
+      margin-top: 14px;
+      padding: 18px 16px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--radius);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      line-height: 1.15
+    }
+
+    .muted {
+      color: var(--muted);
+      margin: 0;
+      margin-bottom: 8px;
+    }
+
+    .ip {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(125, 211, 252, .35);
+      background: rgba(125, 211, 252, .06);
+    }
+
+    .ip small {
+      display: block;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 6px
+    }
+
+    .ip code {
+      display: block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 20px;
+      font-weight: 900;
+      word-break: break-all;
+      color: var(--accent);
+    }
+
+    section {
+      margin-top: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--radius);
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 18px
+    }
+
+    ul {
+      margin: 8px 0 0;
+      padding-left: 18px
+    }
+
+    li {
+      margin: 6px 0
+    }
+
+    .rules li strong {
+      color: #ffd0d0
+    }
+
+    .codeblock {
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, .08);
+      background: rgba(0, 0, 0, .25);
+      overflow: auto;
+      white-space: pre;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 14px;
+      color: #dbe7ff;
+    }
+
+    footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    a {
+      color: var(--accent2)
+    }
+
+    svg {
+      margin-left: 4px;
+      height: 23px;
+      width: 16px;
+      vertical-align: middle;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body>
+  <video class="video-bg" autoplay muted loop playsinline>
+    <source src="Terralith (All Surface Biomes) (1).mp4" type="video/mp4">
+  </video>
+
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">ᴠᴀʟʜᴀʟʟᴀᴍᴄ sᴍᴘ (ᴠ2.1)</div>
+      <div class="buttons">
+        <a class="btn" href="https://discord.gg/39CVgkrBvp" target="_blank" rel="noopener noreferrer">ᴊᴏɪɴ ᴅɪsᴄᴏʀᴅ<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-discord"
+          viewBox="0 0 16 16">
+          <path
+            d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612" />
+        </svg></a>
+        <a class="btn" href="https://cdn.discordapp.com/attachments/1458187804592050197/1463944520118042781/optional-client-modpack.zip?ex=6973ac14&is=69725a94&hm=284cddd39bdf6b3b948792f5f0cf8379580971e80fd37b26d027ce2fa8961847&" target="_blank" rel="noopener noreferrer">ᴏᴘᴛɪᴏɴᴀʟ ᴄʟɪᴇɴᴛ ᴍᴏᴅs
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down-fill"
+            viewBox="0 0 16 16">
+            <path
+              d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2m2.354 6.854-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5a.5.5 0 0 1 1 0v3.793l1.146-1.147a.5.5 0 0 1 .708.708" />
+          </svg>
+        </a>
+        <a class="btn" href="http://play.valhallamc.ca:8100/" target="_blank" rel="noopener noreferrer">
+          sᴇʀᴠᴇʀ ᴍᴀᴘ<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
+            <path fill-rule="evenodd"
+              d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Join the server</h1>
+      <div class="ip">
+        <small>SERVER IP</small>
+        <code>play.valhallamc.ca</code>
+      </div>
+      </br>
+      <p class="muted">
+        ValhallaMC SMP is an <strong>economy & adventure focused survival server</strong> with a
+        <strong>player-driven economy</strong> and a heavier focus on territory control in
+        <strong>v2.1</strong>. Enchants and effects have been toned down, villagers are back to vanilla
+        <em>(ish)</em>, the shop and economy are upgraded, worldgen/structures are improved, and the
+        resource packs are merged for smoother updates and custom items, textures, and 40+ custom music discs.
+      </p>
+      <p class="muted">
+        The biggest change is <strong>Lands</strong>: a full claim system with
+        <strong>upkeep, taxes, nations, and war</strong>. You can protect your builds by claiming chunks,
+        but your Land must stay funded — upkeep is removed daily, and if you go broke your claims become
+        <strong>unprotected</strong> and fair game for anyone to steal, conquer, or flatten.
+      </p>
+      <p class="muted">
+        Build your empire by grinding for <strong>Fehu (ᚠ)</strong>, exploring for rare loot, investing in
+        claims, and teaming up with allies. Lands can form Nations, declare war, and conquer territory
+        even when you’re offline — so don’t get comfortable. The end goal is simple:
+      </p>
+      <p class="muted"><strong>Get rich. Hold land. Become the #1 player on the server.</strong></p>
+    </div>
+
+    <div class="hero">
+      <h1>Can't Move?</h1>
+      <p class="muted">
+        If you can't move upon connecting to the server, just wait a minute or two since you are likely downloading the
+        multiple custom resource packs used for the custom items and music discs. This should not take as long after
+        your first time connecting.
+        If you are still having trouble, make sure your game is on the correct version (1.21.10).
+      </p>
+    </div>
+
+    <div class="hero">
+      <h1>Can't Build?</h1>
+      <p class="muted">You have to link your account in discord first to get permissions to play. You can leave the
+        Discord server once your account is linked if you want.</p>
+      <p class="muted ip">
+        I have connected a Discord server you can join by using <code>/discord</code> in game, or the invite below.
+        Next, you will need to link your Minecraft account to Discord by using <code>/discord link</code> in game.
+        This will give you a 4 digit code in Minecraft chat that you then DM to ValhallaBot in Discord.
+        <br>Once you have done this, you should receive the "Whitelisted" role in both Discord and the Minecraft server,
+        which gives you permissions to start fully playing the game.
+        <br>If something doesn't work during this process, feel free to reach out to an admin.
+      </p>
+
+      <p class="muted" style="margin-top: 16px;">
+        This was done to prevent less sophisticated bots from joining, and potentially griefing or worse. If a bot is
+        good enough to pass through this then fuck me I guess.
+      </p>
+
+      <div class="ip">
+        <small>DISCORD INVITE</small>
+        <code><a href="https://discord.gg/39CVgkrBvp">https://discord.gg/39CVgkrBvp</a></code>
+      </div>
+    </div>
+
+    <section id="commands">
+      <h2>Useful commands</h2>
+      <div class="codeblock">
+        /askaup or /market — Open the server store menu
+        /bal or /money — Show your Fehu balance
+        /baltop — The richest players
+        /bp - Opens Battlepass GUI
+        /coinflipz - Open the Gambling GUI you degen
+        /auctionhouse or /ah — Auction house menu
+        /sb — Toggle sidebar/scoreboard
+        /lands — Open the lands menu
+        /orders — Open the GUI to request items from other players
+        /shop /shops /ps — Player shop menu
+        /sleep — Vote to skip night or storms
+        /webmap — Get the browser map link
+        /website — Link back to this page
+        /wild — Teleport to a random location in the wild
+      </div>
+    </section>
+
+    <section id="basic-gameplay-loop">
+      <h1>Basic Gameplay Loop</h1>
+      <ol>
+        <li>Join the server</li>
+        <li>Link your Minecraft + Discord accounts (required to start playing)</li>
+        <li>Type /wild to teleport to a random spot in the wilderness</li>
+        <li>Place a Camp for temporary land protection</li>
+        <li>Earn your first ᚠ1,000</li>
+        <li>Build a steady income source by selling:</li>
+        <ul>
+          <li>Items (/askaup)</li>
+          <li>Experience Points (/sellxp)</li>
+        </ul>
+        <li>Use /lands to create a Land and start claiming territory</li>
+        <li>Claim your first chunk using:</li>
+        <code>/lands claim radius 0 (claims 1 chunk)</code>
+        <li>Keep your Land funded (/lands deposit [amount])</li>
+        <li>1 claimed chunk costs ᚠ1,010 every 24 hours</li>
+        <li>Explore and loot to find rare items and earn more ᚠ</li>
+        <li>Make allies and trust players in your Land so they can:</li>
+        <ul>
+          <li>Spend ᚠ500 to teleport to your Land’s spawn</li>
+          <li>Use extra ᚠ to:</li>
+          <ul>
+            <li>Claim more chunks</li>
+            <li>Trade with players</li>
+            <li>Buy from the server store</li>
+          </ul>
+        </ul>
+        <li>Keep earning ᚠ so your claims don’t expire</li>
+        <li>Form Nations with other Land owners, rent subareas of your lands to tenants, and wage war against your foes!
+        </li>
+        <li>The ultimate goal is to be the richest player on the server.</li>
+      </ol>
+    </section>
+
+    <section id="whatsnew">
+      <h2>What's in v2</h2>
+      <ul>
+        <li>Switching from <strong>UberEnchants</strong> → <strong>CustomAnvil +
+            ExcellentEnchants</strong>. Enchantments are still very powerful comapred to vanilla (level max has been
+          doubled), but not to the same degree, and getting them is done in a more vanilla feeling way. Instead of using
+          commands for the highest level enchants, the level cap of the anvil has been lifted so it can be used to
+          combine enchanted books, and identical items regardless of their current level requirement.</li>
+        <li><strong>Villager trades</strong> reverted to vanilla.</li>
+        <li><strong>New shop</strong> with a bigger item list and price tags.</li>
+        <li>Same <strong>player shops</strong> and <strong>auction house</strong>.</li>
+        <li>New <strong>economy plugin</strong> for better scalability.</li>
+        <li><strong>Player Orders</strong> allow you to make orders for items that other players can fulfill to get
+          paid.</li>
+        <li>Keeping <strong>Stellarity End</strong> improvements; removing <strong>Beyond the Clouds</strong>.</li>
+        <li><strong>Merged resourcepacks</strong> so we can have all of our favourite reskins, and I have added
+          <strong>40+ Custom Music Discs</strong> that can be collected from creepers, and found in naturally generated
+          chests + fragments.
+        </li>
+        <li><strong>Overworld generation datapacks</strong> for more interesting terrain and a variety of new
+          structures.</li>
+        <li><strong>Yggdrasil</strong> is a datapack that adds a quest line, and massive structures that can take hours
+          to fully explore packed with rare loot. It also introduces a new dimension full of labyrinthine dungeons.</li>
+        <li><strong>PlayerStats</strong> can be shared in chat with leaderboards for every stat, and <strong>Tool
+            Stats</strong> keeps track of things like when your tools and armour were crafted/looted, how much damage
+          they have dealt/taken, or how many blocks they have broken as NBT tags on the items themselves.</li>
+        <li><strong>Withdraw Fehu (ᚠ)</strong> into bank notes; <strong>sell EXP/levels</strong> for Fehu.</li>
+        <li><strong>Tool Trims</strong> are a great addition I can't believe aren't in the base game. There are now 4
+          lootable tool trim templates that can be used on all tools/weapons with over 1200 combinations.</li>
+        <li><strong>Smart Spawners</strong> can be collected with silk touch, and offer easy item and xp collection from
+          spawners collected naturally, or purchased.</li>
+        <li><strong>Food Balance</strong> gives all the different foods in the game unique effects, and tries to make
+          them more balanced in power.</li>
+        <li><strong>Coinflipz</strong> is a fun mini-game that allows players to wager Fehu on a simple coin flip or
+          roulette.</li>
+        <li><strong>Mooshroom Energy & MooshDonalds</strong> is a datapack that transforms underused Minecraft items
+          into powerful consumables.</li>
+        <li><strong>Horde Nights</strong> occur once every 35 in game nights for some extra danger. This also adds some
+          custom advancements, enchantments, and other features that may or may not function properly. (Sleep Vote
+          overrides usually unskippable horde nights).</li>
+        <li><strong>Villager Transport</strong> allows you to use camels and llamas to transport villagers easily in a
+          vanilla friendly way. (Untested)</li>
+        <li>New <strong>Battlepass</strong> is a quest giving addition for distributing Fehu, and other items with a
+          premium version that I am still unsure of how to implement. Monthly resets, and updates to come.</li>
+      </ul>
+      <p class="muted" style="margin-top:10px">
+        Map: <a href="http://valhallamc.yourmomspussy.ca:8100" target="_blank"
+          rel="noopener noreferrer">valhallamc.yourmomspussy.ca:8100</a>
+      </p>
+    </section>
+
+    <section id="lands">
+      <h2>Lands (claims + nations + war)</h2>
+      <p class="muted">
+        Lands is a land-claim / grief-prevention / nation-war plugin with <strong>taxes and upkeep</strong>.
+        Don't get comfortable: <strong>enemy nations can declare war and conquer claims even while you're
+          offline.</strong>
+      </p>
+      <ul>
+        <li>Pay <strong>taxes/upkeep</strong> to maintain claims.</li>
+        <li>Land claims cost about <strong>ᚠ1010 per chunk</strong>, and upkeep is collected at <strong>11PM each
+            day</strong></li>
+        <li>Declare war and <strong>conquer land</strong>.</li>
+        <li><strong>Rent or sell</strong> parts of your nation.</li>
+        <li>Control settings like <strong>fire tick</strong> and <strong>mob spawning</strong> inside claims.</li>
+      </ul>
+    </section>
+
+    <section id="rules">
+      <h2>Rules</h2>
+      <ul class="rules">
+        <li><strong>Hacked client / xray mods / freecaming</strong> = permabanned</li>
+        <li><strong>Hackusations with no proof</strong> = permabanned</li>
+        <li><strong>Asking for OP or RCON access</strong> = permabanned</li>
+        <li><strong>Lag machines / intentionally crashing the server</strong> = permabanned</li>
+        <li><strong>Admin abuse accusations</strong> = console logs posted → then you get permabanned</li>
+        <li><strong>Agarthian denialism or dissent towards the Yakubian regime</strong> = permabanned</li>
+        <li><strong>Plugin exploits</strong> are not considered cheats and do not need to be disclosed.</li>
+        <li><strong>Finding exploits</strong> is encouraged. (I'll fix what I can.)</li>
+      </ul>
+    </section>
+
+    <section id="plugins">
+      <h2>Plugins + resources</h2>
+      <ul>
+        <li>Simple Voice Chat: <a href="https://modrinth.com/plugin/simple-voice-chat" target="_blank"
+            rel="noopener noreferrer">modrinth.com/plugin/simple-voice-chat</a></li>
+        <li>PlayerStats: <a href="https://www.spigotmc.org/resources/playerstats.102347/" target="_blank"
+            rel="noopener noreferrer">spigotmc.org/resources/playerstats.102347</a></li>
+        <li>Furnicraft wiki: <a href="https://ketket.dev/docs/category/-furnicraft" target="_blank"
+            rel="noopener noreferrer">ketket.dev/docs/category/-furnicraft</a></li>
+        <li>Stellarity wiki: <a href="https://koharasbasement.wiki.gg/wiki/Stellarity" target="_blank"
+            rel="noopener noreferrer">koharasbasement.wiki.gg/wiki/Stellarity</a></li>
+        <li>Yggdrasil wiki: <a href="https://hardels-organization.gitbook.io/voxel/yggdrasil/getting-started"
+            target="_blank">https://hardels-organization.gitbook.io/voxel/yggdrasil/getting-started</a></li>
+        <li>Tool Trims reference: <a target="_blank"
+            href="https://modrinth.com/plugin/tooltrims">https://modrinth.com/plugin/tooltrims</a></li>
+        <li>Food Balance reference: <a href="https://modrinth.com/datapack/food-balance"
+            target="_blank">https://modrinth.com/datapack/food-balance</a><br><img width="300"
+            src="https://cdn.modrinth.com/data/cached_images/6cb567ad04587ea498e3f3267b5296400577f556_0.webp"
+            alt="Food Balance reference"></li>
+        <li>Moosroom Energy & MooshDonalds reference: <a target="_blank"
+            href="https://modrinth.com/modpack/energy">https://modrinth.com/modpack/energy</a><br>
+          <img width="300"
+            src="https://cdn.modrinth.com/data/cached_images/e1a5ad03df48f469d9dcd7a24af7784009d1c311.png" alt=""><br>
+          <img width="300"
+            src="https://cdn.modrinth.com/data/cached_images/1587856f9622654183ba5f7ecdc2aea75f7bf92f.png" alt=""><br>
+          <img width="300"
+            src="https://cdn.modrinth.com/data/cached_images/c011ebb9ab180c0c8c363511cd434eb836e4ce34.png" alt=""><br>
+          <img width="300"
+            src="https://cdn.modrinth.com/data/cached_images/c57ae1b7ce992bb04ab9ac3aa71795b7665d90f5.png" alt=""><br>
+          <img width="300"
+            src="https://cdn.modrinth.com/data/cached_images/fe294154849258b35610036380bf449f3a3d04a4.png" alt=""><br>
+          <img width="300"
+            src="https://cdn.modrinth.com/data/cached_images/5a4ba2451d1004948161b318eaf779f1704c6678.png" alt=""><br>
+          <img width="300"
+            src="https://cdn.modrinth.com/data/cached_images/5a55f542509c410a3a5232aedebc276823e6b0eb.png" alt="">
+        </li>
+      </ul>
+      <p class="muted" style="margin-top:10px">
+        Resources & Data: Custom Resource Pack, Expanded Roman Numerals, Monster Energy Potions, White Monster Totems,
+        Stellarity Textures, Custom Music Discs, Server-side Dynamic Lighting.
+      </p>
+    </section>
+
+    <section id="optional-mods">
+      <h2>Optional Client-side Mods Recommended (Fabric)</h2>
+      <p>None of these mods are required to play on the server, but adding them will offer you the best possible experience. Without installing these mods, you won't be able to use the in-game voice chat feature, but that is all.</p>
+      <p>Download the optional client-side mods <a href="https://cdn.discordapp.com/attachments/1458187804592050197/1463944520118042781/optional-client-modpack.zip?ex=6973ac14&is=69725a94&hm=284cddd39bdf6b3b948792f5f0cf8379580971e80fd37b26d027ce2fa8961847&" download>here</a>.</p>
+      <p>Simply extract the .zip file into your minecraft mods folder.</p>
+    </section>
+
+    <footer style="
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 32px;
+      font-size: 14px;
+      gap: 24px;
+    ">
+      <div>Server IP: <strong style="color:var(--accent)">play.valhallamc.ca</strong></div>
+      <div>&copy; <span id="current-year"></span> ValhallaMC. All rights reserved.</div>
+      <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+      </script>
+      <div>Contact: <strong><a href="mailto:support@valhallamc.ca">support@valhallamc.ca</a></strong></div>
+    </footer>
+  </div>
+</body>
+
+</html>
