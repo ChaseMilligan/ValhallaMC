@@ -1,11 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "bold-credit-e0fe",
-  "main": "./index.html",
+  "name": "valhallamc",
   "compatibility_date": "2022-07-12",
-  "workers_dev": false,
-  "route": {
-    "pattern": "example.org/*",
-    "zone_name": "example.org"
-  }
+  "pages_build_output_dir": "./",
 }
