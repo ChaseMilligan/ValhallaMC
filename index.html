@@ -20,7 +20,7 @@
     }
 
     * {
-      box-sizing: border-box
+      box-sizing: border-box;
     }
 
     body {
@@ -51,7 +51,7 @@
       margin: 0 auto;
       padding: 22px 16px 50px;
       position: relative;
-      z-index: 1
+      z-index: 1;
     }
 
     .top {
@@ -74,7 +74,7 @@
 
     .brand {
       font-weight: 900;
-      letter-spacing: .2px
+      letter-spacing: .2px;
     }
 
     .btn {
@@ -85,10 +85,12 @@
       background: transparent;
       color: var(--text);
       text-decoration: none;
+      transition: background 0.3s, border-color 0.3s;
     }
 
     .btn:hover {
-      border-color: rgba(125, 211, 252, .45)
+      border-color: rgba(125, 211, 252, .45);
+      background: rgba(125, 211, 252, 0.1);
     }
 
     .hero {
@@ -102,7 +104,7 @@
     h1 {
       margin: 0 0 10px;
       font-size: 28px;
-      line-height: 1.15
+      line-height: 1.15;
     }
 
     .muted {
@@ -112,7 +114,6 @@
     }
 
     .ip {
-      margin-top: 14px;
       padding: 14px;
       border-radius: 12px;
       border: 1px solid rgba(125, 211, 252, .35);
@@ -123,7 +124,7 @@
       display: block;
       color: var(--muted);
       font-weight: 700;
-      margin-bottom: 6px
+      margin-bottom: 6px;
     }
 
     .ip code {
@@ -145,43 +146,60 @@
 
     h2 {
       margin: 0 0 8px;
-      font-size: 18px
+      font-size: 18px;
     }
 
     ul {
       margin: 8px 0 0;
-      padding-left: 18px
+      padding-left: 18px;
     }
 
     li {
-      margin: 6px 0
+      margin: 6px 0;
     }
 
     .rules li strong {
-      color: #ffd0d0
+      color: #ffd0d0;
     }
 
-    .codeblock {
-      margin-top: 10px;
+    .command-card {
       padding: 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, .08);
-      background: rgba(0, 0, 0, .25);
-      overflow: auto;
-      white-space: pre;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 14px;
-      color: #dbe7ff;
+      padding-right: 82px;
+      border: 1px solid rgba(125, 211, 252, .35);
+      background: rgba(125, 211, 252, 0.1);
+      border-radius: var(--radius);
+      margin-bottom: 8px;
+      position: relative;
     }
+
+    .command-card code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+    }    
 
     footer {
       margin-top: 18px;
       color: var(--muted);
       font-size: 14px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    @media (max-width: 600px) {
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 16px;
+      }
     }
 
     a {
-      color: var(--accent2)
+      color: var(--accent2);
     }
 
     svg {
@@ -190,6 +208,30 @@
       width: 16px;
       vertical-align: middle;
       transform: translateY(-2px);
+    }
+
+    @media (max-width: 600px) {
+      .top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .btn {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .hero {
+        padding: 12px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .ip code {
+        font-size: 18px;
+      }
     }
   </style>
 </head>
@@ -232,35 +274,57 @@
       </div>
     </div>
 
+    <script>
+      function copyToClipboard(btn, command) {
+        navigator.clipboard.writeText(command).then(() => {
+          const originalText = btn.textContent;
+          btn.textContent = 'COPIED!';
+          btn.style.background = 'rgba(125, 211, 252, 0.25)';
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = 'rgba(125, 211, 252, 0.15)';
+          }, 2000);
+        });
+      }
+    </script>
+    <style>
+      .copy-button {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 6px 12px;
+        background: rgba(125, 211, 252, 0.15);
+        border: 1px solid rgba(125, 211, 252, 0.3);
+        border-radius: 8px;
+        color: var(--accent);
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 700;
+        transition: all 0.2s ease;
+      }
+    
+      .copy-button:hover {
+        background: rgba(125, 211, 252, 0.25) !important;
+        border-color: rgba(125, 211, 252, 0.5) !important;
+        transform: translateY(-50%) scale(1.05) !important;
+      }
+    </style>
+
     <div class="hero" id="server-status">
       <h1>Server Status</h1>
       <div class="ip" style="position: relative;margin-bottom:24px;">
         <small>SERVER IP</small>
         <code id="server-ip">play.valhallamc.ca</code>
-        <button class="copy-btn" onclick="copyServerIP()" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); padding: 6px 12px; background: rgba(125, 211, 252, 0.15); border: 1px solid rgba(125, 211, 252, 0.3); border-radius: 8px; color: var(--accent); cursor: pointer; font-size: 12px; font-weight: 700; transition: all 0.2s ease;">COPY</button>
+        <button class="copy-button" onclick="copyToClipboard(this, 'play.valhallamc.ca')" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); padding: 6px 12px; background: rgba(125, 211, 252, 0.15); border: 1px solid rgba(125, 211, 252, 0.3); border-radius: 8px; color: var(--accent); cursor: pointer; font-size: 12px; font-weight: 700; transition: all 0.2s ease;">COPY</button>
         <style>
-          button[onclick="copyServerIP()"]:hover {
+          button.copy-button:hover {
             background: rgba(125, 211, 252, 0.25) !important;
             border-color: rgba(125, 211, 252, 0.5) !important;
             transform: translateY(-50%) scale(1.05)   !important;
           }
         </style>
       </div>
-      <script>
-        function copyServerIP() {
-          const ip = document.getElementById('server-ip').textContent;
-          navigator.clipboard.writeText(ip).then(() => {
-        const btn = document.querySelector('.copy-btn');
-        const originalText = btn.textContent;
-        btn.textContent = 'COPIED!';
-        btn.style.background = 'rgba(125, 211, 252, 0.25)';
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.style.background = 'rgba(125, 211, 252, 0.15)';
-        }, 2000);
-          });
-        }
-      </script>
       <div id="status-content">
         <p class="muted">Loading server status...</p>
       </div>
@@ -349,9 +413,11 @@
       <h1>Can't Build?</h1>
       <p class="muted">You have to link your account in discord first to get permissions to play. You can leave the
         Discord server once your account is linked if you want.</p>
-      <p class="muted ip">
-        <code>/discord</code> in game, or the invite below.
-        Next, you will need to link your Minecraft account to Discord by using <code>/discord link</code> in game.
+      <div class="command-card"><code>/discord</code><button onclick="copyToClipboard(this, '/discord')" class="copy-button">Copy</button></div>
+      <p class="muted ip">in game, or the invite below. Next, you will need to link your Minecraft account to Discord by using</p>
+      <div class="command-card"><code>/discord link</code><button onclick="copyToClipboard(this, '/discord link')"
+          class="copy-button">Copy</button></div>
+      <p class="muted ip">in game.
         This will give you a 4 digit code in Minecraft chat that you then DM to ValhallaBot in Discord.
         <br>Once you have done this, you should receive the "Whitelisted" role in both Discord and the Minecraft server,
         which gives you permissions to start fully playing the game.
@@ -371,21 +437,63 @@
 
     <section id="commands">
       <h2>Useful commands</h2>
-      <div class="codeblock">
-        /askaup or /market — Open the server store menu
-        /bal or /money — Show your Fehu balance
-        /baltop — The richest players
-        /bp - Opens Battlepass GUI
-        /coinflipz - Open the Gambling GUI you degen
-        /auctionhouse or /ah — Auction house menu
-        /sb — Toggle sidebar/scoreboard
-        /lands — Open the lands menu
-        /orders — Open the GUI to request items from other players
-        /shop /shops /ps — Player shop menu
-        /sleep — Vote to skip night or storms
-        /webmap — Get the browser map link
-        /website — Link back to this page
-        /wild — Teleport to a random location in the wild
+      <div class="command-cards">
+        <div class="command-card">
+          <code>/askaup</code> or <code>/market</code> — Open the server store menu
+          <button onclick="copyToClipboard(this, '/askaup')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/bal</code> or <code>/money</code> — Show your Fehu balance
+          <button onclick="copyToClipboard(this, '/bal')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/baltop</code> — The richest players
+          <button onclick="copyToClipboard(this, '/baltop')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/bp</code> — Opens Battlepass GUI
+          <button onclick="copyToClipboard(this, '/bp')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/coinflipz</code> — Open the Gambling GUI you degen
+          <button onclick="copyToClipboard(this, '/coinflipz')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/auctionhouse</code> or <code>/ah</code> — Auction house menu
+          <button onclick="copyToClipboard(this, '/auctionhouse')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/sb</code> — Toggle sidebar/scoreboard
+          <button onclick="copyToClipboard(this, '/sb')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/lands</code> — Open the lands menu
+          <button onclick="copyToClipboard(this, '/lands')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/orders</code> — Open the GUI to request items from other players
+          <button onclick="copyToClipboard(this, '/orders')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/shop</code>, <code>/shops</code>, or <code>/ps</code> — Player shop menu
+          <button onclick="copyToClipboard(this, '/shop')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/sleep</code> — Vote to skip night or storms
+          <button onclick="copyToClipboard(this, '/sleep')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/webmap</code> — Get the browser map link
+          <button onclick="copyToClipboard(this, '/webmap')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/website</code> — Link back to this page
+          <button onclick="copyToClipboard(this, '/website')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/wild</code> — Teleport to a random location in the wild
+          <button onclick="copyToClipboard(this, '/wild')" class="copy-button">Copy</button>
+        </div>
       </div>
     </section>
 
@@ -557,15 +665,7 @@
       <p>Simply extract the .zip file into your minecraft mods folder.</p>
     </section>
 
-    <footer style="
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 32px;
-      font-size: 14px;
-      gap: 24px;
-    ">
+    <footer>
       <div>Server IP: <strong style="color:var(--accent)">play.valhallamc.ca</strong></div>
       <div>&copy; <span id="current-year"></span> ValhallaMC. All rights reserved.</div>
       <script>
