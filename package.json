@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "npx wrangler pages deploy"
+    "deploy": "npx wrangler pages deploy",
+    "dev": "npx wrangler pages dev"
   },
   "keywords": [],
   "author": "",
