@@ -51,7 +51,7 @@
       height: 200%;
       object-fit: cover;
       z-index: -1;
-      opacity: 0.15;
+      opacity: 0.33;
       transform: translate(-50%, -50%);
       /* filter: blur(2px); */
     }
@@ -344,6 +344,47 @@
       letter-spacing: 1.6;
       opacity: 0.95;
       filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+    }
+
+    #status-title {
+      text-align: center;
+      margin-bottom: 16px;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+    }
+
+    .sonar-ping {
+      position: relative;
+      overflow: visible;
+    }
+
+    .sonar-ping::after {
+      content: '';
+      position: absolute;
+      top: calc(50% + 2px);
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      background: rgba(0, 255, 21, 0.781);
+      border: solid 1px rgba(0, 255, 21, 1);
+      border-radius: 50px;
+      transform: translate(-50%, -50%) scale(0);
+      animation: sonar 1.5s infinite;
+      z-index: -1;
+    }
+
+    @keyframes sonar {
+      0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.33;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -655,7 +696,7 @@
           console.log(data)
 
           if (data.online) {
-            statusTitle.innerHTML = '● <small>Server is ONLINE</small>';
+            statusTitle.innerHTML = '<span class="sonar-ping">●</span> <small>Server is ONLINE</small>';
             statusTitle.style.color = '#4caf50';
           } else {
             statusTitle.innerHTML = '● <small>Server is OFFLINE</small>';
