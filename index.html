@@ -537,6 +537,53 @@
       <div id="status-content">
         <p class="muted">Loading server status...</p>
       </div>
+          <a class="scroll-prompt" href="#below-the-fold" onclick="smoothScroll(event)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-mouse"
+              viewBox="0 0 16 16">
+              <path
+                d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3m4 8a4 4 0 0 1-8 0V5a4 4 0 1 1 8 0zM8 0a5 5 0 0 0-5 5v6a5 5 0 0 0 10 0V5a5 5 0 0 0-5-5" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-double-down"
+              viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+              <path fill-rule="evenodd"
+                d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+            </svg>
+            <small>scroll down</small>
+          </a>
+        <script>
+          function smoothScroll(event) {
+            event.preventDefault();
+            const targetId = event.currentTarget.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        </script>
+      <style>
+        .scroll-prompt {
+          color: #fff !important;
+          display: flex;
+          flex-direction: column;
+          text-decoration: none !important;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          bottom: 20px; /* Adjust as needed */
+          left: 50%;
+          transform: translateX(-50%);
+          animation: bob 2s ease-in-out infinite;
+        }
+
+        @keyframes bob {
+          0%, 100% {
+            transform: translate(-50%, 0);
+          }
+          50% {
+            transform: translate(-50%, 10px); /* Adjust bobbing height */
+          }
+        }
+      </style>
     </div>
     <style>
       #server-status {
@@ -646,7 +693,7 @@
       setInterval(fetchServerStatus, 60000);
     </script>
 
-    <div class="hero">
+    <div class="hero" id="below-the-fold">
       <h1>ValhallaMC SMP — Economy, Adventure, and Territory Control</h1>
       <p class="muted">
         A survival server built around a player-driven economy, plundering trial structures, and high-stakes land ownership. Players will engage in strategic resource management, forming alliances and rivalries as they navigate the challenges of survival. The economy is influenced by player actions, with trading and bartering playing a crucial role in the community. Explore vast territories filled with hidden treasures and formidable foes, while defending your claims against other players. The thrill of conquest and the risk of losing your hard-earned resources create an exhilarating gameplay experience that keeps you on your toes.
