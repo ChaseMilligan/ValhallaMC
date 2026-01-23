@@ -35,13 +35,14 @@
 
     .video-bg {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 125%;
-      height: 125%;
+      top: 50%;
+      left: 50%;
+      width: 200%;
+      height: 200%;
       object-fit: cover;
       z-index: -1;
       opacity: 0.15;
+      transform: translate(-50%, -50%);
     }
 
     .wrap {
@@ -62,6 +63,12 @@
       border: 1px solid var(--line);
       background: var(--panel);
       border-radius: var(--radius);
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     .brand {
@@ -195,7 +202,10 @@
 
   <div class="wrap">
     <div class="top">
-      <div class="brand">ᴠᴀʟʜᴀʟʟᴀᴍᴄ sᴍᴘ (ᴠ2.1)</div>
+      <div class="row">
+        <img src="server-icon_1.png" alt="ValhallaMC Logo" style="height: 40px; width: 40px; border-radius: 8px;">
+        <div class="brand">ᴠᴀʟʜᴀʟʟᴀᴍᴄ sᴍᴘ (ᴠ2.1)</div>
+      </div>
       <div class="buttons">
         <a class="btn" href="https://discord.gg/39CVgkrBvp" target="_blank" rel="noopener noreferrer">ᴊᴏɪɴ ᴅɪsᴄᴏʀᴅ<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-discord"
           viewBox="0 0 16 16">
@@ -264,7 +274,7 @@
       <p class="muted">You have to link your account in discord first to get permissions to play. You can leave the
         Discord server once your account is linked if you want.</p>
       <p class="muted ip">
-        I have connected a Discord server you can join by using <code>/discord</code> in game, or the invite below.
+        <code>/discord</code> in game, or the invite below.
         Next, you will need to link your Minecraft account to Discord by using <code>/discord link</code> in game.
         This will give you a 4 digit code in Minecraft chat that you then DM to ValhallaBot in Discord.
         <br>Once you have done this, you should receive the "Whitelisted" role in both Discord and the Minecraft server,
