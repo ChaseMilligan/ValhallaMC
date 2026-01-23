@@ -43,6 +43,7 @@
       z-index: -1;
       opacity: 0.15;
       transform: translate(-50%, -50%);
+      filter: blur(2px);
     }
 
     .wrap {
@@ -233,6 +234,33 @@
 
     <div class="hero" id="server-status">
       <h1>Server Status</h1>
+      <div class="ip" style="position: relative;margin-bottom:24px;">
+        <small>SERVER IP</small>
+        <code id="server-ip">play.valhallamc.ca</code>
+        <button class="copy-btn" onclick="copyServerIP()" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); padding: 6px 12px; background: rgba(125, 211, 252, 0.15); border: 1px solid rgba(125, 211, 252, 0.3); border-radius: 8px; color: var(--accent); cursor: pointer; font-size: 12px; font-weight: 700; transition: all 0.2s ease;">COPY</button>
+        <style>
+          button[onclick="copyServerIP()"]:hover {
+            background: rgba(125, 211, 252, 0.25) !important;
+            border-color: rgba(125, 211, 252, 0.5) !important;
+            transform: translateY(-50%) scale(1.05)   !important;
+          }
+        </style>
+      </div>
+      <script>
+        function copyServerIP() {
+          const ip = document.getElementById('server-ip').textContent;
+          navigator.clipboard.writeText(ip).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        const originalText = btn.textContent;
+        btn.textContent = 'COPIED!';
+        btn.style.background = 'rgba(125, 211, 252, 0.25)';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.style.background = 'rgba(125, 211, 252, 0.15)';
+        }, 2000);
+          });
+        }
+      </script>
       <div id="status-content">
         <p class="muted">Loading server status...</p>
       </div>
@@ -285,10 +313,6 @@
 
     <div class="hero">
       <h1>Join the server</h1>
-      <div class="ip">
-        <small>SERVER IP</small>
-        <code>play.valhallamc.ca</code>
-      </div>
       </br>
       <p class="muted">
         ValhallaMC SMP is an <strong>economy & adventure focused survival server</strong> with a
