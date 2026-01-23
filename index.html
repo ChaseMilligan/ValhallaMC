@@ -198,7 +198,7 @@
     <source src="Terralith (All Surface Biomes) (1).mp4" type="video/mp4">
   </video> -->
 
-  <iframe class="video-bg" width="1920" height="1080" allow="autoplay" src="https://www.youtube.com/embed/7CouiWXWKLY?si=ZnllnfbVE8V5K_NX&amp;controls=0&autoplay=1&loop=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe class="video-bg" width="1920" height="1080" allow="autoplay" src="https://www.youtube.com/embed/7CouiWXWKLY?si=ZnllnfbVE8V5K_NX&amp;controls=0&autoplay=1&loop=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; loop;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
   <div class="wrap">
     <div class="top">
@@ -230,6 +230,58 @@
         </a>
       </div>
     </div>
+
+    <div class="hero" id="server-status">
+      <h1>Server Status</h1>
+      <div id="status-content">
+        <p class="muted">Loading server status...</p>
+      </div>
+    </div>
+
+    <script>
+      async function fetchServerStatus() {
+        try {
+          const response = await fetch('https://api.mcsrvstat.us/3/play.valhallamc.ca');
+          const data = await response.json();
+          
+          const statusDiv = document.getElementById('status-content');
+
+          console.log(data)
+          
+          if (data.online) {
+            statusDiv.innerHTML = `
+              <p class="muted" style="color: #7dd3fc; font-weight: bold;">● Server is ONLINE</p>
+              <p class="muted">Players: <strong>${data.players.online} / ${data.players.max}</strong></p>
+              <p class="muted">Version: <strong>${data.version}</strong></p>
+              ${data.players.list && data.players.list.length > 0 ? `
+              <div style="margin-top: 12px; padding: 12px; border-radius: 8px; background: rgba(125, 211, 252, 0.08); border: 1px solid rgba(125, 211, 252, 0.2);">
+                <p class="muted" style="margin: 0 0 8px 0; font-weight: 700; color: var(--accent);">Online Players:</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                ${data.players.list.map(p => {
+                  const name = typeof p === 'string' ? p : p.name || p.uuid;
+                  return `<span style="padding: 4px 10px; background: rgba(125, 211, 252, 0.12); border: 1px solid rgba(125, 211, 252, 0.25); border-radius: 6px; font-size: 13px; color: var(--text);">${name}</span>`;
+                }).join('')}
+                </div>
+              </div>
+              ` : ''}
+              <p class="muted" style="font-size: 12px; margin-top: 8px;">Last updated: ${new Date().toLocaleTimeString()}</p>
+            `;
+          } else {
+            statusDiv.innerHTML = `
+              <p class="muted" style="color: #ffd0d0; font-weight: bold;">● Server is OFFLINE</p>
+              <p class="muted">The server may be restarting or temporarily unavailable.</p>
+            `;
+          }
+        } catch (error) {
+          document.getElementById('status-content').innerHTML = `
+            <p class="muted" style="color: #ffd0d0;">Failed to fetch server status. Please try again later.</p>
+          `;
+        }
+      }
+
+      fetchServerStatus();
+      setInterval(fetchServerStatus, 60000);
+    </script>
 
     <div class="hero">
       <h1>Join the server</h1>

@@ -3,12 +3,12 @@
 // export dynamically through wrangler, or we can potentially let users directly
 // add them as a sort of "plugin" system.
 
-import ENTRY, { __INTERNAL_WRANGLER_MIDDLEWARE__ } from "/mnt/c/Users/chase/Documents/ValhallaMC/.wrangler/tmp/bundle-2px1A6/middleware-insertion-facade.js";
+import ENTRY, { __INTERNAL_WRANGLER_MIDDLEWARE__ } from "/mnt/c/Users/chase/Documents/ValhallaMC/.wrangler/tmp/bundle-Cb5F1m/middleware-insertion-facade.js";
 import { __facade_invoke__, __facade_register__, Dispatcher } from "/mnt/c/Users/chase/Documents/ValhallaMC/node_modules/wrangler/templates/middleware/common.ts";
-import type { WorkerEntrypointConstructor } from "/mnt/c/Users/chase/Documents/ValhallaMC/.wrangler/tmp/bundle-2px1A6/middleware-insertion-facade.js";
+import type { WorkerEntrypointConstructor } from "/mnt/c/Users/chase/Documents/ValhallaMC/.wrangler/tmp/bundle-Cb5F1m/middleware-insertion-facade.js";
 
 // Preserve all the exports from the worker
-export * from "/mnt/c/Users/chase/Documents/ValhallaMC/.wrangler/tmp/bundle-2px1A6/middleware-insertion-facade.js";
+export * from "/mnt/c/Users/chase/Documents/ValhallaMC/.wrangler/tmp/bundle-Cb5F1m/middleware-insertion-facade.js";
 
 class __Facade_ScheduledController__ implements ScheduledController {
 	readonly #noRetry: ScheduledController["noRetry"];
