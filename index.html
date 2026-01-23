@@ -7,6 +7,11 @@
   <title>ValhallaMC SMP</title>
   <meta name="description" content="ValhallaMC SMP v2 — info, rules, commands, and map link." />
   <link rel="icon" href="server-icon_1.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --bg: #0b0f14;
@@ -25,12 +30,17 @@
 
     body {
       margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       background: var(--bg);
       color: var(--text);
       line-height: 1.5;
       position: relative;
       min-height: 100vh;
+    }
+
+    h1,h2,h3,h4,h5,h6,small {
+      text-transform: uppercase;
+      font-family: "Zalando Sans Expanded", sans-serif;
     }
 
     .video-bg {
@@ -75,6 +85,8 @@
     .brand {
       font-weight: 900;
       letter-spacing: .2px;
+      font-family: "Zalando Sans Expanded", sans-serif;
+      font-variant: all-small-caps;
     }
 
     .btn {
@@ -105,6 +117,7 @@
       margin: 0 0 10px;
       font-size: 28px;
       line-height: 1.15;
+      margin-bottom: 24px;
     }
 
     .muted {
@@ -163,13 +176,17 @@
     }
 
     .command-card {
-      padding: 12px;
+      padding: 4px 12px;
       padding-right: 82px;
       border: 1px solid rgba(125, 211, 252, .35);
       background: rgba(125, 211, 252, 0.1);
       border-radius: var(--radius);
       margin-bottom: 8px;
       position: relative;
+    }
+
+    .command-card button {
+      text-transform: uppercase;
     }
 
     .command-card code {
@@ -202,7 +219,7 @@
       color: var(--accent2);
     }
 
-    svg {
+    .buttons svg {
       margin-left: 4px;
       height: 23px;
       width: 16px;
@@ -233,29 +250,89 @@
         font-size: 18px;
       }
     }
+
+    .buttons .btn {
+      display: inline-block;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: transparent;
+      font-size: 11px;
+      color: var(--text);
+      text-decoration: none;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .buttons .btn:hover {
+      border-color: rgba(125, 211, 252, .45);
+      background: rgba(125, 211, 252, 0.1);
+    }
+
+    #basic-gameplay-loop {
+      margin-top: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--radius);
+    }
+
+    #basic-gameplay-loop .command-card {
+      text-align: left;
+      padding-right: 12px;
+      display: inline-block;
+    }
+
+    #basic-gameplay-loop .command-card code {
+      transition-duration: 0.3s;
+      font-size: 16px;
+    }
+
+    #basic-gameplay-loop .command-card code:hover {
+      cursor: pointer;
+    }
+
+    #basic-gameplay-loop .row {
+      justify-content: space-around;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .card {
+      background: rgba(125, 211, 252, 0.1);
+      border: 1px solid rgba(125, 211, 252, 0.25);
+      border-radius: var(--radius);
+      padding: 16px;
+      text-align: center;
+    }
+
+    .card h2 {
+      font-size: 32px;
+      margin: 0 0 8px;
+    }
   </style>
 </head>
 
 <body>
-  <!-- <video class="video-bg" autoplay muted loop playsinline>
-    <source src="Terralith (All Surface Biomes) (1).mp4" type="video/mp4">
-  </video> -->
-
   <iframe class="video-bg" width="1920" height="1080" allow="autoplay" src="https://www.youtube.com/embed/7CouiWXWKLY?si=ZnllnfbVE8V5K_NX&amp;controls=0&autoplay=1&loop=1&mute=1&playlist=7CouiWXWKLY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; loop;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
   <div class="wrap">
     <div class="top">
       <div class="row">
         <img src="server-icon_1.png" alt="ValhallaMC Logo" style="height: 40px; width: 40px; border-radius: 8px;">
-        <div class="brand">ᴠᴀʟʜᴀʟʟᴀᴍᴄ sᴍᴘ (ᴠ2.1)</div>
+        <div class="brand">ValhallaMC SMP (v2.1)</div>
       </div>
       <div class="buttons">
-        <a class="btn" href="https://discord.gg/39CVgkrBvp" target="_blank" rel="noopener noreferrer">ᴊᴏɪɴ ᴅɪsᴄᴏʀᴅ<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-discord"
+        <a class="btn" href="https://discord.gg/39CVgkrBvp" target="_blank" rel="noopener noreferrer"><small>join discord</small><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-discord"
           viewBox="0 0 16 16">
           <path
             d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612" />
         </svg></a>
-        <a class="btn" href="https://cdn.discordapp.com/attachments/1458187804592050197/1463944520118042781/optional-client-modpack.zip?ex=6973ac14&is=69725a94&hm=284cddd39bdf6b3b948792f5f0cf8379580971e80fd37b26d027ce2fa8961847&" target="_blank" rel="noopener noreferrer">ᴏᴘᴛɪᴏɴᴀʟ ᴄʟɪᴇɴᴛ ᴍᴏᴅs
+        <a class="btn" href="https://cdn.discordapp.com/attachments/1458187804592050197/1463944520118042781/optional-client-modpack.zip?ex=6973ac14&is=69725a94&hm=284cddd39bdf6b3b948792f5f0cf8379580971e80fd37b26d027ce2fa8961847&" target="_blank" rel="noopener noreferrer"><small>optional mods</small>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down-fill"
             viewBox="0 0 16 16">
             <path
@@ -263,7 +340,7 @@
           </svg>
         </a>
         <a class="btn" href="http://play.valhallamc.ca:8100/" target="_blank" rel="noopener noreferrer">
-          ᴠɪᴇᴡ ᴍᴀᴘ<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right"
+          <small>world map</small><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right"
             viewBox="0 0 16 16">
             <path fill-rule="evenodd"
               d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
@@ -272,7 +349,7 @@
           </svg>
         </a>
         <a class="btn" href="https://store.valhallamc.ca" target="_blank" rel="noopener noreferrer">
-          ᴅᴏɴᴀᴛᴇ
+          <small>donate</small>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-heart"
             viewBox="0 0 16 16">
             <path fill-rule="evenodd"
@@ -351,7 +428,7 @@
           
           if (data.online) {
             statusDiv.innerHTML = `
-              <p class="muted" style="color: #7dd3fc; font-weight: bold;">● Server is ONLINE</p>
+              <p class="muted" style="color: #4caf50; font-weight: bold;">● <small>Server is ONLINE</small></p>
               <p class="muted">Players: <strong>${data.players.online} / ${data.players.max}</strong></p>
               <p class="muted">Version: <strong>${data.version}</strong></p>
               ${data.players.list && data.players.list.length > 0 ? `
@@ -386,26 +463,31 @@
 
     <div class="hero">
       <h1>Join the server</h1>
-      </br>
-      <p class="muted">
-        ValhallaMC SMP is an <strong>economy & adventure focused survival server</strong> with a
-        <strong>player-driven economy</strong> and a heavier focus on territory control in
-        <strong>v2.1</strong>. Enchants and effects have been toned down, villagers are back to vanilla
-        <em>(ish)</em>, the shop and economy are upgraded, worldgen/structures are improved, and the
-        resource packs are merged for smoother updates and custom items, textures, and 40+ custom music discs.
-      </p>
-      <p class="muted">
-        The biggest change is <strong>Lands</strong>: a full claim system with
-        <strong>upkeep, taxes, nations, and war</strong>. You can protect your builds by claiming chunks,
-        but your Land must stay funded — upkeep is removed daily, and if you go broke your claims become
-        <strong>unprotected</strong> and fair game for anyone to steal, conquer, or flatten.
-      </p>
-      <p class="muted">
-        Build your empire by grinding for <strong>Fehu (ᚠ)</strong>, exploring for rare loot, investing in
-        claims, and teaming up with allies. Lands can form Nations, declare war, and conquer territory
-        even when you’re offline — so don’t get comfortable. The end goal is simple:
-      </p>
-      <p class="muted"><strong>Get rich. Hold land. Become the #1 player on the server.</strong></p>
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+        <div class="ip" style="flex: 1; margin: 10px; display: flex; flex-direction: column; align-items: center; background: rgba(125, 211, 252, 0.1); border-radius: 8px; padding: 15px;">
+          <h1><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-graph-up-arrow" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M0 0h1v15h15v1H0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5" />
+            </svg></h1>
+          <p class="muted" style="margin-left: 10px; text-align: center;">
+            Experience the thrill of <strong>adventure</strong> in ValhallaMC SMP, where you can explore vast landscapes and uncover hidden treasures. Join a community that thrives on <strong>collaboration</strong> and <strong>exploration</strong>.
+          </p>
+        </div>
+        <div class="ip" style="flex: 1; margin: 10px; display: flex; flex-direction: column; align-items: center; background: rgba(125, 211, 252, 0.1); border-radius: 8px; padding: 15px;">
+          <h1><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-shield-lock-fill" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.8 11.8 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7 7 0 0 0 1.048-.625 11.8 11.8 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.54 1.54 0 0 0-1.044-1.263 63 63 0 0 0-2.887-.87C9.843.266 8.69 0 8 0m0 5a1.5 1.5 0 0 1 .5 2.915l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99A1.5 1.5 0 0 1 8 5" />
+            </svg></h1>
+          <p class="muted" style="margin-left: 10px; text-align: center;">
+            Secure your territory with <strong>Lands</strong>: claim your space, manage resources, and engage in <strong>strategic gameplay</strong>. Protect your assets and collaborate with others to thrive.
+          </p>
+        </div>
+        <div class="ip" style="flex: 1; margin: 10px; display: flex; flex-direction: column; align-items: center; background: rgba(125, 211, 252, 0.1); border-radius: 8px; padding: 15px;">
+          <h1 style="font-size: 24px;">ᚠ</h1>
+          <p class="muted" style="margin-left: 10px; text-align: center;">
+            Join the quest for <strong>Fehu (ᚠ)</strong>: build alliances, conquer territories, and rise to the top. Your journey to becoming the richest player starts here!
+          </p>
+        </div>
+      </div>
+      <p class="muted" style="text-align: center; font-weight: bold;"><strong>Join us, build your legacy, and become the #1 player!</strong></p>
     </div>
 
     <div class="hero">
@@ -445,7 +527,7 @@
     </div>
 
     <section id="commands">
-      <h2>Useful commands</h2>
+      <h1>Useful commands</h1>
       <div class="command-cards">
         <div class="command-card">
           <code>/askaup</code> or <code>/market</code> — Open the server store menu
@@ -508,42 +590,106 @@
 
     <section id="basic-gameplay-loop">
       <h1>Basic Gameplay Loop</h1>
-      <ol>
-        <li>Join the server</li>
-        <li>Link your Minecraft + Discord accounts (required to start playing)</li>
-        <li>Type /wild to teleport to a random spot in the wilderness</li>
-        <li>Place a Camp for temporary land protection</li>
-        <li>Earn your first ᚠ1,000</li>
-        <li>Build a steady income source by selling:</li>
-        <ul>
-          <li>Items (/askaup)</li>
-          <li>Experience Points (/sellxp)</li>
-        </ul>
-        <li>Use /lands to create a Land and start claiming territory</li>
-        <li>Claim your first chunk using:</li>
-        <code>/lands claim radius 0 (claims 1 chunk)</code>
-        <li>Keep your Land funded (/lands deposit [amount])</li>
-        <li>1 claimed chunk costs ᚠ1,010 every 24 hours</li>
-        <li>Explore and loot to find rare items and earn more ᚠ</li>
-        <li>Make allies and trust players in your Land so they can:</li>
-        <ul>
-          <li>Spend ᚠ500 to teleport to your Land’s spawn</li>
-          <li>Use extra ᚠ to:</li>
-          <ul>
-            <li>Claim more chunks</li>
-            <li>Trade with players</li>
-            <li>Buy from the server store</li>
-          </ul>
-        </ul>
-        <li>Keep earning ᚠ so your claims don’t expire</li>
-        <li>Form Nations with other Land owners, rent subareas of your lands to tenants, and wage war against your foes!
-        </li>
-        <li>The ultimate goal is to be the richest player on the server.</li>
-      </ol>
+      <div class="card-grid">
+        <div class="card">
+          <h2>1</h2>
+          <p>Join the server.</p>
+          <p class="muted">Start your adventure.</p>
+        </div>
+        <div class="card">
+          <h2>2</h2>
+          <p>Link Minecraft + Discord.</p>
+          <p class="muted">Required to begin playing.</p>
+        </div>
+        <div class="card">
+          <h2>3</h2>
+          <p>Teleport into the wilderness.</p>
+          <div class="command-card">
+            <code onclick="copyToClipboard(this, '/wild')">/wild</code>
+            <!-- <button onclick="copyToClipboard(this, '/wild')" class="copy-button">Copy</button> -->
+          </div>
+        </div>
+        <div class="card">
+          <h2>4</h2>
+          <p>Place a Camp for protection.</p>
+          <p class="muted">Temporary land safety.</p>
+        </div>
+        <div class="card">
+          <h2>5</h2>
+          <p>Sell items and XP for income.</p>
+          <div class="row">
+            <div class="command-card">
+              <code onclick="copyToClipboard(this, '/sellxp')">/sellxp</code>
+              <!-- <button onclick="copyToClipboard(this, '/sellxp')" class="copy-button">Copy</button> -->
+            </div>
+            <div class="command-card">
+              <code onclick="copyToClipboard(this, '/askaup')">/askaup</code>
+              <!-- <button onclick="copyToClipboard(this, '/askaup')" class="copy-button">Copy</button> -->
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h2>6</h2>
+          <p>Earn your first ᚠ1,000.</p>
+          <p class="muted">You’ll need it soon.</p>
+        </div>
+        <div class="card">
+          <h2>7</h2>
+          <p>Create your first Land.</p>
+          <div class="command-card">
+            <code onclick="copyToClipboard(this, '/lands')">/lands</code>
+          </div>
+        </div>
+        <div class="card">
+          <h2>8</h2>
+          <p>Claim your first chunk.</p>
+          <div class="command-card">
+            <code onclick="copyToClipboard(this, '/lands claim radius 0')">/lands claim radius 0</code>
+          </div>
+        </div>
+        <div class="card">
+          <h2>9</h2>
+          <p>Deposit funds to keep claims active.</p>
+          <div class="command-card">
+            <code onclick="copyToClipboard(this, '/lands deposit 1010')">/lands deposit 1010</code>
+          </div>
+        </div>
+        <div class="card">
+          <h2>10</h2>
+          <p>Upkeep costs money every day.</p>
+          <p class="muted">1 chunk = ᚠ1,010 / 24h</p>
+        </div>
+        <div class="card">
+          <h2>11</h2>
+          <p>Explore and loot rare items.</p>
+          <p class="muted">Earn more ᚠ faster.</p>
+        </div>
+        <div class="card">
+          <h2>12</h2>
+          <p>Invite trusted players to your Land.</p>
+          <p class="muted">Allies help you grow.</p>
+        </div>
+        <div class="card">
+          <h2>13</h2>
+          <p>Keep earning so claims don’t expire.</p>
+          <p class="muted">Stay funded.</p>
+        </div>
+        <div class="card">
+          <h2>14</h2>
+          <p>Form Nations and wage war.</p>
+          <p class="muted">Politics get spicy.</p>
+        </div>
+        <div class="card">
+          <h2>15</h2>
+          <p>Become the richest player.</p>
+          <p class="muted">That’s the endgame.</p>
+        </div>
+      </div>
     </section>
 
+
     <section id="whatsnew">
-      <h2>What's in v2</h2>
+      <h1>What's in v2</h1>
       <ul>
         <li>Switching from <strong>UberEnchants</strong> → <strong>CustomAnvil +
             ExcellentEnchants</strong>. Enchantments are still very powerful comapred to vanilla (level max has been
@@ -594,7 +740,7 @@
     </section>
 
     <section id="lands">
-      <h2>Lands (claims + nations + war)</h2>
+      <h1>Lands (claims + nations + war)</h1>
       <p class="muted">
         Lands is a land-claim / grief-prevention / nation-war plugin with <strong>taxes and upkeep</strong>.
         Don't get comfortable: <strong>enemy nations can declare war and conquer claims even while you're
@@ -611,7 +757,7 @@
     </section>
 
     <section id="rules">
-      <h2>Rules</h2>
+      <h1>Rules</h1>
       <ul class="rules">
         <li><strong>Hacked client / xray mods / freecaming</strong> = permabanned</li>
         <li><strong>Hackusations with no proof</strong> = permabanned</li>
@@ -625,7 +771,7 @@
     </section>
 
     <section id="plugins">
-      <h2>Plugins + resources</h2>
+      <h1>Plugins + resources</h1>
       <ul>
         <li>Simple Voice Chat: <a href="https://modrinth.com/plugin/simple-voice-chat" target="_blank"
             rel="noopener noreferrer">modrinth.com/plugin/simple-voice-chat</a></li>
@@ -668,7 +814,7 @@
     </section>
 
     <section id="optional-mods">
-      <h2>Optional Client-side Mods Recommended (Fabric)</h2>
+      <h1>Optional Client-side Mods Recommended (Fabric)</h1>
       <p>None of these mods are required to play on the server, but adding them will offer you the best possible experience. Without installing these mods, you won't be able to use the in-game voice chat feature, but that is all.</p>
       <p>Download the optional client-side mods <a href="https://cdn.discordapp.com/attachments/1458187804592050197/1463944520118042781/optional-client-modpack.zip?ex=6973ac14&is=69725a94&hm=284cddd39bdf6b3b948792f5f0cf8379580971e80fd37b26d027ce2fa8961847&" download>here</a>.</p>
       <p>Simply extract the .zip file into your minecraft mods folder.</p>
