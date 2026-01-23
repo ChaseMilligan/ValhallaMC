@@ -70,10 +70,20 @@
       justify-content: space-between;
       gap: 12px;
       flex-wrap: wrap;
-      padding: 14px 16px;
-      border: 1px solid var(--line);
-      background: var(--panel);
       border-radius: var(--radius);
+      padding: 14px 16px;
+      border: solid 1px transparent;
+    }
+
+    .top.sticky {
+      position: sticky;
+      transition-duration: 0.6s;
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      top: 0;
+      border: 1px solid var(--accent);
+      background: rgba(125, 211, 252, 0.1);
+      backdrop-filter: blur(5px);
     }
 
     .row {
@@ -127,6 +137,7 @@
     }
 
     .ip {
+      margin-bottom: 8px;
       padding: 14px;
       border-radius: 12px;
       border: 1px solid rgba(125, 211, 252, .35);
@@ -158,7 +169,7 @@
     }
 
     h2 {
-      margin: 0 0 8px;
+      margin: 24px 0 12px;
       font-size: 18px;
     }
 
@@ -207,7 +218,7 @@
       gap: 24px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       footer {
         flex-direction: column;
         align-items: flex-start;
@@ -227,7 +238,12 @@
       transform: translateY(-2px);
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+      iframe {
+        width: 400% !important;
+        height: 400% !important;
+      }
+
       .top {
         flex-direction: column;
         align-items: flex-start;
@@ -255,8 +271,8 @@
       display: inline-block;
       padding: 10px 12px;
       border-radius: 12px;
-      border: 1px solid var(--line);
-      background: transparent;
+      border: 1px solid var(--accent);
+      background: var(--panel);
       font-size: 11px;
       color: var(--text);
       text-decoration: none;
@@ -314,6 +330,16 @@
       font-size: 32px;
       margin: 0 0 8px;
     }
+
+    #server-status {
+      height: calc(100vh - 200px);
+    }
+
+    #motd-title {
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 48px;
+    }
   </style>
 </head>
 
@@ -321,7 +347,7 @@
   <iframe class="video-bg" width="1920" height="1080" allow="autoplay" src="https://www.youtube.com/embed/7CouiWXWKLY?si=ZnllnfbVE8V5K_NX&amp;controls=0&autoplay=1&loop=1&mute=1&playlist=7CouiWXWKLY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; loop;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
   <div class="wrap">
-    <div class="top">
+    <div class="top" id="sticky-header">
       <div class="row">
         <img src="server-icon_1.png" alt="ValhallaMC Logo" style="height: 40px; width: 40px; border-radius: 8px;">
         <div class="brand">ValhallaMC SMP (v2.1)</div>
@@ -359,6 +385,29 @@
         
       </div>
     </div>
+    <script>
+      let lastScrollTop = 0;
+      window.onscroll = function() {stickyHeader()};
+
+      var header = document.getElementById("sticky-header");
+      var sticky = header.offsetTop;
+
+      function stickyHeader() {
+        let currentScroll = window.pageYOffset;
+        if (currentScroll > sticky) {
+          header.classList.add("sticky");
+          if (currentScroll > lastScrollTop) {
+            header.style.transform = "translateY(-100px)"; // Hide the header
+          } else {
+            header.style.transform = "translateY(22px)"; // Show the header
+          }
+        } else {
+          header.classList.remove("sticky");
+          header.style.transform = "translateY(0)"; // Reset position
+        }
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+      }
+    </script>
 
     <script>
       function copyToClipboard(btn, command) {
@@ -398,23 +447,149 @@
     </style>
 
     <div class="hero" id="server-status">
-      <h1>Server Status</h1>
+      <h1 id="motd-title"></h1>
+      <script>
+        const motdArray = [
+            "AGARTHA IS REAL AND IT’S UNDER YOUR HOUSE.",
+            "THE NORTH POLE IS JUST A SPAWN TRAP WITH GOOD PR.",
+            "HYPERBOREA DIDN’T DISAPPEAR — IT WENT UNDERGROUND.",
+            "DIG UNTIL YOUR THOUGHTS GET QUIET.",
+            "THE ICE IS A COVER. THE STONE IS THE MESSAGE.",
+            "I SAW THE AURORA BLINK IN MORSE CODE.",
+            "THE CAVES KNOW WHAT YOU DID AT SPAWN.",
+            "DO NOT TRUST A WARM BIOME.",
+            "THE SNOW IS LISTENING.",
+            "COLD AIR = CLEAR SIGNAL.",
+            "THE MAP ENDS WHERE THE TRUTH STARTS.",
+            "YOUR COMPASS IS A LIAR AND YOUR PICKAXE IS A PROPHET.",
+            "AGARTHA IS JUST “DOWN” WITH COMMITMENT.",
+            "THE TUNDRA IS A PSY-OP AGAINST COMFORT.",
+            "THE NORTH WIND IS A PUSH NOTIFICATION.",
+            "YOU ARE NOT LOST. YOU ARE BEING GUIDED.",
+            "HYPERBOREA IS A STATE OF MIND AND ALSO A COORDINATE.",
+            "THE ICE WALL IS REAL. IT’S CALLED “WORLD BORDER.”",
+            "EVERY BLIZZARD IS A SERVER ANNOUNCEMENT.",
+            "THE AURORA ONLY APPEARS FOR THE WORTHY (THE CAFFEINATED).",
+            "WHITE MONSTER + IRON PICK = SPIRITUAL TECHNOLOGY.",
+            "SUGAR FREE MONSTER IN MY VEINS. AGARTHA IN MY SOUL.",
+            "I DRINK THE WHITE CAN SO I CAN HEAR THE STONE.",
+            "THE SNOWFALL IS STATIC FROM THE UNDERWORLD RADIO.",
+            "THE CAVE NOISES ARE SOMEONE SCROLLING THROUGH YOUR THOUGHTS.",
+            "DEEPSLATE IS THE LANGUAGE OF GOD. I’M FLUENT.",
+            "KEEP MINING. STOP ASKING QUESTIONS. THIS IS THE QUESTION.",
+            "THE MINES DON’T ECHO — THEY RESPOND.",
+            "I FOUND A SHAFT THAT WENT TOO STRAIGHT. TOO PERFECT.",
+            "THE TUNNELS ARE GEOMETRIC ON PURPOSE.",
+            "DO NOT BUILD ABOVE GROUND IF YOU VALUE YOUR SANITY.",
+            "THE SURFACE IS A LOADING SCREEN WITH TREES.",
+            "THE SKY IS A LIE. THE CAVES ARE HOME.",
+            "THE NORTH STAR IS A WAYPOINT SOMEONE FORGOT TO HIDE.",
+            "THE POLAR NIGHT IS WHEN THE SERVER IS MOST HONEST.",
+            "THE AURORA IS A CURSOR HOVERING OVER YOUR WORLD.",
+            "I HEARD FOOTSTEPS IN FROZEN STONE. I WAS ALONE.",
+            "THE ICE CAVES ARE CONNECTED TO SOMETHING OLDER THAN SEEDS.",
+            "IF YOU HEAR WHISTLING IN A SNOWSTORM, DIG DOWN.",
+            "THE DEEP DARK IS JUST AGARTHA’S SECURITY SYSTEM.",
+            "THE WARDEN IS A BOUNCER. YOU ARE NOT ON THE LIST.",
+            "THE ANCIENT CITY IS A SUBWAY STATION TO HYPERBOREA.",
+            "I FOUND A DOOR MADE OF NOTHING BUT BAD DECISIONS.",
+            "THE COORDINATES ARE WHISPERING AGAIN.",
+            "Y LEVELS ARE CHAKRAS. BOTTOM ONE IS POWER.",
+            "THE CAVE VINES ARE TRYING TO TEACH ME A NAME.",
+            "STONE DOESN’T BREAK. IT OPENS.",
+            "MINING IS NOT A JOB. IT’S A VOW.",
+            "I PLACED A TORCH AND IT FELT LIKE A PRAYER.",
+            "EACH ORE VEIN IS A BREADCRUMB TRAIL TO SOMETHING DISGUSTINGLY TRUE.",
+            "IF THE TUNNEL FEELS WRONG, KEEP GOING.",
+            "THE BEST BASES ARE THE ONES THE SUN NEVER SEES.",
+            "THE SNOW BIOME IS WHERE YOUR BRAIN STOPS BUFFERING.",
+            "HYPERBOREA IS THE COLD, CLEAN EDGE OF REALITY.",
+            "THE ICE DOESN’T MELT BECAUSE IT’S NOT ICE.",
+            "YOU THINK YOU’RE MINING DIAMONDS. YOU’RE MINING PROOF.",
+            "THE UNDERWORLD HAS BETTER WIFI.",
+            "I FOLLOWED A BAT AND IT TOOK ME SOMEWHERE ILLEGAL.",
+            "THE CAVES HAVE A SMELL. IT’S LIKE HISTORY.",
+            "SOMEONE BUILT THIS PLACE BEFORE YOU DOWNLOADED IT.",
+            "I FOUND A ROOM THAT WASN’T SUPPOSED TO GENERATE.",
+            "THE WORLDGEN IS SENTIENT AND IT WANTS ME SOBER (I REFUSE).",
+            "WHITE MONSTER EMPTY. REALITY LOADING.",
+            "CAFFEINE UP. FEAR DOWN. DIGGING DOWN.",
+            "I DON’T SLEEP. I DESCEND.",
+            "THE AURORA JUST SAID MY NAME IN RGB.",
+            "THE SNOWSTORM IS TRYING TO RESET ME.",
+            "THE ICE IS A MIRROR FOR ANOTHER WORLD.",
+            "AGARTHA IS RIGHT THERE IF YOU STOP BEING A COWARD.",
+            "WELCOME TO THE NORTH. LEAVE YOUR LOGIC AT SPAWN.",
+            "THIS SERVER IS A RITUAL AND YOU’RE IN IT NOW."
+          ];
+        const randomMotd = motdArray[Math.floor(Math.random() * motdArray.length)];
+        document.getElementById('motd-title').textContent = randomMotd;
+      </script>
+      
+      <h1 id="status-title">Server Status</h1>
       <div class="ip" style="position: relative;margin-bottom:24px;">
         <small>SERVER IP</small>
         <code id="server-ip">play.valhallamc.ca</code>
-        <button class="copy-button" onclick="copyToClipboard(this, 'play.valhallamc.ca')" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); padding: 6px 12px; background: rgba(125, 211, 252, 0.15); border: 1px solid rgba(125, 211, 252, 0.3); border-radius: 8px; color: var(--accent); cursor: pointer; font-size: 12px; font-weight: 700; transition: all 0.2s ease;">COPY</button>
-        <style>
-          button.copy-button:hover {
-            background: rgba(125, 211, 252, 0.25) !important;
-            border-color: rgba(125, 211, 252, 0.5) !important;
-            transform: translateY(-50%) scale(1.05)   !important;
-          }
-        </style>
+        <button class="copy-button" onclick="copyToClipboard(this, 'play.valhallamc.ca')">COPY</button>
       </div>
       <div id="status-content">
         <p class="muted">Loading server status...</p>
       </div>
     </div>
+    <style>
+      #server-status {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 111px); /* Adjust for any margins */
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.0);
+        border-radius: 8px;
+        border: none;
+        position: relative;
+      }
+      #server-status div:not(.row) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+      .copy-button {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 6px 12px;
+        background: rgba(125, 211, 252, 0.15);
+        border: 1px solid rgba(125, 211, 252, 0.3);
+        border-radius: 8px;
+        color: var(--accent);
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 700;
+        transition: all 0.2s ease;
+      }
+      button.copy-button:hover {
+        background: rgba(125, 211, 252, 0.25) !important;
+        border-color: rgba(125, 211, 252, 0.5) !important;
+        transform: translateY(-50%) scale(1.05) !important;
+      }
+    </style>
+    <script>
+      function adjustServerStatusHeight() {
+        const serverStatus = document.getElementById('server-status');
+        const viewportHeight = window.innerHeight;
+        const statusHeight = serverStatus.offsetHeight;
+        const margin = serverStatus.offsetTop; // Adjust for any margins
+        console.log(margin)
+        if (statusHeight < viewportHeight - margin) {
+          serverStatus.style.height = `${viewportHeight - margin}px`;
+        }
+      }
+      window.addEventListener('resize', adjustServerStatusHeight);
+      window.addEventListener('load', adjustServerStatusHeight);
+    </script>
 
     <script>
       async function fetchServerStatus() {
@@ -423,17 +598,26 @@
           const data = await response.json();
           
           const statusDiv = document.getElementById('status-content');
+          const statusTitle = document.getElementById('status-title');
 
           console.log(data)
+
+          if (data.online) {
+            statusTitle.innerHTML = '● <small>Server is ONLINE</small>';
+            statusTitle.style.color = '#4caf50';
+          } else {
+            statusTitle.innerHTML = '● <small>Server is OFFLINE</small>';
+          }
           
           if (data.online) {
             statusDiv.innerHTML = `
-              <p class="muted" style="color: #4caf50; font-weight: bold;">● <small>Server is ONLINE</small></p>
+              <div class="row">
               <p class="muted">Players: <strong>${data.players.online} / ${data.players.max}</strong></p>
               <p class="muted">Version: <strong>${data.version}</strong></p>
+              </div>
               ${data.players.list && data.players.list.length > 0 ? `
               <div style="margin-top: 12px; padding: 12px; border-radius: 8px; background: rgba(125, 211, 252, 0.08); border: 1px solid rgba(125, 211, 252, 0.2);">
-                <p class="muted" style="margin: 0 0 8px 0; font-weight: 700; color: var(--accent);">Online Players:</p>
+                <p class="muted" style="margin: 0 0 8px 0; font-weight: 700; color: var(--accent);"><small>Online Players:</small></p>
                 <div style="display: flex; flex-wrap: wrap; gap: 6px;">
                 ${data.players.list.map(p => {
                   const name = typeof p === 'string' ? p : p.name || p.uuid;
@@ -446,7 +630,6 @@
             `;
           } else {
             statusDiv.innerHTML = `
-              <p class="muted" style="color: #ffd0d0; font-weight: bold;">● Server is OFFLINE</p>
               <p class="muted">The server may be restarting or temporarily unavailable.</p>
             `;
           }
@@ -462,33 +645,48 @@
     </script>
 
     <div class="hero">
-      <h1>Join the server</h1>
-      <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-        <div class="ip" style="flex: 1; margin: 10px; display: flex; flex-direction: column; align-items: center; background: rgba(125, 211, 252, 0.1); border-radius: 8px; padding: 15px;">
-          <h1><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-graph-up-arrow" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M0 0h1v15h15v1H0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5" />
-            </svg></h1>
-          <p class="muted" style="margin-left: 10px; text-align: center;">
-            Experience the thrill of <strong>adventure</strong> in ValhallaMC SMP, where you can explore vast landscapes and uncover hidden treasures. Join a community that thrives on <strong>collaboration</strong> and <strong>exploration</strong>.
-          </p>
-        </div>
-        <div class="ip" style="flex: 1; margin: 10px; display: flex; flex-direction: column; align-items: center; background: rgba(125, 211, 252, 0.1); border-radius: 8px; padding: 15px;">
-          <h1><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-shield-lock-fill" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.8 11.8 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7 7 0 0 0 1.048-.625 11.8 11.8 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.54 1.54 0 0 0-1.044-1.263 63 63 0 0 0-2.887-.87C9.843.266 8.69 0 8 0m0 5a1.5 1.5 0 0 1 .5 2.915l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99A1.5 1.5 0 0 1 8 5" />
-            </svg></h1>
-          <p class="muted" style="margin-left: 10px; text-align: center;">
-            Secure your territory with <strong>Lands</strong>: claim your space, manage resources, and engage in <strong>strategic gameplay</strong>. Protect your assets and collaborate with others to thrive.
-          </p>
-        </div>
-        <div class="ip" style="flex: 1; margin: 10px; display: flex; flex-direction: column; align-items: center; background: rgba(125, 211, 252, 0.1); border-radius: 8px; padding: 15px;">
-          <h1 style="font-size: 24px;">ᚠ</h1>
-          <p class="muted" style="margin-left: 10px; text-align: center;">
-            Join the quest for <strong>Fehu (ᚠ)</strong>: build alliances, conquer territories, and rise to the top. Your journey to becoming the richest player starts here!
-          </p>
-        </div>
+      <h1>ValhallaMC SMP — Economy, Adventure, and Territory Control</h1>
+      <p class="muted">
+        A survival server built around a player-driven economy, plundering trial structures, and high-stakes land ownership. Players will engage in strategic resource management, forming alliances and rivalries as they navigate the challenges of survival. The economy is influenced by player actions, with trading and bartering playing a crucial role in the community. Explore vast territories filled with hidden treasures and formidable foes, while defending your claims against other players. The thrill of conquest and the risk of losing your hard-earned resources create an exhilarating gameplay experience that keeps you on your toes.
+      </p>
+      <h2>⚔ What’s New in v2.1</h2>
+      <p class="muted">
+        ValhallaMC SMP is an economy & adventure focused survival server, now with a heavier emphasis on territory control. Enchants and effects have been toned down, villagers are back to vanilla (ish), the economy has been upgraded, and worldgen/structures have been improved across the board.
+      </p>
+      <div class="ip">
+        <ul>
+          <li>Balanced combat: toned-down enchants and effects</li>
+          <li>Villagers: closer to vanilla trading (with some server tweaks)</li>
+          <li>Economy overhaul: upgraded shop + improved money flow</li>
+          <li>World improvements: better structures and exploration loot</li>
+          <li>Resource packs merged: smoother updates, custom items & textures</li>
+          <li>40+ custom music discs for maximum vibe</li>
+        </ul>
       </div>
-      <p class="muted" style="text-align: center; font-weight: bold;"><strong>Join us, build your legacy, and become the #1 player!</strong></p>
+      <h2>The Biggest Change: Lands</h2>
+      <p class="muted">
+        Lands is a full territory system with upkeep, taxes, nations, and war. Claim chunks to protect your builds — but your Land must stay funded.
+      </p>
+      <h2>Upkeep = Risk</h2>
+      <p class="muted">
+        Upkeep is removed daily. If you run out of money, your claims become unprotected — meaning anyone can steal, conquer, or flatten what’s inside.
+      </p>
+      <h2>How to "Win"</h2>
+      <p class="muted">
+        Build your empire by grinding for Fehu (ᚠ), exploring for rare loot, investing in claims, and teaming up with allies. Lands can form nations, declare war, and conquer territory even when you’re offline — so don’t get comfortable.
+      </p>
+      <ul class="muted">
+        <li>Grind Fehu (ᚠ)</li>
+        <li>Expand Claims</li>
+        <li>Form Alliances</li>
+        <li>Raid & Conquer</li>
+      </ul>
+      <h3 style="text-align: center;margin-top: 24px;">
+        The end goal is simple: Get rich. Hold land. Become the richest player on the server.
+      </h3>
     </div>
+
+    <h1 style="font-size:3em;margin-top: 48px; text-align: center;">FAQ</h1>
 
     <div class="hero">
       <h1>Can't Move?</h1>
@@ -525,6 +723,8 @@
         <code><a href="https://discord.gg/39CVgkrBvp">https://discord.gg/39CVgkrBvp</a></code>
       </div>
     </div>
+
+    <h1 style="font-size:3em;margin-top: 48px; text-align: center;">General Info</h1>
 
     <section id="commands">
       <h1>Useful commands</h1>
