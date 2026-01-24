@@ -493,56 +493,56 @@
     </style>
 
     <div class="hero" id="server-status">
-      <h1 id="motd-title"></h1>
+      <h1 id="motd-title" style="transition: opacity .35s ease; opacity: 1;"></h1>
       <script>
         const motdArray = [
-            "AGARTHA IS REAL AND IT’S UNDER YOUR HOUSE.",
-            "THE NORTH POLE IS JUST A SPAWN TRAP WITH GOOD PR.",
-            "HYPERBOREA DIDN’T DISAPPEAR — IT WENT UNDERGROUND.",
-            "DIG UNTIL YOUR THOUGHTS GET QUIET.",
-            "THE ICE IS A COVER. THE STONE IS THE MESSAGE.",
-            "I SAW THE AURORA BLINK IN MORSE CODE.",
-            "THE CAVES KNOW WHAT YOU DID AT SPAWN.",
-            "THE SNOW IS LISTENING.",
-            "THE MAP ENDS WHERE THE TRUTH STARTS.",
-            "YOUR COMPASS IS A LIAR AND YOUR PICKAXE IS A PROPHET.",
-            "THE TUNDRA IS A PSY-OP AGAINST COMFORT.",
-            "THE NORTH WIND IS A PUSH NOTIFICATION.",
-            "YOU ARE NOT LOST. YOU ARE BEING GUIDED.",
-            "HYPERBOREA IS A STATE OF MIND AND ALSO A COORDINATE.",
-            "THE ICE WALL IS REAL. IT’S CALLED “WORLD BORDER.”",
-            "THE AURORA ONLY APPEARS FOR THE WORTHY (THE CAFFEINATED).",
-            "WHITE MONSTER + ENDERITE PICK = SPIRITUAL TECHNOLOGY.",
-            "SUGAR FREE MONSTER IN MY VEINS. AGARTHA IN MY SOUL.",
-            "I DRINK THE WHITE CAN SO I CAN HEAR THE STONE.",
-            "THE CAVE NOISES ARE SOMEONE SCROLLING THROUGH YOUR THOUGHTS.",
-            "DEEPSLATE IS THE LANGUAGE OF GOD. I’M FLUENT.",
-            "KEEP MINING. STOP ASKING QUESTIONS. THIS IS THE QUESTION.",
-            "THE MINES DON’T ECHO — THEY RESPOND.",
-            "THE TUNNELS ARE GEOMETRIC ON PURPOSE.",
-            "DO NOT BUILD ABOVE GROUND IF YOU VALUE YOUR SANITY.",
-            "THE SURFACE IS A LOADING SCREEN WITH TREES.",
-            "THE SKY IS A LIE. THE CAVES ARE HOME.",
-            "THE NORTH STAR IS A WAYPOINT SOMEONE FORGOT TO HIDE.",
-            "THE POLAR NIGHT IS WHEN THE SERVER IS MOST HONEST.",
-            "IF YOU HEAR WHISTLING IN A SNOWSTORM, DIG DOWN.",
-            "THE DEEP DARK IS JUST AGARTHA’S SECURITY SYSTEM.",
-            "THE ANCIENT CITY IS A SUBWAY STATION TO HYPERBOREA.",
-            "THE CAVE VINES ARE TRYING TO TEACH ME A NAME.",
-            "STONE DOESN’T BREAK. IT OPENS.",
-            "MINING IS NOT A JOB. IT’S A VOW.",
-            "I PLACED A TORCH AND IT FELT LIKE A PRAYER.",
-            "EACH ORE VEIN IS A BREADCRUMB TRAIL TO SOMETHING DISGUSTINGLY TRUE.",
-            "IF THE TUNNEL FEELS WRONG, KEEP GOING.",
-            "THE BEST BASES ARE THE ONES THE SUN NEVER SEES.",
-            "YOU THINK YOU’RE MINING DIAMONDS. YOU’RE MINING PROOF.",
-            "THE UNDERWORLD HAS BETTER WIFI.",
-            "I FOLLOWED A BAT AND IT TOOK ME SOMEWHERE ILLEGAL.",
-            "THE WORLDGEN IS SENTIENT AND IT WANTS ME SOBER (I REFUSE).",
-            "WHITE MONSTER EMPTY. REALITY LOADING.",
-            "THE AURORA JUST SAID MY NAME IN RGB.",
-            "THIS SERVER IS A RITUAL AND YOU’RE IN IT NOW.",
-            "agartha under spawn but only on tuesdays",
+        "AGARTHA IS REAL AND IT’S UNDER YOUR HOUSE.",
+        "THE NORTH POLE IS JUST A SPAWN TRAP WITH GOOD PR.",
+        "HYPERBOREA DIDN’T DISAPPEAR — IT WENT UNDERGROUND.",
+        "DIG UNTIL YOUR THOUGHTS GET QUIET.",
+        "THE ICE IS A COVER. THE STONE IS THE MESSAGE.",
+        "I SAW THE AURORA BLINK IN MORSE CODE.",
+        "THE CAVES KNOW WHAT YOU DID AT SPAWN.",
+        "THE SNOW IS LISTENING.",
+        "THE MAP ENDS WHERE THE TRUTH STARTS.",
+        "YOUR COMPASS IS A LIAR AND YOUR PICKAXE IS A PROPHET.",
+        "THE TUNDRA IS A PSY-OP AGAINST COMFORT.",
+        "THE NORTH WIND IS A PUSH NOTIFICATION.",
+        "YOU ARE NOT LOST. YOU ARE BEING GUIDED.",
+        "HYPERBOREA IS A STATE OF MIND AND ALSO A COORDINATE.",
+        "THE ICE WALL IS REAL. IT’S CALLED “WORLD BORDER.”",
+        "THE AURORA ONLY APPEARS FOR THE WORTHY (THE CAFFEINATED).",
+        "WHITE MONSTER + ENDERITE PICK = SPIRITUAL TECHNOLOGY.",
+        "SUGAR FREE MONSTER IN MY VEINS. AGARTHA IN MY SOUL.",
+        "I DRINK THE WHITE CAN SO I CAN HEAR THE STONE.",
+        "THE CAVE NOISES ARE SOMEONE SCROLLING THROUGH YOUR THOUGHTS.",
+        "DEEPSLATE IS THE LANGUAGE OF GOD. I’M FLUENT.",
+        "KEEP MINING. STOP ASKING QUESTIONS. THIS IS THE QUESTION.",
+        "THE MINES DON’T ECHO — THEY RESPOND.",
+        "THE TUNNELS ARE GEOMETRIC ON PURPOSE.",
+        "DO NOT BUILD ABOVE GROUND IF YOU VALUE YOUR SANITY.",
+        "THE SURFACE IS A LOADING SCREEN WITH TREES.",
+        "THE SKY IS A LIE. THE CAVES ARE HOME.",
+        "THE NORTH STAR IS A WAYPOINT SOMEONE FORGOT TO HIDE.",
+        "THE POLAR NIGHT IS WHEN THE SERVER IS MOST HONEST.",
+        "IF YOU HEAR WHISTLING IN A SNOWSTORM, DIG DOWN.",
+        "THE DEEP DARK IS JUST AGARTHA’S SECURITY SYSTEM.",
+        "THE ANCIENT CITY IS A SUBWAY STATION TO HYPERBOREA.",
+        "THE CAVE VINES ARE TRYING TO TEACH ME A NAME.",
+        "STONE DOESN’T BREAK. IT OPENS.",
+        "MINING IS NOT A JOB. IT’S A VOW.",
+        "I PLACED A TORCH AND IT FELT LIKE A PRAYER.",
+        "EACH ORE VEIN IS A BREADCRUMB TRAIL TO SOMETHING DISGUSTINGLY TRUE.",
+        "IF THE TUNNEL FEELS WRONG, KEEP GOING.",
+        "THE BEST BASES ARE THE ONES THE SUN NEVER SEES.",
+        "YOU THINK YOU’RE MINING DIAMONDS. YOU’RE MINING PROOF.",
+        "THE UNDERWORLD HAS BETTER WIFI.",
+        "I FOLLOWED A BAT AND IT TOOK ME SOMEWHERE ILLEGAL.",
+        "THE WORLDGEN IS SENTIENT AND IT WANTS ME SOBER (I REFUSE).",
+        "WHITE MONSTER EMPTY. REALITY LOADING.",
+        "THE AURORA JUST SAID MY NAME IN RGB.",
+        "THIS SERVER IS A RITUAL AND YOU’RE IN IT NOW.",
+        "agartha under spawn but only on tuesdays",
           "hyperborea is whitelisted and you already joined",
           "the ice wall starts at x:0 z:0 dont look up",
           "thule trading hall accepts only bones and rumors",
@@ -590,7 +590,7 @@
           "your pickaxe is from hyperborea dont wash it",
           "ice wall is just world border cosplay",
           "agartha is a basement with a skybox",
-          "thule is the spawn radius but colder politically",
+          "thule is agartha but upside down financially",
           "shambhala is the nether but with better manners",
           "black sun stock market open 25 ticks a day",
           "vril is stored in barrels for safety",
@@ -759,21 +759,25 @@
           "alfheim is a dream built out of glass panes",
           "ginnungagap is a nightmare built out of ladders",
           "black sun is a corporate logo for the void",
-          "vrillionaires are the void wearing business casual",
-          "ice wall is the void wearing a winter coat",
-          "agartha is the void wearing your boots",
-          "hyperborea is the void wearing your skin",
-          "thule is the void wearing a name tag",
-          "shambhala is the void wearing incense",
-          "asgard is the void wearing a crown",
-          "helheim is the void wearing a smile",
-          "alfheim is the void wearing glitter",
-          "ginnungagap is the void wearing silence",
-          "black sun is the void wearing daylight",
-          "vrillionaires of the black sun are the daylight in debt"            
+          "vrillionaires of the black sun are the daylight in debt"
           ];
-        const randomMotd = motdArray[Math.floor(Math.random() * motdArray.length)];
-        document.getElementById('motd-title').textContent = randomMotd;
+        const motdEl = document.getElementById('motd-title');
+        function setRandomMotd() {
+          let next;
+          // avoid repeating the same entry consecutively
+          do {
+        next = motdArray[Math.floor(Math.random() * motdArray.length)];
+          } while (next === motdEl.textContent && motdArray.length > 1);
+          motdEl.style.opacity = 0;
+          setTimeout(() => {
+        motdEl.textContent = next;
+        motdEl.style.opacity = 1;
+          }, 250);
+        }
+        // initial
+        setRandomMotd();
+        // change every 10s (10000 ms)
+        setInterval(setRandomMotd, 10000);
       </script>
       
       <h1 id="status-title">Server Status</h1>
@@ -1320,6 +1324,16 @@
       <p>Download the optional client-side mods <a href="https://cdn.discordapp.com/attachments/1458187804592050197/1463944520118042781/optional-client-modpack.zip?ex=6973ac14&is=69725a94&hm=284cddd39bdf6b3b948792f5f0cf8379580971e80fd37b26d027ce2fa8961847&" download>here</a>.</p>
       <p>Simply extract the .zip file into your minecraft mods folder.</p>
     </section>
+
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+  kofiWidgetOverlay.draw('valhallamcsmp', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Tip Me',
+    'floating-chat.donateButton.background-color': '#00b9fe',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
+</script>
 
     <footer>
       <div>Server IP: <strong style="color:var(--accent)">play.valhallamc.ca</strong></div>
