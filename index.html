@@ -12,6 +12,19 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Stack+Sans+Notch:wght@200..700&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap"
     rel="stylesheet">
+  <script defer src="https://js.tebex.io/v/1.js"></script>
+  <script>
+    window.addEventListener("load", () => {
+      fetch('https://headless.tebex.io/api/accounts/115p6-a40ffb7977ff6bd946b9bde5d4a9026f986a855a/categories')
+        .then(response => response.json())
+        .then(data => {
+          console.log("Listings fetched:", data);
+        })
+        .catch(error => {
+          console.error("Error fetching listings:", error);
+        });
+    });    
+  </script>
   <style>
     :root {
       --bg: #0b0f14;
@@ -395,7 +408,9 @@
   <div class="wrap">
     <div class="top" id="sticky-header">
       <div class="row">
+        <a href="/">
         <img src="server-icon_1.png" alt="ValhallaMC Logo" style="height: 40px; width: 40px; border-radius: 8px;">
+        </a>
         <div class="brand">ValhallaMC SMP 1.21.10 (v2.1)</div>
       </div>
       <div class="buttons">
@@ -420,14 +435,14 @@
               d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
           </svg>
         </a>
-        <!-- <a class="btn" href="https://store.valhallamc.ca" target="_blank" rel="noopener noreferrer">
+        <a class="btn" href="/shop" target="_blank" rel="noopener noreferrer">
           <small>shop</small>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-heart"
             viewBox="0 0 16 16">
             <path fill-rule="evenodd"
               d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1M8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132" />
           </svg>
-        </a> -->
+        </a>      
         
       </div>
     </div>
@@ -789,6 +804,8 @@
       <div id="status-content">
         <p class="muted">Loading server status...</p>
       </div>
+      <small class="muted" style="text-align: center;">NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR
+        MICROSOFT</small>
           <a class="scroll-prompt" href="#below-the-fold" onclick="smoothScroll(event)">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-mouse"
               viewBox="0 0 16 16">
@@ -1225,6 +1242,7 @@
           lootable tool trim templates that can be used on all tools/weapons with over 1200 combinations.</li>
         <li><strong>Smart Spawners</strong> can be collected with silk touch, and offer easy item and xp collection from
           spawners collected naturally, or purchased.</li>
+        <li><strong>Better Beacon Range</strong> enhances the effectiveness of beacons, allowing them to reach further and provide buffs to a larger area.</li>
         <li><strong>Food Balance</strong> gives all the different foods in the game unique effects, and tries to make
           them more balanced in power.</li>
         <li><strong>Coinflipz</strong> is a fun mini-game that allows players to wager Fehu on a simple coin flip or

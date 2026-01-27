@@ -1,0 +1,1107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shop | ValhallaMC SMP</title>
+  <meta name="description" content="ValhallaMC SMP v2 — Shop" />
+  <link rel="icon" href="server-icon_1.png" type="image/png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Stack+Sans+Notch:wght@200..700&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap"
+    rel="stylesheet">
+
+  <!-- Tebex.js -->
+  <script defer src="https://js.tebex.io/v/1.js"></script>
+
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --panel: #111824;
+      --text: #e7eefc;
+      --muted: #a8b4cc;
+      --line: #22304a;
+      --accent: #7dd3fc;
+      --accent2: #8ffa8b;
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    small {
+      text-transform: uppercase;
+      font-family: "Zalando Sans Expanded", sans-serif;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    .video-bg {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 200%;
+      height: 200%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.33;
+      transform: translate(-50%, -50%);
+    }
+
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 22px 16px 50px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      border: solid 1px transparent;
+    }
+
+    .top.sticky {
+      position: sticky;
+      transition-duration: 0.6s;
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      top: 0;
+      border: 1px solid var(--accent);
+      background: rgba(125, 211, 252, 0.1);
+      backdrop-filter: blur(5px);
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand {
+      font-weight: 900;
+      letter-spacing: .2px;
+      font-family: "Zalando Sans Expanded", sans-serif;
+      font-variant: all-small-caps;
+    }
+
+    .buttons svg {
+      margin-left: 4px;
+      height: 23px;
+      width: 16px;
+      vertical-align: middle;
+      transform: translateY(-2px);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--text);
+      text-decoration: none;
+      transition: background 0.3s, border-color 0.3s;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .btn:hover {
+      border-color: rgba(125, 211, 252, .45);
+      background: rgba(125, 211, 252, 0.1);
+    }
+
+    .buttons .btn {
+      border: 1px solid var(--accent);
+      background: var(--panel);
+      font-size: 11px;
+    }
+
+    .buttons .btn.active {
+      border-color: var(--accent2);
+      background: rgba(143, 250, 139, 0.12);
+      backdrop-filter: blur(4px);
+    }
+
+    .btn.add-to-cart {
+      font-family: "Zalando Sans Expanded", sans-serif;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      padding: 20px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    section {
+      margin-top: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--radius);
+    }
+
+    .muted {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .card {
+      background: rgba(125, 211, 252, 0.1);
+      border: 1px solid rgba(125, 211, 252, 0.25);
+      border-radius: var(--radius);
+      padding: 16px;
+      text-align: center;
+    }
+
+    .package-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .price-pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(167, 139, 250, 0.35);
+      border-color: var(--accent2);
+      background: rgba(143, 250, 139, 0.12);
+      color: var(--text);
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    /* Cart */
+    .field-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 240px;
+      flex: 1 1 240px;
+    }
+
+    .input {
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(125, 211, 252, .35);
+      background: rgba(125, 211, 252, .06);
+      color: var(--text);
+      outline: none;
+      font-weight: 800;
+    }
+
+    .input::placeholder {
+      color: rgba(168, 180, 204, 0.8);
+      font-weight: 700;
+    }
+
+    .cart-list {
+      margin-top: 12px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(125, 211, 252, .25);
+      background: rgba(125, 211, 252, 0.06);
+      align-items: center;
+    }
+
+    .cart-item .name {
+      font-weight: 900;
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+      font-family: "Zalando Sans Expanded", sans-serif;
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    .cart-item .meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .cart-right {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: end;
+      flex-wrap: wrap;
+    }
+
+    .qty {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border-radius: 12px;
+      border: 1px solid rgba(125, 211, 252, .25);
+      background: rgba(125, 211, 252, 0.06);
+    }
+
+    .qty .qty-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      border: 1px solid rgba(125, 211, 252, .35);
+      background: rgba(125, 211, 252, .10);
+      color: var(--text);
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .qty .qty-input {
+      width: 60px;
+      height: 34px;
+      border-radius: 10px;
+      border: 1px solid rgba(125, 211, 252, .35);
+      background: rgba(125, 211, 252, .06);
+      color: var(--text);
+      text-align: center;
+      font-weight: 900;
+      outline: none;
+    }
+
+    .cart-summary {
+      margin-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(125, 211, 252, .18);
+      padding-top: 12px;
+    }
+
+    .cart-total {
+      font-weight: 900;
+      color: var(--accent);
+      font-size: 18px;
+    }
+
+    .product-category h3 {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 214, 0, 0.25);
+      background: rgba(255, 214, 0, 0.08);
+      color: rgba(255, 236, 180, 0.95);
+      font-size: 12px;
+    }
+
+    footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 16px;
+      }
+
+      iframe.video-bg {
+        width: 400% !important;
+        height: 400% !important;
+      }
+
+      .top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .buttons .btn {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .cart-item {
+        grid-template-columns: 1fr;
+      }
+
+      .cart-right {
+        justify-content: start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <iframe class="video-bg" width="1920" height="1080" allow="autoplay"
+    src="https://www.youtube.com/embed/7CouiWXWKLY?si=ZnllnfbVE8V5K_NX&amp;controls=0&autoplay=1&loop=1&mute=1&playlist=7CouiWXWKLY"
+    title="YouTube video player" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; loop;"
+    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+  <div class="wrap">
+    <div class="top" id="sticky-header">
+      <div class="row">
+        <a href="/">
+          <img src="server-icon_1.png" alt="ValhallaMC Logo" style="height: 40px; width: 40px; border-radius: 8px;">
+        </a>
+        <div class="brand">ValhallaMC SMP 1.21.10 (v2.1)</div>
+      </div>
+      <div class="buttons">
+        <a class="btn" href="https://discord.gg/39CVgkrBvp" target="_blank" rel="noopener noreferrer"><small>join
+            discord</small><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-discord" viewBox="0 0 16 16">
+            <path
+              d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612" />
+          </svg></a>
+        <a class="btn"
+          href="https://cdn.discordapp.com/attachments/1458187804592050197/1463944520118042781/optional-client-modpack.zip?ex=6973ac14&is=69725a94&hm=284cddd39bdf6b3b948792f5f0cf8379580971e80fd37b26d027ce2fa8961847&"
+          target="_blank" rel="noopener noreferrer"><small>optional mods</small>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-cloud-arrow-down-fill" viewBox="0 0 16 16">
+            <path
+              d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2m2.354 6.854-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5a.5.5 0 0 1 1 0v3.793l1.146-1.147a.5.5 0 0 1 .708.708" />
+          </svg>
+        </a>
+        <a class="btn" href="http://play.valhallamc.ca:8100/" target="_blank" rel="noopener noreferrer">
+          <small>world map</small><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
+            <path fill-rule="evenodd"
+              d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
+          </svg>
+        </a>
+        <a class="btn active" href="/shop" target="_blank" rel="noopener noreferrer">
+              <small>shop</small>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-heart"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1M8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132" />
+              </svg>
+            </a>
+    
+      </div>
+    </div>
+
+    <script>
+      let lastScrollTop = 0;
+      window.onscroll = function () { stickyHeader() };
+
+      var header = document.getElementById("sticky-header");
+      var sticky = header.offsetTop;
+
+      function stickyHeader() {
+        let currentScroll = window.pageYOffset;
+        if (currentScroll > sticky) {
+          header.classList.add("sticky");
+          if (currentScroll > lastScrollTop) {
+            header.style.transform = "translateY(-100px)";
+          } else {
+            header.style.transform = "translateY(22px)";
+          }
+        } else {
+          header.classList.remove("sticky");
+          header.style.transform = "translateY(0)";
+        }
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+      }
+    </script>
+
+    <!-- CART / CHECKOUT -->
+    <section id="cart-panel">
+      <h2>Cart + Checkout</h2>
+      <p class="muted">Enter your Minecraft username, add packages, adjust quantities, then checkout.</p>
+
+      <div class="field-row">
+        <div class="field">
+          <small class="muted">Minecraft username</small>
+          <input id="mc-username" class="input" placeholder="e.g. ChaseMilligan" autocomplete="off" />
+          <small id="basket-status" class="muted">Basket: not created</small>
+        </div>
+
+        <div style="display:flex; gap:10px; align-items:flex-end; flex-wrap:wrap;">
+          <button id="btn-new-basket" class="btn" type="button">New Basket</button>
+        </div>
+      </div>
+
+      <div class="cart-list" id="cart-list"></div>
+
+      <div class="cart-summary">
+        <div>
+          <div class="muted">Total</div>
+          <div id="cart-total" class="cart-total">—</div>
+        </div>
+        <div class="muted" id="cart-hint">Add something to your cart to enable checkout.</div>
+        <button id="btn-checkout" class="btn" type="button" style="border-color: var(--accent2);">Checkout</button>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <div class="product-grid" id="product-grid"></div>
+
+    <!-- Ko-fi (unchanged) -->
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script>
+      kofiWidgetOverlay.draw('valhallamcsmp', {
+        'type': 'floating-chat',
+        'floating-chat.donateButton.text': 'Tip Me',
+        'floating-chat.donateButton.background-color': '#00b9fe',
+        'floating-chat.donateButton.text-color': '#fff'
+      });
+    </script>
+
+    <footer>
+      <div>Server IP: <strong style="color:var(--accent)">play.valhallamc.ca</strong></div>
+      <div>&copy; <span id="current-year"></span> ValhallaMC. All rights reserved.</div>
+      <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+      </script>
+      <div>Contact: <strong><a href="mailto:support@valhallamc.ca">support@valhallamc.ca</a></strong></div>
+    </footer>
+  </div>
+
+  <script>
+    // ============================================================
+    // Tebex Headless + Tebex.js (single-page, no backend)
+    // ============================================================
+
+    // Your account token from the URL you already use:
+    const STORE_TOKEN = "115p6-a40ffb7977ff6bd946b9bde5d4a9026f986a855a";
+    const API_BASE = `https://headless.tebex.io/api/accounts/${STORE_TOKEN}`;
+
+    const LS_KEYS = {
+      basketIdent: "tebex_basket_ident",
+      usernameId: "tebex_username_id",
+      username: "tebex_username"
+    };
+
+    const state = {
+      basketIdent: localStorage.getItem(LS_KEYS.basketIdent) || "",
+      usernameId: localStorage.getItem(LS_KEYS.usernameId) || "",
+      username: localStorage.getItem(LS_KEYS.username) || ""
+    };
+
+    const qtyUpdateTimers = new Map(); // packageId -> timeout id
+
+    const $ = (id) => document.getElementById(id);
+
+    function saveState() {
+      localStorage.setItem(LS_KEYS.basketIdent, state.basketIdent || "");
+      localStorage.setItem(LS_KEYS.usernameId, state.usernameId || "");
+      localStorage.setItem(LS_KEYS.username, state.username || "");
+    }
+
+    function setStatus(msg) {
+      $("basket-status").textContent = msg;
+    }
+
+    function safeText(htmlMaybe) {
+      if (!htmlMaybe) return "";
+      const div = document.createElement("div");
+      div.innerHTML = htmlMaybe;
+      return (div.textContent || div.innerText || "").trim();
+    }
+
+    function formatMoney(amount, currency) {
+      if (amount == null) return "—";
+      const num = typeof amount === "string" ? Number(amount) : amount;
+      if (!Number.isFinite(num)) {
+        // Sometimes basket.price is already formatted string
+        if (typeof amount === "string" && amount.trim().length) return amount;
+        return "—";
+      }
+      try {
+        return new Intl.NumberFormat(undefined, { style: "currency", currency: currency || "USD" }).format(num);
+      } catch {
+        return `${num.toFixed(2)} ${currency || ""}`.trim();
+      }
+    }
+
+    function pickPackagePrice(pkg) {
+      // Best-effort, varies by config.
+      const candidates = [
+        pkg?.total_price,
+        pkg?.price,
+        pkg?.base_price,
+        pkg?.price_with_tax
+      ];
+
+      for (const c of candidates) {
+        if (c && typeof c === "object" && (c.amount != null || c.value != null)) {
+          return { amount: c.amount ?? c.value, currency: c.currency ?? c.currency_code };
+        }
+        if (typeof c === "number") return { amount: c, currency: pkg?.currency || pkg?.currency_code };
+        if (typeof c === "string" && c.trim() && !Number.isNaN(Number(c))) return { amount: Number(c), currency: pkg?.currency || pkg?.currency_code };
+      }
+
+      const p0 = pkg?.prices?.[0];
+      if (p0 && (p0.amount != null || p0.value != null)) {
+        return { amount: p0.amount ?? p0.value, currency: p0.currency ?? p0.currency_code };
+      }
+
+      return null;
+    }
+
+    async function apiJson(url, options = {}) {
+      const res = await fetch(url, {
+        headers: {
+          "Accept": "application/json",
+          ...(options.body ? { "Content-Type": "application/json" } : {}),
+          ...(options.headers || {})
+        },
+        ...options
+      });
+
+      const text = await res.text();
+      let json = null;
+      try { json = text ? JSON.parse(text) : null; } catch { /* ignore */ }
+
+      if (!res.ok) {
+        const msg = json?.message || json?.error || text || `HTTP ${res.status}`;
+        throw new Error(msg);
+      }
+      return json;
+    }
+
+    function clearBasketLocal() {
+      state.basketIdent = "";
+      state.usernameId = "";
+      saveState();
+      setStatus("Basket: not created");
+      renderCart(null);
+    }
+
+    async function fetchBasket() {
+      if (!state.basketIdent) return null;
+      const url = `${API_BASE}/baskets/${encodeURIComponent(state.basketIdent)}`;
+      const data = await apiJson(url);
+      return data?.data || data;
+    }
+
+    async function createBasket(forceUsername) {
+      const username = (forceUsername ?? state.username ?? "").trim();
+      if (!username) throw new Error("Enter your Minecraft username first.");
+
+      const body = {
+        complete_url: `${location.origin}${location.pathname}?thanks=1`,
+        cancel_url: location.href,
+        complete_auto_redirect: false,
+        username
+      };
+
+      const url = `${API_BASE}/baskets`;
+      const res = await apiJson(url, { method: "POST", body: JSON.stringify(body) });
+
+      const basket = res?.data || res;
+      const ident = basket?.ident || basket?.basketIdent || basket?.basket_ident;
+      const usernameId = basket?.username_id || basket?.usernameId || basket?.username_ident;
+
+      if (!ident) throw new Error("Basket created but ident was missing in response.");
+
+      state.basketIdent = ident;
+      state.usernameId = usernameId || "";
+      state.username = username;
+      saveState();
+
+      setStatus(`Basket: ${state.basketIdent}${state.usernameId ? ` (user linked)` : ""}`);
+      return basket;
+    }
+
+    async function ensureBasket() {
+      const inputUsername = $("mc-username").value.trim();
+      if (inputUsername && inputUsername !== state.username) {
+        clearBasketLocal();
+        state.username = inputUsername;
+        saveState();
+      } else if (!state.username && inputUsername) {
+        state.username = inputUsername;
+        saveState();
+      }
+
+      if (!state.basketIdent) {
+        return await createBasket(state.username);
+      }
+
+      try {
+        const basket = await fetchBasket();
+        // refresh username_id if it appears later
+        const uid = basket?.username_id || basket?.usernameId || "";
+        if (uid && uid !== state.usernameId) {
+          state.usernameId = uid;
+          saveState();
+        }
+        setStatus(`Basket: ${state.basketIdent}${state.usernameId ? ` (user linked)` : ""}`);
+        return basket;
+      } catch {
+        clearBasketLocal();
+        return await createBasket(state.username);
+      }
+    }
+
+    async function getAuthOptions() {
+      if (!state.basketIdent) return null;
+      const returnUrl = encodeURIComponent(location.href);
+      const url = `${API_BASE}/baskets/${encodeURIComponent(state.basketIdent)}/auth?returnUrl=${returnUrl}`;
+      try {
+        const authOptions = await apiJson(url);
+        if (Array.isArray(authOptions) && authOptions.length) return authOptions;
+      } catch {
+        // Some store types may not use auth endpoint
+      }
+      return null;
+    }
+
+    async function authorizeBasket() {
+      await ensureBasket();
+      const options = await getAuthOptions();
+      if (!options) {
+        alert("No authorization options were returned for this basket/store type.");
+        return;
+      }
+      const first = options[0];
+      if (first?.url) {
+        location.href = first.url; // will return to returnUrl
+      } else {
+        alert("Auth option did not include a URL.");
+      }
+    }
+
+    async function addPackageToBasket(packageId) {
+      const basket = await ensureBasket();
+
+      const payload = {
+        package_id: Number(packageId),
+        quantity: 1
+      };
+
+      // Game server command stores may require username_id in variable_data
+      const usernameId = state.usernameId || basket?.username_id || basket?.usernameId;
+      if (usernameId) {
+        payload.variable_data = { username_id: usernameId };
+      }
+
+      const url = `https://headless.tebex.io/api/baskets/${encodeURIComponent(state.basketIdent)}/packages`;
+      await apiJson(url, { method: "POST", body: JSON.stringify(payload) });
+
+      await refreshCart();
+    }
+
+    async function removePackageFromBasket(packageId) {
+      if (!state.basketIdent) return;
+      const url = `https://headless.tebex.io/api/baskets/${encodeURIComponent(state.basketIdent)}/packages/remove`;
+      await apiJson(url, { method: "POST", body: JSON.stringify({ package_id: Number(packageId) }) });
+      await refreshCart();
+    }
+
+    async function updatePackageQuantity(packageId, quantity) {
+      if (!state.basketIdent) return;
+      const q = Math.max(1, Math.min(99, Number(quantity) || 1));
+
+      // Quantity update endpoint (may require auth)
+      const url = `https://headless.tebex.io/api/baskets/${encodeURIComponent(state.basketIdent)}/packages/${encodeURIComponent(packageId)}`;
+
+      try {
+        await apiJson(url, { method: "PUT", body: JSON.stringify({ quantity: q }) });
+        await refreshCart();
+      } catch (e) {
+        // If store requires auth before quantity updates, push user to authorize
+        showAuthWarn(true);
+        const msg = (e && e.message) ? e.message : String(e);
+        alert(`Quantity update failed.\n\n${msg}\n\nIf this store requires authorization, click "Authorize" and try again.`);
+        throw e;
+      }
+    }
+
+    function extractBasketTotal(basket) {
+      if (!basket) return { amount: null, currency: null };
+
+      const currency = basket.currency || basket.currency_code || basket.currencyCode || null;
+
+      // Many responses include basket.price as a string (docs show it) or number
+      if (basket.total_price != null) {
+        // could be formatted or numeric string; formatMoney handles both
+        return { amount: basket.total_price, currency };
+      }
+
+      // Some shapes include total_price.amount
+      const tp = basket.total_price || basket.totalPrice;
+      if (tp && typeof tp === "object" && (tp.amount != null || tp.value != null)) {
+        return { amount: tp.amount ?? tp.value, currency: tp.currency ?? tp.currency_code ?? currency };
+      }
+
+      // Fallback: sum packages if we can
+      const items = basket.packages || basket.items || [];
+      let sum = 0;
+      let ok = false;
+
+      for (const it of items) {
+        const qty = Number(it.qty ?? it.quantity ?? 1);
+        const p = it.price || it.total_price || it.base_price || it.unit_price || null;
+
+        let amt = null;
+        if (p && typeof p === "object") amt = p.amount ?? p.value ?? null;
+        else if (typeof p === "number") amt = p;
+        else if (typeof p === "string" && !Number.isNaN(Number(p))) amt = Number(p);
+
+        if (amt != null && Number.isFinite(amt) && Number.isFinite(qty)) {
+          sum += amt; // note: sometimes this already includes qty. can't know reliably.
+          ok = true;
+        }
+      }
+
+      return { amount: ok ? sum : null, currency };
+    }
+
+    function normalizeCartItems(basket) {
+      // Tebex basket uses packages array (docs) but some responses may differ
+      const items = basket?.packages || basket?.items || [];
+      return items.map((it) => {
+        const id = it.id ?? it.package_id ?? it.packageId ?? it.package?.id;
+        const name = it.name ?? it.package?.name ?? "Item";
+        const qty = Number(it.in_basket.quantity ?? it.quantity ?? 1);
+
+        // Try to find a per-item display price
+        const pObj = it.total_price || it.in_basket.price || it.base_price || it.unit_price || null;
+        let amount = null;
+        let currency = null;
+
+        if (pObj && typeof pObj === "object") {
+          amount = pObj.amount ?? pObj.value ?? null;
+          currency = pObj.currency ?? pObj.currency_code ?? null;
+        } else if (typeof pObj === "number") {
+          amount = pObj;
+        } else if (typeof pObj === "string" && pObj.trim() && !Number.isNaN(Number(pObj))) {
+          amount = Number(pObj);
+        } else if (typeof pObj === "string" && pObj.trim()) {
+          // already formatted string
+          amount = pObj;
+        }
+
+        return { id, name, qty, amount, currency };
+      }).filter(x => x.id != null);
+    }
+
+    function renderCart(basket) {
+      const list = $("cart-list");
+      const totalEl = $("cart-total");
+      const hint = $("cart-hint");
+
+      list.innerHTML = "";
+
+      if (!basket) {
+        totalEl.textContent = "—";
+        hint.textContent = "Add something to your cart to enable checkout.";
+        return;
+      }
+
+      const items = normalizeCartItems(basket);
+      const total = extractBasketTotal(basket);
+
+      totalEl.textContent = formatMoney(total.amount, total.currency);
+      hint.textContent = items.length ? "Ready when you are." : "Your cart is empty.";
+
+      if (!items.length) return;
+
+      items.forEach((it) => {
+        const row = document.createElement("div");
+        row.className = "cart-item";
+        row.innerHTML = `
+          <div>
+            <div class="name">${safeText(it.name)}</div>
+            <div class="meta">ID: ${it.id}</div>
+          </div>
+
+          <div class="cart-right">
+            <span class="price-pill">${formatMoney(it.amount * it.qty, it.currency || total.currency)}</span>
+
+            <div class="qty">
+              <button class="qty-btn" type="button" data-qty-minus="${it.id}">-</button>
+              <input class="qty-input" type="number" min="1" max="99" step="1" value="${it.qty}" data-qty-input="${it.id}" />
+              <button class="qty-btn" type="button" data-qty-plus="${it.id}">+</button>
+            </div>
+
+            <button class="btn" type="button" data-remove="${it.id}">Remove</button>
+          </div>
+        `;
+        list.appendChild(row);
+      });
+
+      // bind remove
+      list.querySelectorAll("[data-remove]").forEach((btn) => {
+        btn.addEventListener("click", async () => {
+          btn.disabled = true;
+          try {
+            await removePackageFromBasket(btn.getAttribute("data-remove"));
+          } catch (e) {
+            alert(`Remove failed: ${e.message || e}`);
+          } finally {
+            btn.disabled = false;
+          }
+        });
+      });
+
+      // bind qty +/- and input
+      function scheduleQtyUpdate(packageId, newQty) {
+        const id = String(packageId);
+        const q = Math.max(1, Math.min(99, Number(newQty) || 1));
+
+        if (qtyUpdateTimers.has(id)) clearTimeout(qtyUpdateTimers.get(id));
+        qtyUpdateTimers.set(id, setTimeout(async () => {
+          const input = list.querySelector(`[data-qty-input="${CSS.escape(id)}"]`);
+          if (input) input.disabled = true;
+          try {
+            await updatePackageQuantity(id, q);
+          } catch { /* alert already shown */ }
+          finally {
+            if (input) input.disabled = false;
+          }
+        }, 350));
+      }
+
+      list.querySelectorAll("[data-qty-minus]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-qty-minus");
+          const input = list.querySelector(`[data-qty-input="${CSS.escape(id)}"]`);
+          const cur = Number(input?.value || 1);
+          const next = Math.max(1, cur - 1);
+          if (input) input.value = String(next);
+          scheduleQtyUpdate(id, next);
+        });
+      });
+
+      list.querySelectorAll("[data-qty-plus]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-qty-plus");
+          const input = list.querySelector(`[data-qty-input="${CSS.escape(id)}"]`);
+          const cur = Number(input?.value || 1);
+          const next = Math.min(99, cur + 1);
+          if (input) input.value = String(next);
+          scheduleQtyUpdate(id, next);
+        });
+      });
+
+      list.querySelectorAll("[data-qty-input]").forEach((input) => {
+        input.addEventListener("input", () => {
+          const id = input.getAttribute("data-qty-input");
+          scheduleQtyUpdate(id, input.value);
+        });
+        input.addEventListener("blur", () => {
+          const id = input.getAttribute("data-qty-input");
+          const q = Math.max(1, Math.min(99, Number(input.value) || 1));
+          input.value = String(q);
+          scheduleQtyUpdate(id, q);
+        });
+      });
+    }
+
+    async function refreshCart() {
+      if (!state.basketIdent) {
+        renderCart(null);
+        return null;
+      }
+
+      try {
+        const basket = await fetchBasket();
+
+        // update usernameId if present
+        const uid = basket?.username_id || basket?.usernameId || "";
+        if (uid && uid !== state.usernameId) {
+          state.usernameId = uid;
+          saveState();
+          setStatus(`Basket: ${state.basketIdent} (user linked)`);
+        } else {
+          setStatus(`Basket: ${state.basketIdent}${state.usernameId ? ` (user linked)` : ""}`);
+        }
+
+        renderCart(basket);
+        return basket;
+      } catch {
+        renderCart(null);
+        return null;
+      }
+    }
+
+    async function loadListings() {
+      const data = await apiJson(`${API_BASE}/categories?includePackages=1`);
+      const grid = $("product-grid");
+      grid.innerHTML = "";
+
+      (data?.data || []).forEach((cat) => {
+        const catEl = document.createElement("section");
+        catEl.className = "product-category";
+
+        const packages = Array.isArray(cat?.packages) ? cat.packages : [];
+        const packagesHtml = packages.map((pkg) => {
+          console.log("Package:", pkg);
+          const id = pkg?.id || pkg?.package_id;
+          const desc = safeText(pkg?.description || "");
+          const price = pickPackagePrice(pkg);
+          const image = pkg?.image || pkg?.thumbnail_url || pkg?.thumbnailUrl || null;
+
+          return `
+            <div class="card">
+              <h4>${safeText(pkg?.name || "Package")}</h4>
+              ${image ? `<img src="${image}" />` : ""}
+              ${desc ? `<p class="muted" style="margin:0 0 10px;">${desc}</p>` : ""}
+              <div class="package-actions">
+                <span class="price-pill">${price ? formatMoney(price.amount, price.currency) : "See checkout"}</span>
+                ${id ? `<button class="btn add-to-cart" type="button" data-buy="${id}">Add to cart</button>` : ""}
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        catEl.innerHTML = `
+          <h2>${safeText(cat?.name || "Category")}</h2>
+          ${cat?.description ? `${cat.description}` : ""}
+          <div class="card-grid">${packagesHtml}</div>
+        `;
+        grid.appendChild(catEl);
+      });
+
+      document.querySelectorAll("[data-buy]").forEach((btn) => {
+        btn.addEventListener("click", async () => {
+          btn.disabled = true;
+          try {
+            await addPackageToBasket(btn.getAttribute("data-buy"));
+          } catch (e) {
+            alert(`Add to cart failed: ${e.message || e}`);
+          } finally {
+            btn.disabled = false;
+          }
+        });
+      });
+    }
+
+    async function launchCheckout() {
+      const basket = await ensureBasket();
+      const refreshed = await refreshCart();
+
+      const b = refreshed || basket;
+      const itemsCount = (b?.packages?.length || b?.items?.length || 0);
+
+      if (!itemsCount) {
+        alert("Your cart is empty. Add a package first.");
+        return;
+      }
+
+      // Tebex.js popup checkout
+      Tebex.checkout.init({
+        ident: state.basketIdent,
+        theme: "dark",
+        closeOnPaymentComplete: false,
+        colors: [
+          { name: "primary", color: "#7dd3fc" },
+          { name: "secondary", color: "#a78bfa" }
+        ]
+      });
+
+      Tebex.checkout.on("payment:complete", async () => {
+        clearBasketLocal();
+        // alert("Payment complete! Thanks for supporting ValhallaMC.");
+      });
+
+      Tebex.checkout.on("payment:error", (evt) => {
+        console.warn("Payment error:", evt);
+      });
+
+      Tebex.checkout.launch();
+    }
+
+    window.addEventListener("load", async () => {
+      // hydrate username input
+      $("mc-username").value = state.username || "";
+
+      // buttons
+      $("btn-new-basket").addEventListener("click", async () => {
+        try {
+          const u = $("mc-username").value.trim();
+          if (!u) return alert("Enter your Minecraft username first.");
+          clearBasketLocal();
+          await createBasket(u);
+          await refreshCart();
+        } catch (e) {
+          alert(`Basket failed: ${e.message || e}`);
+        }
+      });
+
+      $("btn-checkout").addEventListener("click", async () => {
+        try {
+          await launchCheckout();
+        } catch (e) {
+          alert(`Checkout failed: ${e.message || e}`);
+        }
+      });
+
+      // load products + cart
+      try {
+        await refreshCart();
+      } catch { /* ignore */ }
+
+      try {
+        await loadListings();
+      } catch (e) {
+        console.error("Error fetching listings:", e);
+        alert(`Could not load shop listings: ${e.message || e}`);
+      }
+    });
+  </script>
+
+</body>
+
+</html>
