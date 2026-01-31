@@ -23,6 +23,33 @@
         .catch(error => {
           console.error("Error fetching listings:", error);
         });
+
+      const BASE = "https://prized-bird-11b7c45021.strapiapp.com";
+      const TOKEN = "d1ed8a3498646cfdf6df94c853fe458f6cc187091648517d28d1d561c0673a2bf905bb5514467cd9585c4182f7aead2fc052a49be5e27e51fbcd5bc1355fd1e414ca7b5e80a4cba71e2fc7f7425222324fe74304cdb97249417bce659fd76cf167ff1d223cff2f885f22d4db1e9bf338e01e3d60e53328c0d7e2a43c01d2ef42"; // create in Strapi Admin → Settings → API Tokens
+
+      fetch(`${BASE}/api/test?populate=*`, {
+        method: "GET",
+        headers: {
+          "Authorization": `bearer ${TOKEN}`,
+          "Accept": "application/json",
+        },
+      })
+        .then((res) => {
+          if (!res.ok) {
+            return res.text().then((t) => {
+              throw new Error(`HTTP ${res.status} ${res.statusText}: ${t}`);
+            });
+          }
+          return res.json();
+        })
+        .then((data) => {
+          console.log("Strapi data:", data);
+        })
+        .catch((err) => {
+          console.error("Request failed:", err);
+        });
+
+
     });    
   </script>
   <style>
