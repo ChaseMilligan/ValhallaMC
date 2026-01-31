@@ -189,6 +189,10 @@
       text-align: center;
     }
 
+    .card img {
+      max-width: 200px;
+    }
+
     .package-actions {
       display: flex;
       flex-direction: column;
@@ -332,7 +336,7 @@
       font-size: 18px;
     }
 
-    .product-category h3 {
+    .product-category h3, .warn {
       margin-top: 10px;
       padding: 10px 12px;
       border-radius: 12px;
@@ -340,6 +344,10 @@
       background: rgba(255, 214, 0, 0.08);
       color: rgba(255, 236, 180, 0.95);
       font-size: 12px;
+      font-family: "Zalando Sans Expanded", sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 1em;
     }
 
     footer {
@@ -462,6 +470,13 @@
       }
     </script>
 
+    <section>
+      <h2>Welcome to the ValhallaMC Shop</h2>
+      <p class="muted warn">The shop is currently under development and may have limited features. If any problems should arise, please contact <a href="mailto:support@valhallamc.ca">support</a>.</p>
+      <p class="muted">Browse and purchase in-game packages to enhance your Minecraft experience on ValhallaMC SMP.</p>
+      <p class="muted">Your purchases support the ongoing development and maintenance of the server.</p>
+    </section>
+
     <!-- CART / CHECKOUT -->
     <section id="cart-panel">
       <h2>Cart + Checkout</h2>
@@ -470,7 +485,7 @@
       <div class="field-row">
         <div class="field">
           <small class="muted">Minecraft username</small>
-          <input id="mc-username" class="input" placeholder="e.g. ChaseMilligan" autocomplete="off" />
+          <input id="mc-username" class="input" placeholder="e.g. MrOzoskiniki" autocomplete="off" />
           <small id="basket-status" class="muted">Basket: not created</small>
         </div>
 
@@ -1103,5 +1118,4 @@
   </script>
 
 </body>
-
 </html>
