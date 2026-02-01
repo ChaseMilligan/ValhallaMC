@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shop | ValhallaMC SMP</title>
   <meta name="description" content="ValhallaMC SMP v2 — Shop" />
-  <link rel="icon" href="server-icon_1.png" type="image/png">
+  <link rel="icon" href="server-icon.png" type="image/png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -405,7 +405,7 @@
     <div class="top" id="sticky-header">
       <div class="row">
         <a href="/">
-          <img src="server-icon_1.png" alt="ValhallaMC Logo" style="height: 40px; width: 40px; border-radius: 8px;">
+          <img src="server-icon.png" alt="Logo" style="height: 40px; width: 40px; border-radius: 8px;">
         </a>
         <div class="brand">ValhallaMC SMP 1.21.10 (v2.1)</div>
       </div>
@@ -530,13 +530,16 @@
     </footer>
   </div>
 
-  <script>
-    // ============================================================
+<script>
+  fetch('/get-token')
+    .then(response => response.text())
+    .then(token => {
+      // ============================================================
     // Tebex Headless + Tebex.js (single-page, no backend)
     // ============================================================
 
-    // Your account token from the URL you already use:
-    const STORE_TOKEN = "115p6-a40ffb7977ff6bd946b9bde5d4a9026f986a855a";
+
+    const STORE_TOKEN = token;
     const API_BASE = `https://headless.tebex.io/api/accounts/${STORE_TOKEN}`;
 
     const LS_KEYS = {
@@ -1115,7 +1118,11 @@
         alert(`Could not load shop listings: ${e.message || e}`);
       }
     });
-  </script>
+    })
+    .catch(error => {
+      console.error("Error fetching token:", error);
+    });
+</script>
 
 </body>
 </html>
