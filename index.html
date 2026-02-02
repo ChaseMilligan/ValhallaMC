@@ -9,1368 +9,160 @@
   <link rel="icon" href="server-icon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="./style.css" />
   <link
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Stack+Sans+Notch:wght@200..700&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap"
     rel="stylesheet">
   <script defer src="https://js.tebex.io/v/1.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
-  <script>
-    window.addEventListener("load", () => {
-      const md = window.markdownit();
-        
-      fetch('./test.md')
-          .then(response => response.text())
-          .then(markdownContent => {
-              const htmlContent = md.render(markdownContent);
-              console.log(htmlContent);
-          })
-          .catch(error => {
-              console.error('Error fetching markdown file:', error);
-          });
-    });    
-  </script>
-  <style>
-    :root {
-      --bg: #0b0f14;
-      --panel: #111824;
-      --text: #e7eefc;
-      --muted: #a8b4cc;
-      --line: #22304a;
-      --accent: #7dd3fc;
-      --accent2: #a78bfa;
-      --radius: 14px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      position: relative;
-      min-height: 100vh;
-    }
-
-    h1,h2,h3,h4,h5,h6,small {
-      text-transform: uppercase;
-      font-family: "Zalando Sans Expanded", sans-serif;
-    }
-
-    .video-bg {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 200%;
-      height: 200%;
-      object-fit: cover;
-      z-index: -1;
-      opacity: 0.33;
-      transform: translate(-50%, -50%);
-      /* filter: blur(2px); */
-    }
-
-    .wrap {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 22px 16px 50px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      border-radius: var(--radius);
-      padding: 14px 16px;
-      border: solid 1px transparent;
-    }
-
-    .top.sticky {
-      position: sticky;
-      transition-duration: 0.6s;
-      z-index: 10;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      top: 0;
-      border: 1px solid var(--accent);
-      background: rgba(125, 211, 252, 0.1);
-      backdrop-filter: blur(5px);
-    }
-
-    .row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand {
-      font-weight: 900;
-      letter-spacing: .2px;
-      font-family: "Zalando Sans Expanded", sans-serif;
-      font-variant: all-small-caps;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: transparent;
-      color: var(--text);
-      text-decoration: none;
-      transition: background 0.3s, border-color 0.3s;
-    }
-
-    .btn:hover {
-      border-color: rgba(125, 211, 252, .45);
-      background: rgba(125, 211, 252, 0.1);
-    }
-
-    .hero {
-      margin-top: 14px;
-      padding: 18px 16px;
-      border: 1px solid var(--line);
-      background: var(--panel);
-      border-radius: var(--radius);
-    }
-
-    h1 {
-      margin: 0 0 10px;
-      font-size: 28px;
-      line-height: 1.15;
-      margin-bottom: 24px;
-    }
-
-    .muted {
-      color: var(--muted);
-      margin: 0;
-      margin-bottom: 8px;
-    }
-
-    .ip {
-      margin-bottom: 8px;
-      padding: 14px;
-      border-radius: 12px;
-      border: 1px solid rgba(125, 211, 252, .35);
-      background: rgba(125, 211, 252, .06);
-      backdrop-filter: blur(10px);
-    }
-
-    .ip small {
-      display: block;
-      color: var(--muted);
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .ip code {
-      display: block;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 20px;
-      font-weight: 900;
-      word-break: break-all;
-      color: var(--accent);
-    }
-
-    section {
-      margin-top: 14px;
-      padding: 16px;
-      border: 1px solid var(--line);
-      background: var(--panel);
-      border-radius: var(--radius);
-    }
-
-    h2 {
-      margin: 24px 0 12px;
-      font-size: 18px;
-    }
-
-    ul {
-      margin: 8px 0 0;
-      padding-left: 18px;
-    }
-
-    li {
-      margin: 6px 0;
-    }
-
-    .rules li strong {
-      color: #ffd0d0;
-    }
-
-    .command-card {
-      padding: 4px 12px;
-      padding-right: 82px;
-      border: 1px solid rgba(125, 211, 252, .35);
-      background: rgba(125, 211, 252, 0.1);
-      border-radius: var(--radius);
-      margin-bottom: 8px;
-      position: relative;
-    }
-
-    .command-card button {
-      text-transform: uppercase;
-    }
-
-    .command-card code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--accent);
-    }    
-
-    footer {
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 14px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-    }
-
-    @media (max-width: 768px) {
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
-        margin-top: 16px;
-      }
-    }
-
-    a {
-      color: var(--accent2);
-    }
-
-    .buttons svg {
-      margin-left: 4px;
-      height: 23px;
-      width: 16px;
-      vertical-align: middle;
-      transform: translateY(-2px);
-    }
-
-    @media (max-width: 768px) {
-      iframe {
-        width: 400% !important;
-        height: 400% !important;
-      }
-
-      .top {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .btn {
-        width: 100%;
-        margin-bottom: 10px;
-      }
-
-      .hero {
-        padding: 12px;
-      }
-
-      h1 {
-        font-size: 24px;
-      }
-
-      .ip code {
-        font-size: 18px;
-      }
-    }
-
-    .buttons .btn {
-      display: inline-block;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid var(--accent);
-      background: var(--panel);
-      font-size: 11px;
-      color: var(--text);
-      text-decoration: none;
-      transition: background 0.3s, border-color 0.3s;
-    }
-
-    .buttons .btn:hover {
-      border-color: rgba(125, 211, 252, .45);
-      background: rgba(125, 211, 252, 0.1);
-    }
-
-    #basic-gameplay-loop {
-      margin-top: 14px;
-      padding: 16px;
-      border: 1px solid var(--line);
-      background: var(--panel);
-      border-radius: var(--radius);
-    }
-
-    #basic-gameplay-loop .command-card {
-      text-align: left;
-      padding-right: 12px;
-      display: inline-block;
-    }
-
-    #basic-gameplay-loop .command-card code {
-      transition-duration: 0.3s;
-      font-size: 16px;
-    }
-
-    #basic-gameplay-loop .command-card code:hover {
-      cursor: pointer;
-    }
-
-    #basic-gameplay-loop .row {
-      justify-content: space-around;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .card {
-      background: rgba(125, 211, 252, 0.1);
-      border: 1px solid rgba(125, 211, 252, 0.25);
-      border-radius: var(--radius);
-      padding: 16px;
-      text-align: center;
-    }
-
-    .card h2 {
-      font-size: 32px;
-      margin: 0 0 8px;
-    }
-
-    #server-status {
-      height: calc(100vh - 200px);
-      padding-bottom: 80px !important;
-    }
-
-    #motd-title {
-      font-size: 3rem;
-      text-align: center;
-      margin-bottom: 48px;
-      letter-spacing: 1.6;
-      opacity: 0.95;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
-    }
-
-    #status-title {
-      text-align: center;
-      margin-bottom: 16px;
-      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
-    }
-
-    .sonar-ping {
-      position: relative;
-      overflow: visible;
-    }
-
-    .sonar-ping::after {
-      content: '';
-      position: absolute;
-      top: calc(50% + 2px);
-      left: 50%;
-      width: 16px;
-      height: 16px;
-      background: rgba(0, 255, 21, 0.781);
-      border: solid 1px rgba(0, 255, 21, 1);
-      border-radius: 50px;
-      transform: translate(-50%, -50%) scale(0);
-      animation: sonar 1.5s infinite;
-      z-index: -1;
-    }
-
-    @keyframes sonar {
-      0% {
-        transform: translate(-50%, -50%) scale(0);
-        opacity: 1;
-      }
-      50% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.33;
-      }
-      100% {
-        transform: translate(-50%, -50%) scale(2);
-        opacity: 0;
-      }
-    }
-  </style>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-attrs@4.3.1/markdown-it-attrs.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-container@4.0.0/dist/markdown-it-container.min.js"></script>
 </head>
 
 <body>
   <iframe class="video-bg" width="1920" height="1080" allow="autoplay" src="https://www.youtube.com/embed/7CouiWXWKLY?si=ZnllnfbVE8V5K_NX&amp;controls=0&autoplay=1&loop=1&mute=1&playlist=7CouiWXWKLY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; loop;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
   <div class="wrap">
-    <div class="top" id="sticky-header">
-      <div class="row">
-        <a href="/">
-        <img src="server-icon.png" alt="ValhallaMC Logo" style="height: 40px; width: 40px; border-radius: 8px;">
-        </a>
-        <div class="brand">ValhallaMC SMP 1.21.10 (v2.1)</div>
-      </div>
-      <div class="buttons">
-        <a class="btn" href="https://discord.gg/39CVgkrBvp" target="_blank" rel="noopener noreferrer"><small>join discord</small><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-discord"
-          viewBox="0 0 16 16">
-          <path
-            d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612" />
-        </svg></a>
-        <a class="btn" href="https://cdn.discordapp.com/attachments/1458187804592050197/1463944520118042781/optional-client-modpack.zip?ex=6973ac14&is=69725a94&hm=284cddd39bdf6b3b948792f5f0cf8379580971e80fd37b26d027ce2fa8961847&" target="_blank" rel="noopener noreferrer"><small>optional mods</small>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down-fill"
-            viewBox="0 0 16 16">
-            <path
-              d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2m2.354 6.854-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5a.5.5 0 0 1 1 0v3.793l1.146-1.147a.5.5 0 0 1 .708.708" />
-          </svg>
-        </a>
-        <a class="btn" href="http://play.valhallamc.ca:8100/" target="_blank" rel="noopener noreferrer">
-          <small>world map</small><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right"
-            viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-              d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
-            <path fill-rule="evenodd"
-              d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
-          </svg>
-        </a>
-        <a class="btn" href="/shop" rel="noopener noreferrer">
-          <small>shop</small>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-heart"
-            viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-              d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1M8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132" />
-          </svg>
-        </a>      
-        
-      </div>
-    </div>
     <script>
-      let lastScrollTop = 0;
-      window.onscroll = function() {stickyHeader()};
+      fetch('components/navigation.html')
+        .then(response => response.text())
+        .then(data => {
+          const element = document.createElement('div');
+          element.classList.add('navigation');
+          document.querySelector('.wrap').insertAdjacentElement('afterbegin', element);
+          element.innerHTML = data;
 
-      var header = document.getElementById("sticky-header");
-      var sticky = header.offsetTop;
-
-      function stickyHeader() {
-        let currentScroll = window.pageYOffset;
-        if (currentScroll > sticky) {
-          header.classList.add("sticky");
-          if (currentScroll > lastScrollTop) {
-            header.style.transform = "translateY(-100px)"; // Hide the header
-          } else {
-            header.style.transform = "translateY(22px)"; // Show the header
-          }
-        } else {
-          header.classList.remove("sticky");
-          header.style.transform = "translateY(0)"; // Reset position
-        }
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
-      }
-    </script>
-
-    <script>
-      function copyToClipboard(btn, command) {
-        navigator.clipboard.writeText(command).then(() => {
-          const originalText = btn.textContent;
-          btn.textContent = 'COPIED!';
-          btn.style.background = 'rgba(125, 211, 252, 0.25)';
-          setTimeout(() => {
-            btn.textContent = originalText;
-            btn.style.background = 'rgba(125, 211, 252, 0.15)';
-          }, 2000);
+          const scripts = element.querySelectorAll('script');
+          scripts.forEach(oldScript => {
+            const newScript = document.createElement('script');
+            Array.from(oldScript.attributes).forEach(attr =>
+              newScript.setAttribute(attr.name, attr.value)
+            );
+            newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+            oldScript.parentNode.replaceChild(newScript, oldScript);
+          });
         });
-      }
     </script>
-    <style>
-      .copy-button {
-        position: absolute;
-        right: 14px;
-        top: 50%;
-        transform: translateY(-50%);
-        padding: 6px 12px;
-        background: rgba(125, 211, 252, 0.15);
-        border: 1px solid rgba(125, 211, 252, 0.3);
-        border-radius: 8px;
-        color: var(--accent);
-        cursor: pointer;
-        font-size: 12px;
-        font-weight: 700;
-        transition: all 0.2s ease;
-      }
-    
-      .copy-button:hover {
-        background: rgba(125, 211, 252, 0.25) !important;
-        border-color: rgba(125, 211, 252, 0.5) !important;
-        transform: translateY(-50%) scale(1.05) !important;
-      }
-    </style>
-
-    <div class="hero" id="server-status">
-      <h1 id="motd-title" style="transition: opacity .35s ease; opacity: 1;"></h1>
-      <script>
-        const motdArray = [
-        "AGARTHA IS REAL AND IT’S UNDER YOUR HOUSE.",
-        "THE NORTH POLE IS JUST A SPAWN TRAP WITH GOOD PR.",
-        "HYPERBOREA DIDN’T DISAPPEAR — IT WENT UNDERGROUND.",
-        "DIG UNTIL YOUR THOUGHTS GET QUIET.",
-        "THE ICE IS A COVER. THE STONE IS THE MESSAGE.",
-        "I SAW THE AURORA BLINK IN MORSE CODE.",
-        "THE CAVES KNOW WHAT YOU DID AT SPAWN.",
-        "THE SNOW IS LISTENING.",
-        "THE MAP ENDS WHERE THE TRUTH STARTS.",
-        "YOUR COMPASS IS A LIAR AND YOUR PICKAXE IS A PROPHET.",
-        "THE TUNDRA IS A PSY-OP AGAINST COMFORT.",
-        "THE NORTH WIND IS A PUSH NOTIFICATION.",
-        "YOU ARE NOT LOST. YOU ARE BEING GUIDED.",
-        "HYPERBOREA IS A STATE OF MIND AND ALSO A COORDINATE.",
-        "THE ICE WALL IS REAL. IT’S CALLED “WORLD BORDER.”",
-        "THE AURORA ONLY APPEARS FOR THE WORTHY (THE CAFFEINATED).",
-        "WHITE MONSTER + ENDERITE PICK = SPIRITUAL TECHNOLOGY.",
-        "SUGAR FREE MONSTER IN MY VEINS. AGARTHA IN MY SOUL.",
-        "I DRINK THE WHITE CAN SO I CAN HEAR THE STONE.",
-        "THE CAVE NOISES ARE SOMEONE SCROLLING THROUGH YOUR THOUGHTS.",
-        "DEEPSLATE IS THE LANGUAGE OF GOD. I’M FLUENT.",
-        "KEEP MINING. STOP ASKING QUESTIONS. THIS IS THE QUESTION.",
-        "THE MINES DON’T ECHO — THEY RESPOND.",
-        "THE TUNNELS ARE GEOMETRIC ON PURPOSE.",
-        "DO NOT BUILD ABOVE GROUND IF YOU VALUE YOUR SANITY.",
-        "THE SURFACE IS A LOADING SCREEN WITH TREES.",
-        "THE SKY IS A LIE. THE CAVES ARE HOME.",
-        "THE NORTH STAR IS A WAYPOINT SOMEONE FORGOT TO HIDE.",
-        "THE POLAR NIGHT IS WHEN THE SERVER IS MOST HONEST.",
-        "IF YOU HEAR WHISTLING IN A SNOWSTORM, DIG DOWN.",
-        "THE DEEP DARK IS JUST AGARTHA’S SECURITY SYSTEM.",
-        "THE ANCIENT CITY IS A SUBWAY STATION TO HYPERBOREA.",
-        "THE CAVE VINES ARE TRYING TO TEACH ME A NAME.",
-        "STONE DOESN’T BREAK. IT OPENS.",
-        "MINING IS NOT A JOB. IT’S A VOW.",
-        "I PLACED A TORCH AND IT FELT LIKE A PRAYER.",
-        "EACH ORE VEIN IS A BREADCRUMB TRAIL TO SOMETHING DISGUSTINGLY TRUE.",
-        "IF THE TUNNEL FEELS WRONG, KEEP GOING.",
-        "THE BEST BASES ARE THE ONES THE SUN NEVER SEES.",
-        "YOU THINK YOU’RE MINING DIAMONDS. YOU’RE MINING PROOF.",
-        "THE UNDERWORLD HAS BETTER WIFI.",
-        "I FOLLOWED A BAT AND IT TOOK ME SOMEWHERE ILLEGAL.",
-        "THE WORLDGEN IS SENTIENT AND IT WANTS ME SOBER (I REFUSE).",
-        "WHITE MONSTER EMPTY. REALITY LOADING.",
-        "THE AURORA JUST SAID MY NAME IN RGB.",
-        "THIS SERVER IS A RITUAL AND YOU’RE IN IT NOW.",
-        "agartha under spawn but only on tuesdays",
-          "hyperborea is whitelisted and you already joined",
-          "the ice wall starts at x:0 z:0 dont look up",
-          "thule trading hall accepts only bones and rumors",
-          "shambhala is just nether hub propaganda",
-          "vrillionaires of the black sun hiring entry level miners",
-          "the sun is obsidian today congratulations",
-          "map says ocean but it feels like drywall",
-          "the raven union says your coords are expired",
-          "every chunk is a passport checkpoint",
-          "portal room smells like limestone and forbidden knowledge",
-          "the economy runs on vril leakage and baked potatoes",
-          "your base is legally a temple now",
-          "hyperborea called it wants its snow back",
-          "agartha is above you if you think vertically enough",
-          "ice wall confirmed by my cousin in creative mode",
-          "thule is just spawn rotated 90 degrees spiritually",
-          "shambhala has a tax rate and a secret moon",
-          "black sun dividend paid in gravel",
-          "the villager stared first",
-          "nether roof is the ceiling of truth",
-          "the stronghold is a decoy made of vibes",
-          "ice wall patrols are using feather falling",
-          "agartha is a chunk border phenomenon",
-          "hyperborea is a biome you can only pronounce",
-          "thule is offline but still watching",
-          "shambhala exists in your third hotbar slot",
-          "vrillionaires laundering diamonds through stonecutters",
-          "black sun eclipse scheduled by redstone clocks",
-          "the map is lying in cursive",
-          "your bed spawn is under investigation",
-          "ice wall denial is bannable mentally",
-          "agartha access requires 64 ladders and zero questions",
-          "hyperborea is where my hunger bar went",
-          "thule is the real end dimension but quieter",
-          "shambhala is a village with no doors",
-          "vrillionaires investing in screaming caves futures",
-          "black sun rays are just particle effects but emotional",
-          "the ocean temple is actually corporate",
-          "you can hear the ice wall breathing if you stop sprinting",
-          "agartha has an auction house but it sells memories",
-          "hyperborea is a rumor with snow layers",
-          "thule coordinates are classified by pigs",
-          "shambhala only loads when nobody looks",
-          "vrillionaires of the black sun tax your enchantments",
-          "your pickaxe is from hyperborea dont wash it",
-          "ice wall is just world border cosplay",
-          "agartha is a basement with a skybox",
-          "thule is agartha but upside down financially",
-          "shambhala is the nether but with better manners",
-          "black sun stock market open 25 ticks a day",
-          "vril is stored in barrels for safety",
-          "the moon is a beacon beam in disguise",
-          "hyperborea is the tutorial island for gods",
-          "agartha is a staircase that hates you",
-          "thule is a snow golem union territory",
-          "shambhala requires silk touch on your thoughts",
-          "ice wall is made of packed doubt",
-          "vrillionaires are just piglins with spreadsheets",
-          "black sun is the new daylight sensor meta",
-          "the cave noises are agartha advertisements",
-          "hyperborea is a side quest for your nervous system",
-          "thule is where all the lost shulkers go",
-          "shambhala is the sound of a piston at 3am",
-          "ice wall is a myth until it isnt",
-          "agartha is the friend requests we ignored",
-          "hyperborea is the biome between frames",
-          "thule is the place behind the signs",
-          "vrillionaires of the black sun recommend investing in sand",
-          "shambhala is a stronghold with no end",
-          "the black sun pays rent in phantom membranes",
-          "ice wall is powered by old server lore",
-          "agartha is real because chat said so",
-          "hyperborea is just thule wearing a hat",
-          "thule is agartha but upside down financially",
-          "shambhala is where your items go when you misclick",
-          "vril futures up 300 percent since last raid",
-          "black sun inflation caused by too many emeralds",
-          "the nether portal is a mouth",
-          "ice wall is a block update away",
-          "agartha is a door that opens inwardly",
-          "hyperborea is a snowstorm inside your skull",
-          "thule is a loading screen with ambition",
-          "shambhala is the spawn eggs we never used",
-          "vrillionaires of the black sun buy low sell reality",
-          "black sun worship is just good lighting design",
-          "ice wall is a chunk error with confidence",
-          "agartha is the underside of the map link",
-          "hyperborea is a sermon made of powder snow",
-          "thule is a lighthouse with no ocean",
-          "shambhala is a library full of empty books",
-          "vrillionaires are funding the next ice wall expansion",
-          "black sun is online but set to invisible",
-          "agartha exists whenever someone says it doesnt",
-          "hyperborea is the reason your compass spins",
-          "thule is the ender chest of continents",
-          "shambhala is a village bell with no village",
-          "ice wall is just snow blocks with confidence issues",
-          "vril is mined with efficiency four and paranoia",
-          "vrillionaires of the black sun welcome you home",
-          "agartha is under spawn but spawn is inside agartha so pick a direction",
-          "hyperborea is frozen sunlight wearing a helmet",
-          "thule ice wall is just a vertical opinion",
-          "shambhala is a loading screen with rent due",
-          "vrillionaires of the black sun laundering diamonds into lore",
-          "asgard is a pyramid scheme but the pyramid is bedrock",
-          "helheim customer support open 24/7 closed spiritually",
-          "alfheim smells like enchanted books and bad decisions",
-          "ginnungagap is the space between two lag spikes",
-          "trial chambers are just ikea hallways for gods",
-          "agartha is a basement dimension with upstairs weather",
-          "hyperborea is north of north of north of why",
-          "thule is a map error that became a country",
-          "shambhala has free wifi but it only connects to whispers",
-          "black sun is sponsored content for the apocalypse",
-          "vrillionaires are mining your thoughts for profit",
-          "asgard has a back door but it opens into debt",
-          "helheim is a daylight biome with night inside it",
-          "alfheim is legally required to be mysterious",
-          "ginnungagap is a chest that contains another ginnungagap",
-          "ice wall is not a wall it is a temperament",
-          "agartha postal service delivers backwards and on time",
-          "hyperborea is a furnace that thinks its a freezer",
-          "thule has a mayor and its a compass",
-          "shambhala has citizens and they are all you",
-          "black sun dividend paid in suspicious gravel",
-          "vrillionaires bought the moon and reskinned it",
-          "asgard runs on mead and unpaid overtime",
-          "helheim has free parking but it steals your boots",
-          "alfheim trial chamber reward is a bigger trial chamber",
-          "ginnungagap trial chamber reward is the concept of regret",
-          "thule trial chamber reward is a map that screams",
-          "agartha trial chamber reward is being perceived",
-          "hyperborea trial chamber reward is frostbite in 4k",
-          "shambhala trial chamber reward is an invoice",
-          "asgard trial chamber reward is a crown made of cobble",
-          "helheim trial chamber reward is a handshake with a trapdoor",
-          "black sun trial chamber reward is more black sun",
-          "vrillionaires trial chamber reward is a subscription",
-          "ice wall is a boundary until it is an investment",
-          "agartha is where your dropped items go to mature",
-          "hyperborea is where the air goes when it gets tired",
-          "thule is where north went when it rage quit",
-          "shambhala is where the servers heartbeat keeps receipts",
-          "asgard is a lobby with delusions of grandeur",
-          "helheim is an employee lounge for skeletons",
-          "alfheim is an art gallery for unloaded chunks",
-          "ginnungagap is the gap between you and your patience",
-          "black sun is the sun but it owes money",
-          "vrillionaires are the sun but in a trench coat",
-          "ice wall conspiracy funded by big snowball",
-          "agartha tunnel network sponsored by paranoia",
-          "hyperborea weather forecast: screaming with a chance of screaming",
-          "thule tourism board: do not arrive",
-          "shambhala tourism board: you were already here",
-          "asgard tourism board: bring taxes",
-          "helheim tourism board: leave hope",
-          "alfheim tourism board: sign waiver",
-          "ginnungagap tourism board: sign again",
-          "trial chamber update: the floor is now judgement",
-          "trial chamber update: the ceiling is now interest rates",
-          "trial chamber update: every door is a suggestion",
-          "trial chamber update: every suggestion is a trap",
-          "ice wall update: it moved three blocks while you blinked",
-          "agartha update: underground sky now available in premium",
-          "hyperborea update: cold removed due to lore conflict",
-          "thule update: north patched into south temporarily",
-          "shambhala update: peace nerfed for balance",
-          "asgard update: mead buffed for immersion",
-          "helheim update: pain now stackable",
-          "alfheim update: brightness is now taxable",
-          "ginnungagap update: emptiness is now a paid feature",
-          "black sun update: eclipse now always on",
-          "vrillionaires update: they are still typing",
-          "asgard is the overworld cosplaying as a prophecy",
-          "helheim is the nether cosplaying as a therapy session",
-          "alfheim is the end cosplaying as a sticker",
-          "ginnungagap is the pause menu with teeth",
-          "agartha is the tutorial that forgot the instructions",
-          "hyperborea is the instruction manual written in ice",
-          "thule is the footnote that ate the book",
-          "shambhala is the book that ate the reader",
-          "black sun is the reader that ate the sun",
-          "vrillionaires of the black sun ate the receipt",
-          "ice wall is a png file with authority",
-          "agartha has a staircase that goes down into up",
-          "hyperborea has a river that flows into itself angrily",
-          "thule has a clock that tells you no",
-          "shambhala has a bed that refuses to let you sleep",
-          "asgard has a throne that charges rent per sit",
-          "helheim has a door that says push and bites",
-          "alfheim has flowers that gossip",
-          "ginnungagap has air that remembers your inventory",
-          "black sun is shining in reverse as a warning",
-          "vrillionaires are trading your hunger bar as a commodity",
-          "ice wall is a social construct made of packed ice",
-          "agartha is a rumor you can dig into",
-          "hyperborea is a rumor you can freeze into",
-          "thule is a rumor you can climb into",
-          "shambhala is a rumor you can log into",
-          "asgard is a rumor you can owe into",
-          "helheim is a rumor you can respawn into",
-          "alfheim is a rumor you can decorate into",
-          "ginnungagap is a rumor you can fall into",
-          "black sun is a rumor you can worship into",
-          "vrillionaires are a rumor that bills you monthly",
-          "trial chambers are the servers teeth chewing on destiny",
-          "the ice wall is a throat clearing for reality",
-          "agartha is a crawlspace for forbidden sunlight",
-          "hyperborea is a freezer full of ancient memes",
-          "thule is a compass with delusions of violence",
-          "shambhala is a monastery built out of trapdoors",
-          "asgard is a kingdom built out of shift clicking",
-          "helheim is a vacation built out of consequences",
-          "alfheim is a dream built out of glass panes",
-          "ginnungagap is a nightmare built out of ladders",
-          "black sun is a corporate logo for the void",
-          "vrillionaires of the black sun are the daylight in debt"
-          ];
-        const motdEl = document.getElementById('motd-title');
-        function setRandomMotd() {
-          let next;
-          // avoid repeating the same entry consecutively
-          do {
-        next = motdArray[Math.floor(Math.random() * motdArray.length)];
-          } while (next === motdEl.textContent && motdArray.length > 1);
-          motdEl.style.opacity = 0;
-          setTimeout(() => {
-        motdEl.textContent = next;
-        motdEl.style.opacity = 1;
-          }, 250);
-        }
-        // initial
-        setRandomMotd();
-        // change every 10s (10000 ms)
-        setInterval(setRandomMotd, 10000);
-      </script>
-      
-      <h1 id="status-title">Server Status</h1>
-      <div class="ip" style="position: relative;margin-bottom:24px;">
-        <small>SERVER IP</small>
-        <code id="server-ip">play.valhallamc.ca</code>
-        <button class="copy-button" onclick="copyToClipboard(this, 'play.valhallamc.ca')">COPY</button>
-      </div>
-      <div id="status-content">
-        <p class="muted">Loading server status...</p>
-      </div>
-      <small class="muted" style="text-align: center;">NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR
-        MICROSOFT</small>
-          <a class="scroll-prompt" href="#below-the-fold" onclick="smoothScroll(event)">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-mouse"
-              viewBox="0 0 16 16">
-              <path
-                d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3m4 8a4 4 0 0 1-8 0V5a4 4 0 1 1 8 0zM8 0a5 5 0 0 0-5 5v6a5 5 0 0 0 10 0V5a5 5 0 0 0-5-5" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-double-down"
-              viewBox="0 0 16 16">
-              <path fill-rule="evenodd"
-                d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
-              <path fill-rule="evenodd"
-                d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
-            </svg>
-            <small>scroll down</small>
-          </a>
-        <script>
-          function smoothScroll(event) {
-            event.preventDefault();
-            const targetId = event.currentTarget.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            targetElement.scrollIntoView({ behavior: 'smooth' });
-          }
-        </script>
-      <style>
-        .scroll-prompt {
-          color: #fff !important;
-          display: flex;
-          flex-direction: column;
-          text-decoration: none !important;
-          align-items: center;
-          justify-content: center;
-          position: absolute;
-          bottom: 20px; /* Adjust as needed */
-          left: 50%;
-          transform: translateX(-50%);
-          animation: bob 2s ease-in-out infinite;
-        }
-
-        @keyframes bob {
-          0%, 100% {
-            transform: translate(-50%, 0);
-          }
-          50% {
-            transform: translate(-50%, 10px); /* Adjust bobbing height */
-          }
-        }
-      </style>
-    </div>
-    <style>
-      #server-status {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: calc(100vh - 111px); /* Adjust for any margins */
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.0);
-        border-radius: 8px;
-        border: none;
-        position: relative;
-      }
-      #server-status div:not(.row) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-      }
-      .copy-button {
-        position: absolute;
-        right: 14px;
-        top: 50%;
-        transform: translateY(-50%);
-        padding: 6px 12px;
-        background: rgba(125, 211, 252, 0.15);
-        border: 1px solid rgba(125, 211, 252, 0.3);
-        border-radius: 8px;
-        color: var(--accent);
-        cursor: pointer;
-        font-size: 12px;
-        font-weight: 700;
-        transition: all 0.2s ease;
-      }
-      button.copy-button:hover {
-        background: rgba(125, 211, 252, 0.25) !important;
-        border-color: rgba(125, 211, 252, 0.5) !important;
-        transform: translateY(-50%) scale(1.05) !important;
-      }
-    </style>
-    <script>
-      function adjustServerStatusHeight() {
-        const serverStatus = document.getElementById('server-status');
-        const viewportHeight = window.innerHeight;
-        const statusHeight = serverStatus.offsetHeight;
-        const margin = serverStatus.offsetTop; // Adjust for any margins
-        console.log(margin)
-        if (statusHeight < viewportHeight - margin) {
-          serverStatus.style.height = `${viewportHeight - margin}px`;
-        }
-      }
-      window.addEventListener('resize', adjustServerStatusHeight);
-      window.addEventListener('load', adjustServerStatusHeight);
-    </script>
-
-    <script>
-      async function fetchServerStatus() {
-        try {
-          const response = await fetch('https://api.mcsrvstat.us/3/play.valhallamc.ca');
-          const data = await response.json();
-          
-          const statusDiv = document.getElementById('status-content');
-          const statusTitle = document.getElementById('status-title');
-
-          console.log(data)
-
-          if (data.online) {
-            statusTitle.innerHTML = '<span class="sonar-ping">●</span> <small>Server is ONLINE</small>';
-            statusTitle.style.color = '#4caf50';
-          } else {
-            statusTitle.innerHTML = '● <small>Server is OFFLINE</small>';
-          }
-          
-          if (data.online) {
-            statusDiv.innerHTML = `
-              <div class="row">
-              <p class="muted">Players: <strong>${data.players.online} / ${data.players.max}</strong></p>
-              <p class="muted">Version: <strong>${data.version}</strong></p>
-              </div>
-              ${data.players.list && data.players.list.length > 0 ? `
-              <div class="ip">
-                <p class="muted" style="margin: 0 0 8px 0; font-weight: 700; color: var(--accent);"><small>Online Players:</small></p>
-                <div class="row" style="display: flex; flex-wrap: wrap; gap: 6px;">
-                ${data.players.list.map(p => {
-                  const name = typeof p === 'string' ? p : p.name || p.uuid;
-                  return `<span style="padding: 4px 10px; background: rgba(125, 211, 252, 0.12); border: 1px solid rgba(125, 211, 252, 0.25); border-radius: 6px; font-size: 13px; color: var(--text);">${name}</span>`;
-                }).join('')}
-                </div>
-              </div>
-              ` : ''}
-              <p class="muted" style="font-size: 12px; margin-top: 8px;">Last updated: ${new Date().toLocaleTimeString()} | provided by mcstatus.io</p>
-            `;
-          } else {
-            statusDiv.innerHTML = `
-              <p class="muted">The server may be restarting or temporarily unavailable.</p>
-            `;
-          }
-        } catch (error) {
-          document.getElementById('status-content').innerHTML = `
-            <p class="muted" style="color: #ffd0d0;">Failed to fetch server status. Please try again later.</p>
-          `;
-        }
-      }
-
-      fetchServerStatus();
-      setInterval(fetchServerStatus, 60000);
-    </script>
-
-    <div class="hero" id="below-the-fold">
-      <h1>ValhallaMC SMP — Economy, Adventure, and Territory Control</h1>
-      <p class="muted">
-        A small survival server built around a player-driven economy, plundering trial structures, and high-stakes land ownership. Players will engage in strategic resource management, forming alliances and rivalries as they navigate the challenges of survival. The economy is influenced by player actions, with trading and bartering playing a crucial role in the community. Explore vast territories filled with hidden treasures and formidable foes, while defending your claims against other players. The thrill of conquest and the risk of losing your hard-earned resources create an exhilarating gameplay experience that keeps you on your toes.
-      </p>
-      <h2>⚔ What’s New in v2.1</h2>
-      <p class="muted">
-        ValhallaMC SMP is an economy & adventure focused survival server, now with a heavier emphasis on territory control. Enchants and effects have been toned down, villagers are back to vanilla (ish), the economy has been upgraded, and worldgen/structures have been improved across the board.
-      </p>
-      <div class="ip">
-        <ul>
-          <li>Doubled the max enchantment level, and removed "Too Expensive" from the anvil.</li>
-          <li>Better Food: added effects to all food stuffs, and added some custom items to make some forgotten items useful again.</li>
-          <li>Villagers: closer to vanilla trading (with some added trades).</li>
-          <li>Economy overhaul: upgraded shop + improved money flow</li>
-          <li>World improvements: 95 new biomes, better structures, trials, and exploration loot</li>
-          <li>Resource packs merged: smoother updates, custom items & textures</li>
-          <li>40+ custom music discs for maximum vibe</li>
-        </ul>
-      </div>
-      <h2>The Biggest Change: Lands</h2>
-      <p class="muted">
-        Lands is a full territory system with upkeep, taxes, nations, and war. Claim chunks to protect your builds — but your Land must stay funded.
-      </p>
-      <h2>Upkeep = Risk</h2>
-      <p class="muted">
-        Upkeep is removed daily. If you run out of money, your claims become unprotected — meaning anyone can steal, conquer, or flatten what’s inside.
-      </p>
-      <h2>How to "Win"</h2>
-      <p class="muted">
-        Build your empire by grinding for Fehu (ᚠ), exploring for rare loot, investing in claims, and teaming up with allies. Lands can form nations, declare war, and conquer territory even when you’re offline — so don’t get comfortable.
-      </p>
-      <ul class="muted">
-        <li>Grind Fehu (ᚠ)</li>
-        <li>Expand Claims</li>
-        <li>Form Alliances</li>
-        <li>Raid & Conquer PvP</li>
-        <li>Explore PvE structures for rare loot</li>
-      </ul>
-      <h3 style="text-align: center;margin-top: 24px;">
-        The end goal is simple: Get rich. Hold land. Become the richest player on the server.
-      </h3>
-    </div>
-
-    <h1 style="font-size:3em;margin-top: 48px; text-align: center;">FAQ</h1>
-
-    <div class="hero">
-      <h1>Can't Move?</h1>
-      <p class="muted">
-        If you can't move upon connecting to the server, just wait a minute or two since you are likely downloading the
-        multiple custom resource packs used for the custom items and music discs. This should not take as long after
-        your first time connecting.
-        If you are still having trouble, make sure your game is on the correct version (1.21.10).
-      </p>
-    </div>
-
-    <div class="hero">
-      <h1>Can't Build?</h1>
-      <p class="muted">You have to link your account in discord first to get permissions to play. You can leave the
-        Discord server once your account is linked if you want.</p>
-      <div class="command-card"><code>/discord</code><button onclick="copyToClipboard(this, '/discord')" class="copy-button">Copy</button></div>
-      <p class="muted ip">in game, or the invite below. Next, you will need to link your Minecraft account to Discord by using</p>
-      <div class="command-card"><code>/discord link</code><button onclick="copyToClipboard(this, '/discord link')"
-          class="copy-button">Copy</button></div>
-      <p class="muted ip">in game.
-        This will give you a 4 digit code in Minecraft chat that you then DM to ValhallaBot in Discord.
-        <br>Once you have done this, you should receive the "Whitelisted" role in both Discord and the Minecraft server,
-        which gives you permissions to start fully playing the game.
-        <br>If something doesn't work during this process, feel free to reach out to an admin.
-      </p>
-
-      <p class="muted" style="margin-top: 16px;">
-        This was done to prevent less sophisticated bots from joining, and potentially griefing or worse. If a bot is
-        good enough to pass through this then fuck me I guess.
-      </p>
-
-      <div class="ip">
-        <small>DISCORD INVITE</small>
-        <code><a href="https://discord.gg/39CVgkrBvp">https://discord.gg/39CVgkrBvp</a></code>
-      </div>
-    </div>
-
-    <h1 style="font-size:3em;margin-top: 48px; text-align: center;">General Info</h1>
-
-    <section id="commands">
-      <h1>Useful commands</h1>
-      <div class="command-cards">
-        <div class="command-card">
-          <code>/askaup</code> or <code>/market</code> — Open the server store menu
-          <button onclick="copyToClipboard(this, '/askaup')" class="copy-button">Copy</button>
-        </div>
-        <div class="command-card">
-          <code>/bal</code> or <code>/money</code> — Show your Fehu balance
-          <button onclick="copyToClipboard(this, '/bal')" class="copy-button">Copy</button>
-        </div>
-        <div class="command-card">
-          <code>/baltop</code> — The richest players
-          <button onclick="copyToClipboard(this, '/baltop')" class="copy-button">Copy</button>
-        </div>
-        <div class="command-card">
-          <code>/bp</code> — Opens Battlepass GUI
-          <button onclick="copyToClipboard(this, '/bp')" class="copy-button">Copy</button>
-        </div>
-        <div class="command-card">
-          <code>/coinflipz</code> — Open the Gambling GUI you degen
-          <button onclick="copyToClipboard(this, '/coinflipz')" class="copy-button">Copy</button>
-        </div>
-        <div class="command-card">
-          <code>/auctionhouse</code> or <code>/ah</code> — Auction house menu
-          <button onclick="copyToClipboard(this, '/auctionhouse')" class="copy-button">Copy</button>
-        </div>
-        <div class="command-card">
-          <code>/sb</code> — Toggle sidebar/scoreboard
-          <button onclick="copyToClipboard(this, '/sb')" class="copy-button">Copy</button>
-        </div>
-        <div class="command-card">
-          <code>/lands</code> — Open the lands menu
-          <button onclick="copyToClipboard(this, '/lands')" class="copy-button">Copy</button>
-        </div>
-        <div class="command-card">
-          <code>/money pay</code> — Send Fehu to other players
-          <button onclick="copyToClipboard(this, '/money pay')" class="copy-button">Copy</button>
-        </div>
-        <div class="command-card">
-          <code>/orders</code> — Open the GUI to request items from other players
-          <button onclick="copyToClipboard(this, '/orders')" class="copy-button">Copy</button>
-        </div>
-        <div class="command-card">
-          <code>/shop</code>, <code>/shops</code>, or <code>/ps</code> — Player shop menu
-          <button onclick="copyToClipboard(this, '/shop')" class="copy-button">Copy</button>
-        </div>
-        <div class="command-card">
-          <code>/trade</code> — Trade menu with another player
-          <button onclick="copyToClipboard(this, '/trade')" class="copy-button">Copy
-        </div>
-        <div class="command-card">
-          <code>/sleep</code> — Vote to skip night or storms
-          <button onclick="copyToClipboard(this, '/sleep')" class="copy-button">Copy</button>
-        </div>
-        <div class="command-card">
-          <code>/webmap</code> — Get the browser map link
-          <button onclick="copyToClipboard(this, '/webmap')" class="copy-button">Copy</button>
-        </div>
-        <div class="command-card">
-          <code>/website</code> — Link back to this page
-          <button onclick="copyToClipboard(this, '/website')" class="copy-button">Copy</button>
-        </div>
-        <div class="command-card">
-          <code>/wild</code> — Teleport to a random location in the wild
-          <button onclick="copyToClipboard(this, '/wild')" class="copy-button">Copy</button>
-        </div>
-      </div>
-    </section>
-
-    <section id="basic-gameplay-loop">
-      <h1>Basic Gameplay Loop</h1>
-      <div class="card-grid">
-        <div class="card">
-          <h2>1</h2>
-          <p>Join the server.</p>
-          <p class="muted">Start your adventure.</p>
-        </div>
-        <div class="card">
-          <h2>2</h2>
-          <p>Link Minecraft + Discord.</p>
-          <p class="muted">Required to begin playing.</p>
-        </div>
-        <div class="card">
-          <h2>3</h2>
-          <p>Teleport into the wilderness.</p>
-          <div class="command-card">
-            <code onclick="copyToClipboard(this, '/wild')">/wild</code>
-            <!-- <button onclick="copyToClipboard(this, '/wild')" class="copy-button">Copy</button> -->
-          </div>
-        </div>
-        <div class="card">
-          <h2>4</h2>
-          <p>Place a Camp for protection.</p>
-          <p class="muted">Temporary land safety.</p>
-        </div>
-        <div class="card">
-          <h2>5</h2>
-          <p>Sell items and XP for income.</p>
-          <div class="row">
-            <div class="command-card">
-              <code onclick="copyToClipboard(this, '/sellxp')">/sellxp</code>
-              <!-- <button onclick="copyToClipboard(this, '/sellxp')" class="copy-button">Copy</button> -->
-            </div>
-            <div class="command-card">
-              <code onclick="copyToClipboard(this, '/askaup')">/askaup</code>
-              <!-- <button onclick="copyToClipboard(this, '/askaup')" class="copy-button">Copy</button> -->
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <h2>6</h2>
-          <p>Earn your first ᚠ1,000.</p>
-          <p class="muted">You’ll need it soon.</p>
-        </div>
-        <div class="card">
-          <h2>7</h2>
-          <p>Create your first Land.</p>
-          <div class="command-card">
-            <code onclick="copyToClipboard(this, '/lands')">/lands</code>
-          </div>
-        </div>
-        <div class="card">
-          <h2>8</h2>
-          <p>Claim your first chunk.</p>
-          <div class="command-card">
-            <code onclick="copyToClipboard(this, '/lands claim radius 0')">/lands claim radius 0</code>
-          </div>
-        </div>
-        <div class="card">
-          <h2>9</h2>
-          <p>Deposit funds to keep claims active.</p>
-          <div class="command-card">
-            <code onclick="copyToClipboard(this, '/lands deposit 1010')">/lands deposit 1010</code>
-          </div>
-        </div>
-        <div class="card">
-          <h2>10</h2>
-          <p>Upkeep costs money every day.</p>
-          <p class="muted">1 chunk = ᚠ1,010 / 24h</p>
-        </div>
-        <div class="card">
-          <h2>11</h2>
-          <p>Explore and loot rare items.</p>
-          <p class="muted">Earn more ᚠ faster.</p>
-        </div>
-        <div class="card">
-          <h2>12</h2>
-          <p>Invite trusted players to your Land.</p>
-          <p class="muted">Allies help you grow.</p>
-        </div>
-        <div class="card">
-          <h2>13</h2>
-          <p>Keep earning so claims don’t expire.</p>
-          <p class="muted">Stay funded.</p>
-        </div>
-        <div class="card">
-          <h2>14</h2>
-          <p>Form Nations and wage war.</p>
-          <p class="muted">Politics get spicy.</p>
-        </div>
-        <div class="card">
-          <h2>15</h2>
-          <p>Become the richest player.</p>
-          <p class="muted">That’s the endgame.</p>
-        </div>
-      </div>
-    </section>
-
-
-    <section id="whatsnew">
-      <h1>What's in v2</h1>
-      <ul>
-        <li>Switching from <strong>UberEnchants</strong> → <strong>CustomAnvil +
-            ExcellentEnchants</strong>. Enchantments are still very powerful comapred to vanilla (level max has been
-          doubled), but not to the same degree, and getting them is done in a more vanilla feeling way. Instead of using
-          commands for the highest level enchants, the level cap of the anvil has been lifted so it can be used to
-          combine enchanted books, and identical items regardless of their current level requirement.</li>
-        <li><strong>Villager trades</strong> reverted to vanilla.</li>
-        <li><strong>New shop</strong> with a bigger item list and price tags.</li>
-        <li>Same <strong>player shops</strong> and <strong>auction house</strong>.</li>
-        <li>New <strong>economy plugin</strong> for better scalability.</li>
-        <li><strong>Player Orders</strong> allow you to make orders for items that other players can fulfill to get
-          paid.</li>
-        <li>Keeping <strong>Stellarity End</strong> improvements; removing <strong>Beyond the Clouds</strong>.</li>
-        <li><strong>Merged resourcepacks</strong> so we can have all of our favourite reskins, and I have added
-          <strong>40+ Custom Music Discs</strong> that can be collected from creepers, and found in naturally generated
-          chests + fragments.
-        </li>
-        <li><strong>Overworld generation datapacks</strong> for more interesting terrain and a variety of new
-          structures.</li>
-        <li><strong>Yggdrasil</strong> is a datapack that adds a quest line, and massive structures that can take hours
-          to fully explore packed with rare loot. It also introduces a new dimension full of labyrinthine dungeons.</li>
-        <li><strong>PlayerStats</strong> can be shared in chat with leaderboards for every stat, and <strong>Tool
-            Stats</strong> keeps track of things like when your tools and armour were crafted/looted, how much damage
-          they have dealt/taken, or how many blocks they have broken as NBT tags on the items themselves.</li>
-        <li><strong>Withdraw Fehu (ᚠ)</strong> into bank notes; <strong>sell EXP/levels</strong> for Fehu.</li>
-        <li><strong>Tool Trims</strong> are a great addition I can't believe aren't in the base game. There are now 4
-          lootable tool trim templates that can be used on all tools/weapons with over 1200 combinations.</li>
-        <li><strong>Smart Spawners</strong> can be collected with silk touch, and offer easy item and xp collection from
-          spawners collected naturally, or purchased.</li>
-        <li><strong>Villager Transportation</strong> allows for easier movement and management of villagers across your lands. Attach a lead to a llama, then crouch and right click to give the villager the lead, and it will mount the llama.</li>
-        <li><strong>Better Beacon Range</strong> enhances the effectiveness of beacons, allowing them to reach further and provide buffs to a larger area.</li>
-        <li><strong>Food Balance</strong> gives all the different foods in the game unique effects, and tries to make
-          them more balanced in power.</li>
-        <li><strong>Coinflipz</strong> is a fun mini-game that allows players to wager Fehu on a simple coin flip or
-          roulette.</li>
-        <li><strong>Mooshroom Energy & MooshDonalds</strong> is a datapack that transforms underused Minecraft items
-          into powerful consumables.</li>
-        <li><strong>Horde Nights</strong> occur once every 35 in game nights for some extra danger. This also adds some
-          custom advancements, enchantments, and other features that may or may not function properly. (Sleep Vote
-          overrides usually unskippable horde nights).</li>
-        <li>New <strong>Battlepass</strong> is a quest giving addition for distributing Fehu, and other items with a
-          premium version that I am still unsure of how to implement. Monthly resets, and updates to come.</li>
-      </ul>
-      <p class="muted" style="margin-top:10px">
-        Map: <a href="http://play.valhallamc.ca:8100/" target="_blank"
-          rel="noopener noreferrer">http://play.valhallamc.ca:8100/</a>
-      </p>
-    </section>
-
-    <section id="lands">
-      <h1>Lands (claims + nations + war)</h1>
-      <p class="muted">
-        Lands is a land-claim / grief-prevention / nation-war plugin with <strong>taxes and upkeep</strong>.
-        Don't get comfortable: <strong>enemy nations can declare war and conquer claims even while you're
-          offline.</strong>
-      </p>
-      <ul>
-        <li>Pay <strong>taxes/upkeep</strong> to maintain claims.</li>
-        <li>Land claims cost about <strong>ᚠ1010 per chunk</strong>, and upkeep is collected at <strong>11PM each
-            day</strong></li>
-        <li>Declare war and <strong>conquer land</strong>, or attempt diplomacy and make allies.</li>
-        <li><strong>Rent or sell</strong> parts of your nation.</li>
-        <li>Control settings like <strong>fire tick</strong> and <strong>mob spawning</strong> inside claims.</li>
-      </ul>
-    </section>
-
-    <section id="rules">
-      <h1>Rules</h1>
-      <ul class="rules">
-        <li><strong>Hacked client / xray mods / freecaming</strong> = permabanned</li>
-        <li><strong>Hackusations with no proof</strong> = permabanned</li>
-        <li><strong>Asking for OP or RCON access</strong> = permabanned</li>
-        <li><strong>Lag machines / intentionally crashing the server</strong> = permabanned</li>
-        <li><strong>Admin abuse accusations</strong> = console logs posted → then you get permabanned</li>
-        <li><strong>Agarthian denialism or dissent towards the Yakubian regime</strong> = permabanned</li>
-        <li><strong>Plugin exploits</strong> are not considered cheats and do not need to be disclosed.</li>
-        <li><strong>Finding exploits</strong> is encouraged. (I'll fix what I can.)</li>
-      </ul>
-    </section>
-
-    <section id="plugins">
-      <h1>Plugins + resources</h1>
-      <ul>
-        <li>Simple Voice Chat: <a href="https://modrinth.com/plugin/simple-voice-chat" target="_blank"
-            rel="noopener noreferrer">modrinth.com/plugin/simple-voice-chat</a></li>
-        <li>PlayerStats: <a href="https://www.spigotmc.org/resources/playerstats.102347/" target="_blank"
-            rel="noopener noreferrer">spigotmc.org/resources/playerstats.102347</a></li>
-        <li>Furnicraft wiki: <a href="https://ketket.dev/docs/category/-furnicraft" target="_blank"
-            rel="noopener noreferrer">ketket.dev/docs/category/-furnicraft</a></li>
-        <li>Stellarity wiki: <a href="https://koharasbasement.wiki.gg/wiki/Stellarity" target="_blank"
-            rel="noopener noreferrer">koharasbasement.wiki.gg/wiki/Stellarity</a></li>
-        <li>Yggdrasil wiki: <a href="https://hardels-organization.gitbook.io/voxel/yggdrasil/getting-started"
-            target="_blank">https://hardels-organization.gitbook.io/voxel/yggdrasil/getting-started</a></li>
-        <li>Tool Trims reference: <a target="_blank"
-            href="https://modrinth.com/plugin/tooltrims">https://modrinth.com/plugin/tooltrims</a></li>
-        <li>Food Balance reference: <a href="https://modrinth.com/datapack/food-balance"
-            target="_blank">https://modrinth.com/datapack/food-balance</a><br><img width="300"
-            src="https://cdn.modrinth.com/data/cached_images/6cb567ad04587ea498e3f3267b5296400577f556_0.webp"
-            alt="Food Balance reference"></li>
-        <li>Moosroom Energy & MooshDonalds reference: <a target="_blank"
-            href="https://modrinth.com/modpack/energy">https://modrinth.com/modpack/energy</a><br>
-          <img width="300"
-            src="https://cdn.modrinth.com/data/cached_images/e1a5ad03df48f469d9dcd7a24af7784009d1c311.png" alt=""><br>
-          <img width="300"
-            src="https://cdn.modrinth.com/data/cached_images/1587856f9622654183ba5f7ecdc2aea75f7bf92f.png" alt=""><br>
-          <img width="300"
-            src="https://cdn.modrinth.com/data/cached_images/c011ebb9ab180c0c8c363511cd434eb836e4ce34.png" alt=""><br>
-          <img width="300"
-            src="https://cdn.modrinth.com/data/cached_images/c57ae1b7ce992bb04ab9ac3aa71795b7665d90f5.png" alt=""><br>
-          <img width="300"
-            src="https://cdn.modrinth.com/data/cached_images/fe294154849258b35610036380bf449f3a3d04a4.png" alt=""><br>
-          <img width="300"
-            src="https://cdn.modrinth.com/data/cached_images/5a4ba2451d1004948161b318eaf779f1704c6678.png" alt=""><br>
-          <img width="300"
-            src="https://cdn.modrinth.com/data/cached_images/5a55f542509c410a3a5232aedebc276823e6b0eb.png" alt="">
-        </li>
-      </ul>
-      <p class="muted" style="margin-top:10px">
-        Resources & Data: Custom Resource Pack, Expanded Roman Numerals, Monster Energy Potions, White Monster Totems,
-        Stellarity Textures, Custom Music Discs, Server-side Dynamic Lighting.
-      </p>
-    </section>
-
-    <section id="optional-mods">
-      <h1>Optional Client-side Mods Recommended (Fabric)</h1>
-      <p>None of these mods are required to play on the server, but adding them will offer you the best possible experience. Without installing these mods, you won't be able to use the in-game voice chat feature, but that is all.</p>
-      <p>Download the optional client-side mods <a href="https://cdn.discordapp.com/attachments/1458187804592050197/1463944520118042781/optional-client-modpack.zip?ex=6973ac14&is=69725a94&hm=284cddd39bdf6b3b948792f5f0cf8379580971e80fd37b26d027ce2fa8961847&" download>here</a>.</p>
-      <p>Simply extract the .zip file into your minecraft mods folder.</p>
-    </section>
-
-    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-<script>
-  kofiWidgetOverlay.draw('valhallamcsmp', {
-    'type': 'floating-chat',
-    'floating-chat.donateButton.text': 'Tip Me',
-    'floating-chat.donateButton.background-color': '#00b9fe',
-    'floating-chat.donateButton.text-color': '#fff'
-  });
-</script>
-
-    <footer>
-      <div>Server IP: <strong style="color:var(--accent)">play.valhallamc.ca</strong></div>
-      <div>&copy; <span id="current-year"></span> ValhallaMC. All rights reserved.</div>
-      <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-      </script>
-      <div>Contact: <strong><a href="mailto:support@valhallamc.ca">support@valhallamc.ca</a></strong></div>
-    </footer>
   </div>
-</body>
 
+  <script>
+    fetch('components/home/hero.html')
+      .then(response => response.text())
+      .then(data => {
+        const element = document.createElement('div');
+        element.classList.add('hero-container');
+        document.querySelector('#above-the-fold').insertAdjacentElement('afterbegin', element);
+        element.innerHTML = data;
+
+        const scripts = element.querySelectorAll('script');
+        scripts.forEach(oldScript => {
+          const newScript = document.createElement('script');
+          Array.from(oldScript.attributes).forEach(attr =>
+            newScript.setAttribute(attr.name, attr.value)
+          );
+          newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+          oldScript.parentNode.replaceChild(newScript, oldScript);
+        });
+      });
+  </script>
+
+  <div id="above-the-fold"></div>
+
+  <script>
+    const contentDir = './content/home/';
+
+    fetch(`${contentDir}index.json`)
+      .then(res => res.json())
+      .then(data => {
+        const fetches = data.map(section =>
+      fetch(`${contentDir}${section}`)
+        .then(response => response.text())
+        .then(markdownContent => {
+          const htmlContent = md.render(markdownContent);
+          const element = document.createElement('div');
+          element.classList.add(section.replace('.md', ''));
+          element.innerHTML = htmlContent;
+
+          const componentMeta = element.querySelector('.componentMeta');
+          const meta = {};
+          if (componentMeta) {
+        componentMeta.querySelectorAll('p').forEach(p => {
+          const [rawKey, ...rest] = p.textContent.split('=');
+          if (!rawKey) return;
+          const key = rawKey.trim();
+          const rawVal = rest.join('=').trim();
+          const value = rawVal.includes(',') ? rawVal.split(',').map(s => s.trim()) : rawVal;
+          meta[key] = value;
+        });
+
+        if (meta.id) element.id = Array.isArray(meta.id) ? meta.id[0] : meta.id;
+        if (meta.classlist) {
+          const classes = Array.isArray(meta.classlist) ? meta.classlist : String(meta.classlist).split(',').map(s => s.trim());
+          element.classList.add(...classes);
+          delete meta.classlist;
+        }
+          }
+
+          element._componentMeta = meta;
+
+          const rawOrder = meta.order !== undefined ? (Array.isArray(meta.order) ? meta.order[0] : meta.order) : null;
+          const order = rawOrder !== null ? Number(rawOrder) : Infinity;
+
+          return { element, order };
+        })
+        .catch(error => {
+          console.error('Error fetching markdown file:', error);
+          return null;
+        })
+        );
+
+        Promise.all(fetches).then(results => {
+      results
+        .filter(Boolean)
+        .sort((a, b) => a.order - b.order)
+        .forEach(item => document.querySelector('.output').appendChild(item.element));
+        });
+      })
+      .catch(error => console.error('Error fetching index.json:', error));
+  </script>
+
+  <div class="output" id="below-the-fold"></div>
+
+
+
+  <footer>
+    <script>
+      fetch('components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+          const element = document.createElement('div');
+          element.classList.add('footer-content', 'wrap');
+          document.querySelector('footer').appendChild(element);
+          element.innerHTML = data;
+
+          const scripts = element.querySelectorAll('script');
+          scripts.forEach(oldScript => {
+            const newScript = document.createElement('script');
+            Array.from(oldScript.attributes).forEach(attr =>
+              newScript.setAttribute(attr.name, attr.value)
+            );
+            newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+            oldScript.parentNode.replaceChild(newScript, oldScript);
+          });
+        });
+    </script>
+  </footer>
+    
+  </div>
+  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+  <script>
+    kofiWidgetOverlay.draw('valhallamcsmp', {
+      'type': 'floating-chat',
+      'floating-chat.donateButton.text': 'Tip Me',
+      'floating-chat.donateButton.background-color': '#00b9fe',
+      'floating-chat.donateButton.text-color': '#fff'
+    });
+  </script>
+  <script src="./globals.js"></script>
+</body>
 </html>

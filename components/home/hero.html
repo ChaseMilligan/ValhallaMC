@@ -1,0 +1,218 @@
+<div class="hero" id="server-status">
+	<div class="wrap">
+	<h1 id="motd-title" style="transition: opacity .35s ease; opacity: 1;"></h1>
+	<script>
+		const motdArray = [
+			"VALHALLA CHAD RESPAWN",
+			"ODIN RUNEPILLED MY SOUL",
+			"LOKI IS BRAINROT",
+			"MEWING IN THE MEAD HALL",
+			"VALKYRIE MATCHMAKING RNG",
+			"ASGARD MODS ABUSE PERMS",
+			"RAGNAROK SERVER RESET SOON",
+			"BIFROST LAG SPIKE META",
+			"YGGDRASIL DATA DESYNC",
+			"RAVENS ARE LIVE REACTION",
+			"FENRIR ATE THE PATCH NOTES",
+			"JORMUNGANDR BORDER CAMP",
+			"SURTR GRIEFED SPAWN",
+			"BALDR GOT NERFED AGAIN",
+			"TYR LOST A HAND TO PLAYER REPORTS",
+			"MIDGARD NPC ENERGY HEAD ASS",
+			"NIFLHEIM VOID FOG CORE",
+			"MUSPELHEIM FIRE STARTER PACK",
+			"ODIN SAW MY SEARCH HISTORY",
+			"LOKI ROLLED BACK MY INVENTORY",
+			"VALHALLA QUEUE ETERNAL",
+			"CHAD EINHERJAR ONLY",
+			"MEAD HALL GOBLINS",
+			"WE SMOKING  IN ASGARD",
+			"TAKE THIS SHIT TWIN...",
+			"JOTUNN WILL SLIME YOU OUT",
+			"MOVING LIKE Víðarr WE GET IT BACK IN BLOOD",
+			"we smoking OG ODIN KUSH in ASGARD twin",
+			"we puffing BALDR BERRY RUNTZ in ASGARD snipe",
+			"we boofing HELHEIM COOKIES in MIDGARD bruh",
+			"we chuffing THORSCOUT COOKIES in MIDGARD cuh",
+			"we hotboxing FROST GIANT GLUE in JOTUNHEIM slime",
+			"we blazing JORM DREAM in MIDGARD blood",
+			"we zoning RAGNAROK DIESEL in MUSPELHEIM snipe",
+			"we puffing FREYJA RUNTZ in VANAHEIM twin",
+			"we smoking ODIN’S GELATO in ASGARD gang",
+			"we chiefing BIFROST OG in ASGARD blood",
+			"we boofing MJOLNIR MIMOSA in ASGARD bruh",
+			"we chuffing SKADI SKUNK in NIFLHEIM cuh",
+			"we hotboxing TYR TRAINWRECK in MIDGARD slime",
+			"we blazing LOKI LEMON in JOTUNHEIM blood",
+			"we zoning HEIMDALL JACK in ASGARD snipe",
+			"we puffing PURPLE FRIGG PACK in ASGARD twin",
+			"we smoking FENRIR KUSH in HELHEIM gang",
+			"we chiefing SURTR SOUR D in MUSPELHEIM blood",
+			"we boofing IDUNN APPLE FRITTER in ASGARD bruh",
+			"we chuffing YGGDRASIL MINTZ in ASGARD cuh",
+			"we hotboxing NIFLHEIM NORTHERN in VALHALLA slime",
+			"we blazing ASGARD GORILLA in VANAHEIM blood",
+			"we zoning VALKYRIE WIDOW in VALHALLA snipe",
+			"we puffing BALDR BANANA in ASGARD twin",
+			"we smoking NJORDERN LIGHTS in VANAHEIM gang",
+			"we chiefing MIMIR MAC DADDY PACK in ASGARD blood",
+			"we boofing ODIN’S CAKE in VALHALLA bruh",
+			"we chuffing FREYR FIRE OG in MUSPELHEIM cuh",
+			"we hotboxing LOKI ZKITTLEZ in MIDGARD slime",
+			"we blazing THOR TANGIE in ASGARD snipe",
+			"we zoning FREYA'S CAT PISS in JOTUNHEIM blood",
+			"Odin sees your xray packs",
+			"Thor mains the mace now",
+			"Loki wrote your datapack",
+			"Valhalla is the respawn bed",
+			"Bifrost is just nether but ice",
+			"Heimdall camps the portal",
+			"Fenrir ate my leads",
+			"Jormungandr is world border",
+			"Muspelheim is lava grief",
+			"Vanaheim is the farm realm",
+			"Skadi lives in an igloo basement",
+			"Frigg knows your coords",
+			"Idunn has a gap farm",
+			"Mimir is the wiki tab",
+			"Sleipnir is a bugged horse",
+			"Valkyries run matchmaking",
+			"we cracking MONSTER™ ULTRA in AGARTHA twin",
+			"we sipping MONSTER™ ZERO in HOLLOW EARTH gang",
+			"we chugging MONSTER™ ULTRA SUNRISE in THULE bruh",
+			"we guzzling MONSTER™ ULTRA PARADISE in HYPERBOREA cuh",
+			"we slamming MONSTER™ ULTRA WATERMELON in AGARTHA slime",
+			"we downing MONSTER™ ULTRA ROSA in SHAMBHALA blood",
+			"we shotgunning MONSTER™ ULTRA VIOLET in THULE snipe",
+			"we pounding MONSTER™ ULTRA BLACK in INNER WORLD twin",
+			"we sipping MONSTER™ ABSOLUTELY ZERO in AGARTHA gang",
+			"we chugging MONSTER™ ULTRA WHITE in ICE WALL bruh",
+			"we cracking MONSTER™ ULTRA GOLD in HOLLOW EARTH cuh",
+			"we downing MONSTER™ ULTRA RED in HYPERBOREA slime",
+			"we slamming MONSTER™ ULTRA BLUE in SHAMBHALA blood",
+			"we guzzling MONSTER™ ULTRA FIESTA in AGARTHA snipe",
+			"we shotgunning MONSTER™ ULTRA STRAWBERRY in THULE twin",
+			"we pounding MONSTER™ ULTRA PEACHY in INNER WORLD gang",
+			"we sipping MONSTER™ ULTRA MANGO in HOLLOW EARTH bruh",
+			"we cracking MONSTER™ ULTRA GREEN in AGARTHA cuh",
+			"we downing MONSTER™ ULTRA PINK in SHAMBHALA slime",
+			"we slamming MONSTER™ ULTRA ORANGE in ICE WALL blood",
+			"we guzzling MONSTER™ ULTRA PURPLE in HYPERBOREA snipe",
+			"we chugging MONSTER™ ULTRA CITRUS in THULE twin",
+			"we cracking MONSTER™ ULTRA DRY in INNER WORLD gang",
+			"we sipping MONSTER™ ULTRA LIME in AGARTHA bruh",
+			"we shotgunning MONSTER™ ULTRA BERRY in HOLLOW EARTH cuh",
+			"we pounding MONSTER™ ULTRA GRAPE in SHAMBHALA slime",
+			"we downing MONSTER™ ULTRA CHERRY in THULE blood",
+			"we slamming MONSTER™ ULTRA TROPIC in HYPERBOREA snipe",
+			"we guzzling MONSTER™ ULTRA FROST in ICE WALL twin",
+			"we chugging MONSTER™ ULTRA VOID in AGARTHA gang"
+		];
+		const motdEl = document.getElementById('motd-title');
+		function setRandomMotd() {
+			let next;
+			// avoid repeating the same entry consecutively
+			do {
+		next = motdArray[Math.floor(Math.random() * motdArray.length)];
+			} while (next === motdEl.textContent && motdArray.length > 1);
+			motdEl.style.opacity = 0;
+			setTimeout(() => {
+		motdEl.textContent = next;
+		motdEl.style.opacity = 1;
+			}, 250);
+		}
+		// initial
+		setRandomMotd();
+		// change every 10s (10000 ms)
+		setInterval(setRandomMotd, 10000);
+
+		function adjustServerStatusHeight() {
+			const serverStatus = document.getElementById('server-status');
+			const viewportHeight = window.innerHeight;
+			const statusHeight = serverStatus.offsetHeight;
+			const margin = serverStatus.offsetTop; // Adjust for any margins
+			if (statusHeight < viewportHeight - margin) {
+				serverStatus.style.height = `${viewportHeight - margin}px`;
+			}
+		}
+		window.addEventListener('resize', adjustServerStatusHeight);
+		window.addEventListener('load', adjustServerStatusHeight);
+
+		async function fetchServerStatus() {
+			try {
+				const response = await fetch('https://api.mcsrvstat.us/3/play.valhallamc.ca');
+				const data = await response.json();
+				
+				const statusDiv = document.getElementById('status-content');
+				const statusTitle = document.getElementById('status-title');
+
+				if (data.online) {
+					statusTitle.innerHTML = '<span class="sonar-ping">●</span> <small>Server is ONLINE</small>';
+					statusTitle.style.color = '#4caf50';
+				} else {
+					statusTitle.innerHTML = '● <small>Server is OFFLINE</small>';
+				}
+				
+				if (data.online) {
+					statusDiv.innerHTML = `
+						<div class="row">
+						<p class="muted">Players: <strong>${data.players.online} / ${data.players.max}</strong></p>
+						<p class="muted">Version: <strong>${data.version}</strong></p>
+						</div>
+						${data.players.list && data.players.list.length > 0 ? `
+						<div class="ip">
+							<p class="muted" style="margin: 0 0 8px 0; font-weight: 700; color: var(--accent);"><small>Online Players:</small></p>
+							<div class="row" style="display: flex; flex-wrap: wrap; gap: 6px;">
+							${data.players.list.map(p => {
+								const name = typeof p === 'string' ? p : p.name || p.uuid;
+								return `<span style="padding: 4px 10px; background: rgba(125, 211, 252, 0.12); border: 1px solid rgba(125, 211, 252, 0.25); border-radius: 6px; font-size: 13px; color: var(--text);">${name}</span>`;
+							}).join('')}
+							</div>
+						</div>
+						` : ''}
+						<p class="muted" style="font-size: 12px; margin-top: 8px;">Last updated: ${new Date().toLocaleTimeString()} | provided by mcstatus.io</p>
+					`;
+				} else {
+					statusDiv.innerHTML = `
+						<p class="muted">The server may be restarting or temporarily unavailable.</p>
+					`;
+				}
+			} catch (error) {
+				document.getElementById('status-content').innerHTML = `
+					<p class="muted" style="color: #ffd0d0;">Failed to fetch server status. Please try again later.</p>
+				`;
+			}
+		}
+
+		fetchServerStatus();
+		setInterval(fetchServerStatus, 60000);
+	</script>
+	
+	<h1 id="status-title">Server Status</h1>
+	<div class="ip" style="position: relative;margin-bottom:24px;">
+		<small>SERVER IP</small>
+		<code id="server-ip">play.valhallamc.ca</code>
+		<button class="copy-button" onclick="copyToClipboard(this, 'play.valhallamc.ca')">COPY</button>
+	</div>
+	<div id="status-content">
+		<p class="muted">Loading server status...</p>
+	</div>
+	<small class="muted" style="text-align: center;">NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR
+		MICROSOFT</small>
+	<a class="scroll-prompt" href="#below-the-fold" onclick="smoothScroll(event)">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-mouse"
+			viewBox="0 0 16 16">
+			<path
+				d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3m4 8a4 4 0 0 1-8 0V5a4 4 0 1 1 8 0zM8 0a5 5 0 0 0-5 5v6a5 5 0 0 0 10 0V5a5 5 0 0 0-5-5" />
+		</svg>
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-double-down"
+			viewBox="0 0 16 16">
+			<path fill-rule="evenodd"
+				d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+			<path fill-rule="evenodd"
+				d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+		</svg>
+		<small>scroll down</small>
+	</a>
+	</div>
+</div>

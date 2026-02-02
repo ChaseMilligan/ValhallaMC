@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build-index.js",
     "deploy": "npx wrangler pages deploy",
+    "fulldeploy": "npm run build && git add . && git commit -m 'content build' && git push origin main && npx wrangler pages deploy",
     "dev": "npx wrangler pages dev"
   },
   "keywords": [],

@@ -1,0 +1,31 @@
+<div class="footer-top row between">
+  <div>Server IP: <strong style="color:var(--accent)">play.valhallamc.ca</strong></div>
+  <nav aria-label="Footer navigation">
+    <ul class="row">
+      <li><a href="/" rel="noopener">Home</a></li>
+      <li><a href="/about" rel="noopener">About</a></li>
+      <li><a href="#rules" rel="noopener">Rules</a></li>
+      <li><a href="/shop" rel="noopener">Shop</a></li>
+      <li><a href="https://discord.gg/39CVgkrBvp" rel="noopener" target="_blank">Discord</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="footer-bottom row">
+  <div class="col-6">
+    <div class="row">
+      <a class="logo" href="/">
+      <img src="server-icon.png" alt="ValhallaMC Logo" style="height: 40px; width: 40px; border-radius: 8px;">
+      </a>
+      <div class="brand">ValhallaMC SMP 1.21.10 (v2.1)</div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="right">&copy; <span id="current-year"></span> ValhallaMC. All rights reserved.</div>
+    <div class="right">Contact: <strong><a href="mailto:support@valhallamc.ca">support@valhallamc.ca</a></strong></div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>

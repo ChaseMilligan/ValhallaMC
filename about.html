@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ValhallaMC SMP</title>
+  <meta name="description" content="ValhallaMC SMP v2 — info, rules, commands, and map link." />
+  <link rel="icon" href="server-icon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="./style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Stack+Sans+Notch:wght@200..700&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap"
+    rel="stylesheet">
+  <script defer src="https://js.tebex.io/v/1.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-attrs@4.3.1/markdown-it-attrs.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-container@4.0.0/dist/markdown-it-container.min.js"></script>
+</head>
+
+<body>
+  <iframe class="video-bg" width="1920" height="1080" allow="autoplay" src="https://www.youtube.com/embed/7CouiWXWKLY?si=ZnllnfbVE8V5K_NX&amp;controls=0&autoplay=1&loop=1&mute=1&playlist=7CouiWXWKLY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; loop;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+  <div class="wrap">
+    <script>
+      fetch('components/navigation.html')
+        .then(response => response.text())
+        .then(data => {
+          const element = document.createElement('div');
+          element.classList.add('navigation');
+          document.querySelector('.wrap').insertAdjacentElement('afterbegin', element);
+          element.innerHTML = data;
+
+          const scripts = element.querySelectorAll('script');
+          scripts.forEach(oldScript => {
+            const newScript = document.createElement('script');
+            Array.from(oldScript.attributes).forEach(attr =>
+              newScript.setAttribute(attr.name, attr.value)
+            );
+            newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+            oldScript.parentNode.replaceChild(newScript, oldScript);
+          });
+        });
+    </script>
+
+    <script>
+      fetch('components/home/hero.html')
+        .then(response => response.text())
+        .then(data => {
+          const element = document.createElement('div');
+          element.classList.add('hero-container');
+          document.querySelector('#above-the-fold').insertAdjacentElement('afterbegin', element);
+          element.innerHTML = data;
+
+          const scripts = element.querySelectorAll('script');
+          scripts.forEach(oldScript => {
+            const newScript = document.createElement('script');
+            Array.from(oldScript.attributes).forEach(attr =>
+              newScript.setAttribute(attr.name, attr.value)
+            );
+            newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+            oldScript.parentNode.replaceChild(newScript, oldScript);
+          });
+        });
+    </script>
+  </div>
+
+    <script>
+      const contentDir = './content/home/';
+
+      fetch(`${contentDir}index.json`)
+        .then(res => res.json())
+        .then(data => {
+          const fetches = data.map(section =>
+        fetch(`${contentDir}${section}`)
+          .then(response => response.text())
+          .then(markdownContent => {
+            const htmlContent = md.render(markdownContent);
+            const element = document.createElement('div');
+            element.classList.add(section.replace('.md', ''));
+            element.innerHTML = htmlContent;
+
+            const componentMeta = element.querySelector('.componentMeta');
+            const meta = {};
+            if (componentMeta) {
+          componentMeta.querySelectorAll('p').forEach(p => {
+            const [rawKey, ...rest] = p.textContent.split('=');
+            if (!rawKey) return;
+            const key = rawKey.trim();
+            const rawVal = rest.join('=').trim();
+            const value = rawVal.includes(',') ? rawVal.split(',').map(s => s.trim()) : rawVal;
+            meta[key] = value;
+          });
+
+          if (meta.id) element.id = Array.isArray(meta.id) ? meta.id[0] : meta.id;
+          if (meta.classlist) {
+            const classes = Array.isArray(meta.classlist) ? meta.classlist : String(meta.classlist).split(',').map(s => s.trim());
+            element.classList.add(...classes);
+            delete meta.classlist;
+          }
+            }
+
+            element._componentMeta = meta;
+
+            const rawOrder = meta.order !== undefined ? (Array.isArray(meta.order) ? meta.order[0] : meta.order) : null;
+            const order = rawOrder !== null ? Number(rawOrder) : Infinity;
+
+            return { element, order };
+          })
+          .catch(error => {
+            console.error('Error fetching markdown file:', error);
+            return null;
+          })
+          );
+
+          Promise.all(fetches).then(results => {
+        results
+          .filter(Boolean)
+          .sort((a, b) => a.order - b.order)
+          .forEach(item => document.querySelector('.output').appendChild(item.element));
+          });
+        })
+        .catch(error => console.error('Error fetching index.json:', error));
+    </script>
+
+    <div id="above-the-fold"></div>
+
+    <div class="output" id="below-the-fold"></div>
+
+    <h1 style="font-size:3em;margin-top: 48px; text-align: center;">FAQ</h1>
+
+    <div class="hero">
+      <h1>Can't Move?</h1>
+      <p class="muted">
+        If you can't move upon connecting to the server, just wait a minute or two since you are likely downloading the
+        multiple custom resource packs used for the custom items and music discs. This should not take as long after
+        your first time connecting.
+        If you are still having trouble, make sure your game is on the correct version (1.21.10).
+      </p>
+    </div>
+
+    <div class="hero">
+      <h1>Can't Build?</h1>
+      <p class="muted">You have to link your account in discord first to get permissions to play. You can leave the
+        Discord server once your account is linked if you want.</p>
+      <div class="command-card"><code>/discord</code><button onclick="copyToClipboard(this, '/discord')" class="copy-button">Copy</button></div>
+      <p class="muted ip">in game, or the invite below. Next, you will need to link your Minecraft account to Discord by using</p>
+      <div class="command-card"><code>/discord link</code><button onclick="copyToClipboard(this, '/discord link')"
+          class="copy-button">Copy</button></div>
+      <p class="muted ip">in game.
+        This will give you a 4 digit code in Minecraft chat that you then DM to ValhallaBot in Discord.
+        <br>Once you have done this, you should receive the "Whitelisted" role in both Discord and the Minecraft server,
+        which gives you permissions to start fully playing the game.
+        <br>If something doesn't work during this process, feel free to reach out to an admin.
+      </p>
+
+      <p class="muted" style="margin-top: 16px;">
+        This was done to prevent less sophisticated bots from joining, and potentially griefing or worse. If a bot is
+        good enough to pass through this then fuck me I guess.
+      </p>
+
+      <div class="ip">
+        <small>DISCORD INVITE</small>
+        <code><a href="https://discord.gg/39CVgkrBvp">https://discord.gg/39CVgkrBvp</a></code>
+      </div>
+    </div>
+
+    <h1 style="font-size:3em;margin-top: 48px; text-align: center;">General Info</h1>
+
+    <section id="commands">
+      <h1>Useful commands</h1>
+      <div class="command-cards">
+        <div class="command-card">
+          <code>/askaup</code> or <code>/market</code> — Open the server store menu
+          <button onclick="copyToClipboard(this, '/askaup')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/bal</code> or <code>/money</code> — Show your Fehu balance
+          <button onclick="copyToClipboard(this, '/bal')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/baltop</code> — The richest players
+          <button onclick="copyToClipboard(this, '/baltop')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/bp</code> — Opens Battlepass GUI
+          <button onclick="copyToClipboard(this, '/bp')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/coinflipz</code> — Open the Gambling GUI you degen
+          <button onclick="copyToClipboard(this, '/coinflipz')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/auctionhouse</code> or <code>/ah</code> — Auction house menu
+          <button onclick="copyToClipboard(this, '/auctionhouse')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/sb</code> — Toggle sidebar/scoreboard
+          <button onclick="copyToClipboard(this, '/sb')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/lands</code> — Open the lands menu
+          <button onclick="copyToClipboard(this, '/lands')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/money pay</code> — Send Fehu to other players
+          <button onclick="copyToClipboard(this, '/money pay')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/orders</code> — Open the GUI to request items from other players
+          <button onclick="copyToClipboard(this, '/orders')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/shop</code>, <code>/shops</code>, or <code>/ps</code> — Player shop menu
+          <button onclick="copyToClipboard(this, '/shop')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/trade</code> — Trade menu with another player
+          <button onclick="copyToClipboard(this, '/trade')" class="copy-button">Copy
+        </div>
+        <div class="command-card">
+          <code>/sleep</code> — Vote to skip night or storms
+          <button onclick="copyToClipboard(this, '/sleep')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/webmap</code> — Get the browser map link
+          <button onclick="copyToClipboard(this, '/webmap')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/website</code> — Link back to this page
+          <button onclick="copyToClipboard(this, '/website')" class="copy-button">Copy</button>
+        </div>
+        <div class="command-card">
+          <code>/wild</code> — Teleport to a random location in the wild
+          <button onclick="copyToClipboard(this, '/wild')" class="copy-button">Copy</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="basic-gameplay-loop">
+      <h1>Basic Gameplay Loop</h1>
+      <div class="card-grid">
+        <div class="card">
+          <h2>1</h2>
+          <p>Join the server.</p>
+          <p class="muted">Start your adventure.</p>
+        </div>
+        <div class="card">
+          <h2>2</h2>
+          <p>Link Minecraft + Discord.</p>
+          <p class="muted">Required to begin playing.</p>
+        </div>
+        <div class="card">
+          <h2>3</h2>
+          <p>Teleport into the wilderness.</p>
+          <div class="command-card">
+            <code onclick="copyToClipboard(this, '/wild')">/wild</code>
+            <!-- <button onclick="copyToClipboard(this, '/wild')" class="copy-button">Copy</button> -->
+          </div>
+        </div>
+        <div class="card">
+          <h2>4</h2>
+          <p>Place a Camp for protection.</p>
+          <p class="muted">Temporary land safety.</p>
+        </div>
+        <div class="card">
+          <h2>5</h2>
+          <p>Sell items and XP for income.</p>
+          <div class="row">
+            <div class="command-card">
+              <code onclick="copyToClipboard(this, '/sellxp')">/sellxp</code>
+              <!-- <button onclick="copyToClipboard(this, '/sellxp')" class="copy-button">Copy</button> -->
+            </div>
+            <div class="command-card">
+              <code onclick="copyToClipboard(this, '/askaup')">/askaup</code>
+              <!-- <button onclick="copyToClipboard(this, '/askaup')" class="copy-button">Copy</button> -->
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h2>6</h2>
+          <p>Earn your first ᚠ1,000.</p>
+          <p class="muted">You’ll need it soon.</p>
+        </div>
+        <div class="card">
+          <h2>7</h2>
+          <p>Create your first Land.</p>
+          <div class="command-card">
+            <code onclick="copyToClipboard(this, '/lands')">/lands</code>
+          </div>
+        </div>
+        <div class="card">
+          <h2>8</h2>
+          <p>Claim your first chunk.</p>
+          <div class="command-card">
+            <code onclick="copyToClipboard(this, '/lands claim radius 0')">/lands claim radius 0</code>
+          </div>
+        </div>
+        <div class="card">
+          <h2>9</h2>
+          <p>Deposit funds to keep claims active.</p>
+          <div class="command-card">
+            <code onclick="copyToClipboard(this, '/lands deposit 1010')">/lands deposit 1010</code>
+          </div>
+        </div>
+        <div class="card">
+          <h2>10</h2>
+          <p>Upkeep costs money every day.</p>
+          <p class="muted">1 chunk = ᚠ1,010 / 24h</p>
+        </div>
+        <div class="card">
+          <h2>11</h2>
+          <p>Explore and loot rare items.</p>
+          <p class="muted">Earn more ᚠ faster.</p>
+        </div>
+        <div class="card">
+          <h2>12</h2>
+          <p>Invite trusted players to your Land.</p>
+          <p class="muted">Allies help you grow.</p>
+        </div>
+        <div class="card">
+          <h2>13</h2>
+          <p>Keep earning so claims don’t expire.</p>
+          <p class="muted">Stay funded.</p>
+        </div>
+        <div class="card">
+          <h2>14</h2>
+          <p>Form Nations and wage war.</p>
+          <p class="muted">Politics get spicy.</p>
+        </div>
+        <div class="card">
+          <h2>15</h2>
+          <p>Become the richest player.</p>
+          <p class="muted">That’s the endgame.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="whatsnew">
+      <h1>What's in v2</h1>
+      <ul>
+        <li>Switching from <strong>UberEnchants</strong> → <strong>CustomAnvil +
+            ExcellentEnchants</strong>. Enchantments are still very powerful comapred to vanilla (level max has been
+          doubled), but not to the same degree, and getting them is done in a more vanilla feeling way. Instead of using
+          commands for the highest level enchants, the level cap of the anvil has been lifted so it can be used to
+          combine enchanted books, and identical items regardless of their current level requirement.</li>
+        <li><strong>Villager trades</strong> reverted to vanilla.</li>
+        <li><strong>New shop</strong> with a bigger item list and price tags.</li>
+        <li>Same <strong>player shops</strong> and <strong>auction house</strong>.</li>
+        <li>New <strong>economy plugin</strong> for better scalability.</li>
+        <li><strong>Player Orders</strong> allow you to make orders for items that other players can fulfill to get
+          paid.</li>
+        <li>Keeping <strong>Stellarity End</strong> improvements; removing <strong>Beyond the Clouds</strong>.</li>
+        <li><strong>Merged resourcepacks</strong> so we can have all of our favourite reskins, and I have added
+          <strong>40+ Custom Music Discs</strong> that can be collected from creepers, and found in naturally generated
+          chests + fragments.
+        </li>
+        <li><strong>Overworld generation datapacks</strong> for more interesting terrain and a variety of new
+          structures.</li>
+        <li><strong>Yggdrasil</strong> is a datapack that adds a quest line, and massive structures that can take hours
+          to fully explore packed with rare loot. It also introduces a new dimension full of labyrinthine dungeons.</li>
+        <li><strong>PlayerStats</strong> can be shared in chat with leaderboards for every stat, and <strong>Tool
+            Stats</strong> keeps track of things like when your tools and armour were crafted/looted, how much damage
+          they have dealt/taken, or how many blocks they have broken as NBT tags on the items themselves.</li>
+        <li><strong>Withdraw Fehu (ᚠ)</strong> into bank notes; <strong>sell EXP/levels</strong> for Fehu.</li>
+        <li><strong>Tool Trims</strong> are a great addition I can't believe aren't in the base game. There are now 4
+          lootable tool trim templates that can be used on all tools/weapons with over 1200 combinations.</li>
+        <li><strong>Smart Spawners</strong> can be collected with silk touch, and offer easy item and xp collection from
+          spawners collected naturally, or purchased.</li>
+        <li><strong>Villager Transportation</strong> allows for easier movement and management of villagers across your lands. Attach a lead to a llama, then crouch and right click to give the villager the lead, and it will mount the llama.</li>
+        <li><strong>Better Beacon Range</strong> enhances the effectiveness of beacons, allowing them to reach further and provide buffs to a larger area.</li>
+        <li><strong>Food Balance</strong> gives all the different foods in the game unique effects, and tries to make
+          them more balanced in power.</li>
+        <li><strong>Coinflipz</strong> is a fun mini-game that allows players to wager Fehu on a simple coin flip or
+          roulette.</li>
+        <li><strong>Mooshroom Energy & MooshDonalds</strong> is a datapack that transforms underused Minecraft items
+          into powerful consumables.</li>
+        <li><strong>Horde Nights</strong> occur once every 35 in game nights for some extra danger. This also adds some
+          custom advancements, enchantments, and other features that may or may not function properly. (Sleep Vote
+          overrides usually unskippable horde nights).</li>
+        <li>New <strong>Battlepass</strong> is a quest giving addition for distributing Fehu, and other items with a
+          premium version that I am still unsure of how to implement. Monthly resets, and updates to come.</li>
+      </ul>
+      <p class="muted" style="margin-top:10px">
+        Map: <a href="http://play.valhallamc.ca:8100/" target="_blank"
+          rel="noopener noreferrer">http://play.valhallamc.ca:8100/</a>
+      </p>
+    </section>
+
+    <section id="lands">
+      <h1>Lands (claims + nations + war)</h1>
+      <p class="muted">
+        Lands is a land-claim / grief-prevention / nation-war plugin with <strong>taxes and upkeep</strong>.
+        Don't get comfortable: <strong>enemy nations can declare war and conquer claims even while you're
+          offline.</strong>
+      </p>
+      <ul>
+        <li>Pay <strong>taxes/upkeep</strong> to maintain claims.</li>
+        <li>Land claims cost about <strong>ᚠ1010 per chunk</strong>, and upkeep is collected at <strong>11PM each
+            day</strong></li>
+        <li>Declare war and <strong>conquer land</strong>, or attempt diplomacy and make allies.</li>
+        <li><strong>Rent or sell</strong> parts of your nation.</li>
+        <li>Control settings like <strong>fire tick</strong> and <strong>mob spawning</strong> inside claims.</li>
+      </ul>
+    </section>
+
+    <section id="rules">
+      <h1>Rules</h1>
+      <ul class="rules">
+        <li><strong>Hacked client / xray mods / freecaming</strong> = permabanned</li>
+        <li><strong>Hackusations with no proof</strong> = permabanned</li>
+        <li><strong>Asking for OP or RCON access</strong> = permabanned</li>
+        <li><strong>Lag machines / intentionally crashing the server</strong> = permabanned</li>
+        <li><strong>Admin abuse accusations</strong> = console logs posted → then you get permabanned</li>
+        <li><strong>Agarthian denialism or dissent towards the Yakubian regime</strong> = permabanned</li>
+        <li><strong>Plugin exploits</strong> are not considered cheats and do not need to be disclosed.</li>
+        <li><strong>Finding exploits</strong> is encouraged. (I'll fix what I can.)</li>
+      </ul>
+    </section>
+
+    <section id="plugins">
+      <h1>Plugins + resources</h1>
+      <ul>
+        <li>Simple Voice Chat: <a href="https://modrinth.com/plugin/simple-voice-chat" target="_blank"
+            rel="noopener noreferrer">modrinth.com/plugin/simple-voice-chat</a></li>
+        <li>PlayerStats: <a href="https://www.spigotmc.org/resources/playerstats.102347/" target="_blank"
+            rel="noopener noreferrer">spigotmc.org/resources/playerstats.102347</a></li>
+        <li>Furnicraft wiki: <a href="https://ketket.dev/docs/category/-furnicraft" target="_blank"
+            rel="noopener noreferrer">ketket.dev/docs/category/-furnicraft</a></li>
+        <li>Stellarity wiki: <a href="https://koharasbasement.wiki.gg/wiki/Stellarity" target="_blank"
+            rel="noopener noreferrer">koharasbasement.wiki.gg/wiki/Stellarity</a></li>
+        <li>Yggdrasil wiki: <a href="https://hardels-organization.gitbook.io/voxel/yggdrasil/getting-started"
+            target="_blank">https://hardels-organization.gitbook.io/voxel/yggdrasil/getting-started</a></li>
+        <li>Tool Trims reference: <a target="_blank"
+            href="https://modrinth.com/plugin/tooltrims">https://modrinth.com/plugin/tooltrims</a></li>
+        <li>Food Balance reference: <a href="https://modrinth.com/datapack/food-balance"
+            target="_blank">https://modrinth.com/datapack/food-balance</a><br><img width="300"
+            src="https://cdn.modrinth.com/data/cached_images/6cb567ad04587ea498e3f3267b5296400577f556_0.webp"
+            alt="Food Balance reference"></li>
+        <li>Moosroom Energy & MooshDonalds reference: <a target="_blank"
+            href="https://modrinth.com/modpack/energy">https://modrinth.com/modpack/energy</a><br>
+          <img width="300"
+            src="https://cdn.modrinth.com/data/cached_images/e1a5ad03df48f469d9dcd7a24af7784009d1c311.png" alt=""><br>
+          <img width="300"
+            src="https://cdn.modrinth.com/data/cached_images/1587856f9622654183ba5f7ecdc2aea75f7bf92f.png" alt=""><br>
+          <img width="300"
+            src="https://cdn.modrinth.com/data/cached_images/c011ebb9ab180c0c8c363511cd434eb836e4ce34.png" alt=""><br>
+          <img width="300"
+            src="https://cdn.modrinth.com/data/cached_images/c57ae1b7ce992bb04ab9ac3aa71795b7665d90f5.png" alt=""><br>
+          <img width="300"
+            src="https://cdn.modrinth.com/data/cached_images/fe294154849258b35610036380bf449f3a3d04a4.png" alt=""><br>
+          <img width="300"
+            src="https://cdn.modrinth.com/data/cached_images/5a4ba2451d1004948161b318eaf779f1704c6678.png" alt=""><br>
+          <img width="300"
+            src="https://cdn.modrinth.com/data/cached_images/5a55f542509c410a3a5232aedebc276823e6b0eb.png" alt="">
+        </li>
+      </ul>
+      <p class="muted" style="margin-top:10px">
+        Resources & Data: Custom Resource Pack, Expanded Roman Numerals, Monster Energy Potions, White Monster Totems,
+        Stellarity Textures, Custom Music Discs, Server-side Dynamic Lighting.
+      </p>
+    </section>
+
+    <section id="optional-mods">
+      <h1>Optional Client-side Mods Recommended (Fabric)</h1>
+      <p>None of these mods are required to play on the server, but adding them will offer you the best possible experience. Without installing these mods, you won't be able to use the in-game voice chat feature, but that is all.</p>
+      <p>Download the optional client-side mods <a href="https://cdn.discordapp.com/attachments/1458187804592050197/1463944520118042781/optional-client-modpack.zip?ex=6973ac14&is=69725a94&hm=284cddd39bdf6b3b948792f5f0cf8379580971e80fd37b26d027ce2fa8961847&" download>here</a>.</p>
+      <p>Simply extract the .zip file into your minecraft mods folder.</p>
+    </section>
+
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+  kofiWidgetOverlay.draw('valhallamcsmp', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Tip Me',
+    'floating-chat.donateButton.background-color': '#00b9fe',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
+</script>
+
+    <footer>
+      <div>Server IP: <strong style="color:var(--accent)">play.valhallamc.ca</strong></div>
+      <div>&copy; <span id="current-year"></span> ValhallaMC. All rights reserved.</div>
+      <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+      </script>
+      <div>Contact: <strong><a href="mailto:support@valhallamc.ca">support@valhallamc.ca</a></strong></div>
+    </footer>
+  </div>
+  <script src="./globals.js"></script>
+</body>
+
+</html>
