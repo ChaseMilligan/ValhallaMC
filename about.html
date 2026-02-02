@@ -128,46 +128,6 @@
 
     <div class="output" id="below-the-fold"></div>
 
-    <h1 style="font-size:3em;margin-top: 48px; text-align: center;">FAQ</h1>
-
-    <div class="hero">
-      <h1>Can't Move?</h1>
-      <p class="muted">
-        If you can't move upon connecting to the server, just wait a minute or two since you are likely downloading the
-        multiple custom resource packs used for the custom items and music discs. This should not take as long after
-        your first time connecting.
-        If you are still having trouble, make sure your game is on the correct version (1.21.10).
-      </p>
-    </div>
-
-    <div class="hero">
-      <h1>Can't Build?</h1>
-      <p class="muted">You have to link your account in discord first to get permissions to play. You can leave the
-        Discord server once your account is linked if you want.</p>
-      <div class="command-card"><code>/discord</code><button onclick="copyToClipboard(this, '/discord')" class="copy-button">Copy</button></div>
-      <p class="muted ip">in game, or the invite below. Next, you will need to link your Minecraft account to Discord by using</p>
-      <div class="command-card"><code>/discord link</code><button onclick="copyToClipboard(this, '/discord link')"
-          class="copy-button">Copy</button></div>
-      <p class="muted ip">in game.
-        This will give you a 4 digit code in Minecraft chat that you then DM to ValhallaBot in Discord.
-        <br>Once you have done this, you should receive the "Whitelisted" role in both Discord and the Minecraft server,
-        which gives you permissions to start fully playing the game.
-        <br>If something doesn't work during this process, feel free to reach out to an admin.
-      </p>
-
-      <p class="muted" style="margin-top: 16px;">
-        This was done to prevent less sophisticated bots from joining, and potentially griefing or worse. If a bot is
-        good enough to pass through this then fuck me I guess.
-      </p>
-
-      <div class="ip">
-        <small>DISCORD INVITE</small>
-        <code><a href="https://discord.gg/39CVgkrBvp">https://discord.gg/39CVgkrBvp</a></code>
-      </div>
-    </div>
-
-    <h1 style="font-size:3em;margin-top: 48px; text-align: center;">General Info</h1>
-
     <section id="commands">
       <h1>Useful commands</h1>
       <div class="command-cards">
@@ -237,106 +197,6 @@
         </div>
       </div>
     </section>
-
-    <section id="basic-gameplay-loop">
-      <h1>Basic Gameplay Loop</h1>
-      <div class="card-grid">
-        <div class="card">
-          <h2>1</h2>
-          <p>Join the server.</p>
-          <p class="muted">Start your adventure.</p>
-        </div>
-        <div class="card">
-          <h2>2</h2>
-          <p>Link Minecraft + Discord.</p>
-          <p class="muted">Required to begin playing.</p>
-        </div>
-        <div class="card">
-          <h2>3</h2>
-          <p>Teleport into the wilderness.</p>
-          <div class="command-card">
-            <code onclick="copyToClipboard(this, '/wild')">/wild</code>
-            <!-- <button onclick="copyToClipboard(this, '/wild')" class="copy-button">Copy</button> -->
-          </div>
-        </div>
-        <div class="card">
-          <h2>4</h2>
-          <p>Place a Camp for protection.</p>
-          <p class="muted">Temporary land safety.</p>
-        </div>
-        <div class="card">
-          <h2>5</h2>
-          <p>Sell items and XP for income.</p>
-          <div class="row">
-            <div class="command-card">
-              <code onclick="copyToClipboard(this, '/sellxp')">/sellxp</code>
-              <!-- <button onclick="copyToClipboard(this, '/sellxp')" class="copy-button">Copy</button> -->
-            </div>
-            <div class="command-card">
-              <code onclick="copyToClipboard(this, '/askaup')">/askaup</code>
-              <!-- <button onclick="copyToClipboard(this, '/askaup')" class="copy-button">Copy</button> -->
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <h2>6</h2>
-          <p>Earn your first ᚠ1,000.</p>
-          <p class="muted">You’ll need it soon.</p>
-        </div>
-        <div class="card">
-          <h2>7</h2>
-          <p>Create your first Land.</p>
-          <div class="command-card">
-            <code onclick="copyToClipboard(this, '/lands')">/lands</code>
-          </div>
-        </div>
-        <div class="card">
-          <h2>8</h2>
-          <p>Claim your first chunk.</p>
-          <div class="command-card">
-            <code onclick="copyToClipboard(this, '/lands claim radius 0')">/lands claim radius 0</code>
-          </div>
-        </div>
-        <div class="card">
-          <h2>9</h2>
-          <p>Deposit funds to keep claims active.</p>
-          <div class="command-card">
-            <code onclick="copyToClipboard(this, '/lands deposit 1010')">/lands deposit 1010</code>
-          </div>
-        </div>
-        <div class="card">
-          <h2>10</h2>
-          <p>Upkeep costs money every day.</p>
-          <p class="muted">1 chunk = ᚠ1,010 / 24h</p>
-        </div>
-        <div class="card">
-          <h2>11</h2>
-          <p>Explore and loot rare items.</p>
-          <p class="muted">Earn more ᚠ faster.</p>
-        </div>
-        <div class="card">
-          <h2>12</h2>
-          <p>Invite trusted players to your Land.</p>
-          <p class="muted">Allies help you grow.</p>
-        </div>
-        <div class="card">
-          <h2>13</h2>
-          <p>Keep earning so claims don’t expire.</p>
-          <p class="muted">Stay funded.</p>
-        </div>
-        <div class="card">
-          <h2>14</h2>
-          <p>Form Nations and wage war.</p>
-          <p class="muted">Politics get spicy.</p>
-        </div>
-        <div class="card">
-          <h2>15</h2>
-          <p>Become the richest player.</p>
-          <p class="muted">That’s the endgame.</p>
-        </div>
-      </div>
-    </section>
-
 
     <section id="whatsnew">
       <h1>What's in v2</h1>
@@ -463,33 +323,37 @@
       </p>
     </section>
 
-    <section id="optional-mods">
-      <h1>Optional Client-side Mods Recommended (Fabric)</h1>
-      <p>None of these mods are required to play on the server, but adding them will offer you the best possible experience. Without installing these mods, you won't be able to use the in-game voice chat feature, but that is all.</p>
-      <p>Download the optional client-side mods <a href="https://cdn.discordapp.com/attachments/1458187804592050197/1463944520118042781/optional-client-modpack.zip?ex=6973ac14&is=69725a94&hm=284cddd39bdf6b3b948792f5f0cf8379580971e80fd37b26d027ce2fa8961847&" download>here</a>.</p>
-      <p>Simply extract the .zip file into your minecraft mods folder.</p>
-    </section>
+  <footer>
+    <script>
+      fetch('components/footer.html')
+        .then(response => response.text())
+        .then(data => {
+          const element = document.createElement('div');
+          element.classList.add('footer-content', 'wrap');
+          document.querySelector('footer').appendChild(element);
+          element.innerHTML = data;
 
-    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-<script>
-  kofiWidgetOverlay.draw('valhallamcsmp', {
-    'type': 'floating-chat',
-    'floating-chat.donateButton.text': 'Tip Me',
-    'floating-chat.donateButton.background-color': '#00b9fe',
-    'floating-chat.donateButton.text-color': '#fff'
-  });
-</script>
-
-    <footer>
-      <div>Server IP: <strong style="color:var(--accent)">play.valhallamc.ca</strong></div>
-      <div>&copy; <span id="current-year"></span> ValhallaMC. All rights reserved.</div>
-      <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-      </script>
-      <div>Contact: <strong><a href="mailto:support@valhallamc.ca">support@valhallamc.ca</a></strong></div>
-    </footer>
-  </div>
+          const scripts = element.querySelectorAll('script');
+          scripts.forEach(oldScript => {
+            const newScript = document.createElement('script');
+            Array.from(oldScript.attributes).forEach(attr =>
+              newScript.setAttribute(attr.name, attr.value)
+            );
+            newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+            oldScript.parentNode.replaceChild(newScript, oldScript);
+          });
+        });
+    </script>
+  </footer>
+  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+  <script>
+    kofiWidgetOverlay.draw('valhallamcsmp', {
+      'type': 'floating-chat',
+      'floating-chat.donateButton.text': 'Tip Me',
+      'floating-chat.donateButton.background-color': '#00b9fe',
+      'floating-chat.donateButton.text-color': '#fff'
+    });
+  </script>
   <script src="./globals.js"></script>
 </body>
-
 </html>
