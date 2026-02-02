@@ -17,6 +17,7 @@
   <script src="https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/markdown-it-attrs@4.3.1/markdown-it-attrs.browser.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/markdown-it-container@4.0.0/dist/markdown-it-container.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-link-attributes@4.0.1/dist/markdown-it-link-attributes.min.js"></script>
 </head>
 
 <body>
@@ -45,7 +46,7 @@
     </script>
 
     <script>
-      fetch('components/home/hero.html')
+      fetch('components/about/hero.html')
         .then(response => response.text())
         .then(data => {
           const element = document.createElement('div');
@@ -126,204 +127,7 @@
 
   <div id="above-the-fold"></div>
 
-  <div class="output" id="below-the-fold">
-    <div class="wrap">
-      <div class="ip" id="commands">
-        <h1>Useful commands</h1>
-        <div class="command-cards">
-          <div class="command-card">
-            <code>/askaup</code> or <code>/market</code> — Open the server store menu
-            <button onclick="copyToClipboard(this, '/askaup')" class="copy-button">Copy</button>
-          </div>
-          <div class="command-card">
-            <code>/bal</code> or <code>/money</code> — Show your Fehu balance
-            <button onclick="copyToClipboard(this, '/bal')" class="copy-button">Copy</button>
-          </div>
-          <div class="command-card">
-            <code>/baltop</code> — The richest players
-            <button onclick="copyToClipboard(this, '/baltop')" class="copy-button">Copy</button>
-          </div>
-          <div class="command-card">
-            <code>/bp</code> — Opens Battlepass GUI
-            <button onclick="copyToClipboard(this, '/bp')" class="copy-button">Copy</button>
-          </div>
-          <div class="command-card">
-            <code>/coinflipz</code> — Open the Gambling GUI you degen
-            <button onclick="copyToClipboard(this, '/coinflipz')" class="copy-button">Copy</button>
-          </div>
-          <div class="command-card">
-            <code>/auctionhouse</code> or <code>/ah</code> — Auction house menu
-            <button onclick="copyToClipboard(this, '/auctionhouse')" class="copy-button">Copy</button>
-          </div>
-          <div class="command-card">
-            <code>/sb</code> — Toggle sidebar/scoreboard
-            <button onclick="copyToClipboard(this, '/sb')" class="copy-button">Copy</button>
-          </div>
-          <div class="command-card">
-            <code>/lands</code> — Open the lands menu
-            <button onclick="copyToClipboard(this, '/lands')" class="copy-button">Copy</button>
-          </div>
-          <div class="command-card">
-            <code>/money pay</code> — Send Fehu to other players
-            <button onclick="copyToClipboard(this, '/money pay')" class="copy-button">Copy</button>
-          </div>
-          <div class="command-card">
-            <code>/orders</code> — Open the GUI to request items from other players
-            <button onclick="copyToClipboard(this, '/orders')" class="copy-button">Copy</button>
-          </div>
-          <div class="command-card">
-            <code>/shop</code>, <code>/shops</code>, or <code>/ps</code> — Player shop menu
-            <button onclick="copyToClipboard(this, '/shop')" class="copy-button">Copy</button>
-          </div>
-          <div class="command-card">
-            <code>/trade</code> — Trade menu with another player
-            <button onclick="copyToClipboard(this, '/trade')" class="copy-button">Copy
-          </div>
-          <div class="command-card">
-            <code>/sleep</code> — Vote to skip night or storms
-            <button onclick="copyToClipboard(this, '/sleep')" class="copy-button">Copy</button>
-          </div>
-          <div class="command-card">
-            <code>/webmap</code> — Get the browser map link
-            <button onclick="copyToClipboard(this, '/webmap')" class="copy-button">Copy</button>
-          </div>
-          <div class="command-card">
-            <code>/website</code> — Link back to this page
-            <button onclick="copyToClipboard(this, '/website')" class="copy-button">Copy</button>
-          </div>
-          <div class="command-card">
-            <code>/wild</code> — Teleport to a random location in the wild
-            <button onclick="copyToClipboard(this, '/wild')" class="copy-button">Copy</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="ip" id="whatsnew">
-        <h1>What's in v2</h1>
-        <ul>
-          <li>Switching from <strong>UberEnchants</strong> → <strong>CustomAnvil +
-              ExcellentEnchants</strong>. Enchantments are still very powerful comapred to vanilla (level max has been
-            doubled), but not to the same degree, and getting them is done in a more vanilla feeling way. Instead of using
-            commands for the highest level enchants, the level cap of the anvil has been lifted so it can be used to
-            combine enchanted books, and identical items regardless of their current level requirement.</li>
-          <li><strong>Villager trades</strong> reverted to vanilla.</li>
-          <li><strong>New shop</strong> with a bigger item list and price tags.</li>
-          <li>Same <strong>player shops</strong> and <strong>auction house</strong>.</li>
-          <li>New <strong>economy plugin</strong> for better scalability.</li>
-          <li><strong>Player Orders</strong> allow you to make orders for items that other players can fulfill to get
-            paid.</li>
-          <li>Keeping <strong>Stellarity End</strong> improvements; removing <strong>Beyond the Clouds</strong>.</li>
-          <li><strong>Merged resourcepacks</strong> so we can have all of our favourite reskins, and I have added
-            <strong>40+ Custom Music Discs</strong> that can be collected from creepers, and found in naturally generated
-            chests + fragments.
-          </li>
-          <li><strong>Overworld generation datapacks</strong> for more interesting terrain and a variety of new
-            structures.</li>
-          <li><strong>Yggdrasil</strong> is a datapack that adds a quest line, and massive structures that can take hours
-            to fully explore packed with rare loot. It also introduces a new dimension full of labyrinthine dungeons.</li>
-          <li><strong>PlayerStats</strong> can be shared in chat with leaderboards for every stat, and <strong>Tool
-              Stats</strong> keeps track of things like when your tools and armour were crafted/looted, how much damage
-            they have dealt/taken, or how many blocks they have broken as NBT tags on the items themselves.</li>
-          <li><strong>Withdraw Fehu (ᚠ)</strong> into bank notes; <strong>sell EXP/levels</strong> for Fehu.</li>
-          <li><strong>Tool Trims</strong> are a great addition I can't believe aren't in the base game. There are now 4
-            lootable tool trim templates that can be used on all tools/weapons with over 1200 combinations.</li>
-          <li><strong>Smart Spawners</strong> can be collected with silk touch, and offer easy item and xp collection from
-            spawners collected naturally, or purchased.</li>
-          <li><strong>Villager Transportation</strong> allows for easier movement and management of villagers across your lands. Attach a lead to a llama, then crouch and right click to give the villager the lead, and it will mount the llama.</li>
-          <li><strong>Better Beacon Range</strong> enhances the effectiveness of beacons, allowing them to reach further and provide buffs to a larger area.</li>
-          <li><strong>Food Balance</strong> gives all the different foods in the game unique effects, and tries to make
-            them more balanced in power.</li>
-          <li><strong>Coinflipz</strong> is a fun mini-game that allows players to wager Fehu on a simple coin flip or
-            roulette.</li>
-          <li><strong>Mooshroom Energy & MooshDonalds</strong> is a datapack that transforms underused Minecraft items
-            into powerful consumables.</li>
-          <li><strong>Horde Nights</strong> occur once every 35 in game nights for some extra danger. This also adds some
-            custom advancements, enchantments, and other features that may or may not function properly. (Sleep Vote
-            overrides usually unskippable horde nights).</li>
-          <li>New <strong>Battlepass</strong> is a quest giving addition for distributing Fehu, and other items with a
-            premium version that I am still unsure of how to implement. Monthly resets, and updates to come.</li>
-        </ul>
-        <p class="muted" style="margin-top:10px">
-          Map: <a href="http://play.valhallamc.ca:8100/" target="_blank"
-            rel="noopener noreferrer">http://play.valhallamc.ca:8100/</a>
-        </p>
-      </div>
-
-      <div class="ip" id="lands">
-        <h1>Lands (claims + nations + war)</h1>
-        <p class="muted">
-          Lands is a land-claim / grief-prevention / nation-war plugin with <strong>taxes and upkeep</strong>.
-          Don't get comfortable: <strong>enemy nations can declare war and conquer claims even while you're
-            offline.</strong>
-        </p>
-        <ul>
-          <li>Pay <strong>taxes/upkeep</strong> to maintain claims.</li>
-          <li>Land claims cost about <strong>ᚠ1010 per chunk</strong>, and upkeep is collected at <strong>11PM each
-              day</strong></li>
-          <li>Declare war and <strong>conquer land</strong>, or attempt diplomacy and make allies.</li>
-          <li><strong>Rent or sell</strong> parts of your nation.</li>
-          <li>Control settings like <strong>fire tick</strong> and <strong>mob spawning</strong> inside claims.</li>
-        </ul>
-      </div>
-
-      <div class="ip" id="rules">
-        <h1>Rules</h1>
-        <ul class="rules">
-          <li><strong>Hacked client / xray mods / freecaming</strong> = permabanned</li>
-          <li><strong>Hackusations with no proof</strong> = permabanned</li>
-          <li><strong>Asking for OP or RCON access</strong> = permabanned</li>
-          <li><strong>Lag machines / intentionally crashing the server</strong> = permabanned</li>
-          <li><strong>Admin abuse accusations</strong> = console logs posted → then you get permabanned</li>
-          <li><strong>Agarthian denialism or dissent towards the Yakubian regime</strong> = permabanned</li>
-          <li><strong>Plugin exploits</strong> are not considered cheats and do not need to be disclosed.</li>
-          <li><strong>Finding exploits</strong> is encouraged. (I'll fix what I can.)</li>
-        </ul>
-      </div>
-
-      <div class="ip" id="plugins">
-        <h1>Plugins + resources</h1>
-        <ul>
-          <li>Simple Voice Chat: <a href="https://modrinth.com/plugin/simple-voice-chat" target="_blank"
-              rel="noopener noreferrer">modrinth.com/plugin/simple-voice-chat</a></li>
-          <li>PlayerStats: <a href="https://www.spigotmc.org/resources/playerstats.102347/" target="_blank"
-              rel="noopener noreferrer">spigotmc.org/resources/playerstats.102347</a></li>
-          <li>Furnicraft wiki: <a href="https://ketket.dev/docs/category/-furnicraft" target="_blank"
-              rel="noopener noreferrer">ketket.dev/docs/category/-furnicraft</a></li>
-          <li>Stellarity wiki: <a href="https://koharasbasement.wiki.gg/wiki/Stellarity" target="_blank"
-              rel="noopener noreferrer">koharasbasement.wiki.gg/wiki/Stellarity</a></li>
-          <li>Yggdrasil wiki: <a href="https://hardels-organization.gitbook.io/voxel/yggdrasil/getting-started"
-              target="_blank">https://hardels-organization.gitbook.io/voxel/yggdrasil/getting-started</a></li>
-          <li>Tool Trims reference: <a target="_blank"
-              href="https://modrinth.com/plugin/tooltrims">https://modrinth.com/plugin/tooltrims</a></li>
-          <li>Food Balance reference: <a href="https://modrinth.com/datapack/food-balance"
-              target="_blank">https://modrinth.com/datapack/food-balance</a><br><img width="300"
-              src="https://cdn.modrinth.com/data/cached_images/6cb567ad04587ea498e3f3267b5296400577f556_0.webp"
-              alt="Food Balance reference"></li>
-          <li>Moosroom Energy & MooshDonalds reference: <a target="_blank"
-              href="https://modrinth.com/modpack/energy">https://modrinth.com/modpack/energy</a><br>
-            <img width="300"
-              src="https://cdn.modrinth.com/data/cached_images/e1a5ad03df48f469d9dcd7a24af7784009d1c311.png" alt=""><br>
-            <img width="300"
-              src="https://cdn.modrinth.com/data/cached_images/1587856f9622654183ba5f7ecdc2aea75f7bf92f.png" alt=""><br>
-            <img width="300"
-              src="https://cdn.modrinth.com/data/cached_images/c011ebb9ab180c0c8c363511cd434eb836e4ce34.png" alt=""><br>
-            <img width="300"
-              src="https://cdn.modrinth.com/data/cached_images/c57ae1b7ce992bb04ab9ac3aa71795b7665d90f5.png" alt=""><br>
-            <img width="300"
-              src="https://cdn.modrinth.com/data/cached_images/fe294154849258b35610036380bf449f3a3d04a4.png" alt=""><br>
-            <img width="300"
-              src="https://cdn.modrinth.com/data/cached_images/5a4ba2451d1004948161b318eaf779f1704c6678.png" alt=""><br>
-            <img width="300"
-              src="https://cdn.modrinth.com/data/cached_images/5a55f542509c410a3a5232aedebc276823e6b0eb.png" alt="">
-          </li>
-        </ul>
-        <p class="muted" style="margin-top:10px">
-          Resources & Data: Custom Resource Pack, Expanded Roman Numerals, Monster Energy Potions, White Monster Totems,
-          Stellarity Textures, Custom Music Discs, Server-side Dynamic Lighting.
-        </p>
-      </div>
-    </div>
-  </div>
+  <div class="output" id="below-the-fold"></div>
 
   <footer>
     <script>

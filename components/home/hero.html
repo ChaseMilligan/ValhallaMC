@@ -148,9 +148,10 @@
 
 				if (data.online) {
 					statusTitle.innerHTML = '<span class="sonar-ping">●</span> <small>Server is ONLINE</small>';
-					statusTitle.style.color = '#4caf50';
+					statusTitle.style.color = '#8ffa8b';
 				} else {
 					statusTitle.innerHTML = '● <small>Server is OFFLINE</small>';
+					
 				}
 				
 				if (data.online) {
@@ -188,7 +189,7 @@
 		setInterval(fetchServerStatus, 60000);
 	</script>
 	
-	<h1 id="status-title">Server Status</h1>
+	<h1 id="status-title" class="centered">Server Status</h1>
 	<div class="ip" style="position: relative;margin-bottom:24px;">
 		<small>SERVER IP</small>
 		<code id="server-ip">play.valhallamc.ca</code>

@@ -62,7 +62,8 @@ a {
 hr {
 	border: none;
 	border-top: 1px solid var(--line);
-	margin: 24px 0;
+	margin: 0;
+	margin-block: 64px;
 }
 
 .wrap {
@@ -136,6 +137,15 @@ hr {
 	transition: background 0.3s, border-color 0.3s;
 	cursor: pointer;
 	user-select: none;
+}
+
+#btn-checkout {
+	font-size: 24px;
+	padding: 16px 24px;
+}
+
+#btn-checkout:hover {
+	background-color: rgba(143, 250, 139, 0.8);
 }
 
 .btn:hover {
@@ -219,6 +229,15 @@ h1 {
 
 .ip code {
 	display: block;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	font-size: 20px;
+	font-weight: 900;
+	word-break: break-all;
+	color: var(--accent);
+}
+
+.card code {
+	display: inline-block;
 	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 	font-size: 20px;
 	font-weight: 900;
@@ -369,9 +388,8 @@ footer {
 
 .card-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(calc(100% / 3 - 100px), 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(calc(100% / 6 - 20px), 1fr));
 	gap: 16px;
-	margin-top: 16px;
 }
 
 .card {
@@ -450,10 +468,12 @@ footer {
 	margin-top: 12px;
 	display: grid;
 	gap: 10px;
+	overflow-y: scroll;
+	max-height: 300px;
 }
 
 .cart-item {
-	display: grid;
+	display: grid !important;
 	grid-template-columns: 1fr auto;
 	gap: 12px;
 	padding: 12px;
@@ -470,23 +490,28 @@ footer {
 	font-family: "Zalando Sans Expanded", sans-serif;
 	font-size: 12px;
 	margin-bottom: 2px;
+	text-align: left;
+	display: inline-block !important;
 }
 
 .cart-item .meta {
 	color: var(--muted);
 	font-size: 12px;
+	display: inline-block !important;
+	text-align: left;
 }
 
 .cart-right {
 	display: flex;
+	flex-direction: row !important;
 	gap: 10px;
 	align-items: center;
 	justify-content: end;
-	flex-wrap: wrap;
 }
 
 .qty {
 	display: inline-flex;
+	flex-direction: row !important;
 	align-items: center;
 	gap: 6px;
 	padding: 6px;
@@ -550,8 +575,10 @@ footer {
 }
 
 #server-status > .wrap {
-	height: calc(100vh - 200px);
-	padding-bottom: 80px !important;
+	height: calc(100vh - 147px);
+	padding-bottom: 147px !important;
+	justify-content: center;
+	align-items: stretch !important;
 }
 
 #motd-title {
@@ -567,17 +594,26 @@ footer {
 	text-align: center;
 	margin-bottom: 16px;
 	filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
 }
 
 .sonar-ping {
 	position: relative;
 	overflow: visible;
+	font-size: 0;
+	width: 12px;
+	height: 12px;
+	background-color: var(--accent2);
+	border-radius: 50px;
 }
 
 .sonar-ping::after {
 	content: '';
 	position: absolute;
-	top: calc(50% + 2px);
+	top: calc(50%);
 	left: 50%;
 	width: 16px;
 	height: 16px;
@@ -642,7 +678,7 @@ button.copy-button:hover {
 	align-items: center;
 	justify-content: center;
 	position: absolute;
-	bottom: 20px; /* Adjust as needed */
+	bottom: 73px; /* Adjust as needed */
 	left: 50%;
 	transform: translateX(-50%);
 	animation: bob 2s ease-in-out infinite;
@@ -665,7 +701,7 @@ button.copy-button:hover {
 	justify-content: center;
 	align-items: center;
 	height: calc(100vh - 111px); /* Adjust for any margins */
-	padding: 20px;
+	padding: 20px 0px;
 	background: rgba(255, 255, 255, 0.0);
 	border-radius: 8px;
 	border: none;
@@ -748,51 +784,51 @@ button.copy-button:hover {
 }
 
 .col-1-sm {
-  width: calc(100% / 12 * 1);
+  width: calc(100% / 12 * 1) !important;
 }
 
 .col-2-sm {
-  width: calc(100% / 12 * 2);
+  width: calc(100% / 12 * 2) !important;
 }
 
 .col-3-sm {
-  width: calc(100% / 12 * 3);
+  width: calc(100% / 12 * 3) !important;
 }
 
 .col-4-sm {
-  width: calc(100% / 12 * 4);
+  width: calc(100% / 12 * 4) !important;
 }
 
 .col-5-sm {
-  width: calc(100% / 12 * 5);
+  width: calc(100% / 12 * 5) !important;
 }
 
 .col-6-sm {
-  width: calc(100% / 12 * 6);
+  width: calc(100% / 12 * 6) !important;
 }
 
 .col-7-sm {
-  width: calc(100% / 12 * 7);
+  width: calc(100% / 12 * 7) !important;
 }
 
 .col-8-sm {
-  width: calc(100% / 12 * 8);
+  width: calc(100% / 12 * 8) !important;
 }
 
 .col-9-sm {
-  width: calc(100% / 12 * 9);
+  width: calc(100% / 12 * 9) !important;
 }
 
 .col-10-sm {
-  width: calc(100% / 12 * 10);
+  width: calc(100% / 12 * 10) !important;
 }
 
 .col-11-sm {
-  width: calc(100% / 12 * 11);
+  width: calc(100% / 12 * 11) !important;
 }
 
 .col-12-sm {
-  width: calc(100%);
+  width: calc(100%) !important;
 }
 
 .hidden-sm {
@@ -807,51 +843,53 @@ button.copy-button:hover {
 
 @media only screen and (min-width: 45em) {  /* 720px */
   .col-1 {
-    width: calc(100% / 12 * 1);
+    width: calc(100% / 12 * 1) !important;
   }
 
   .col-2 {
-    width: calc(100% / 12 * 2);
+    width: calc(100% / 12 * 2) !important;
   }
 
   .col-3 {
-    width: calc(100% / 12 * 3);
+    width: calc(100% / 12 * 3) !important;
   }
 
   .col-4 {
-    width: calc(100% / 12 * 4);
+    width: calc(100% / 12 * 4) !important;
+		grid-column: span 1;
   }
 
   .col-5 {
-    width: calc(100% / 12 * 5);
+    width: calc(100% / 12 * 5) !important;
   }
 
   .col-6 {
-    width: calc(100% / 12 * 6);
+    width: calc(100% / 12 * 6) !important;
   }
 
   .col-7 {
-    width: calc(100% / 12 * 7);
+    width: calc(100% / 12 * 7) !important;
   }
 
   .col-8 {
-    width: calc(100% / 12 * 8);
+    width: calc(100% / 12 * 8) !important;
+		grid-column: span 2;
   }
 
   .col-9 {
-    width: calc(100% / 12 * 9);
+    width: calc(100% / 12 * 9) !important;
   }
 
   .col-10 {
-    width: calc(100% / 12 * 10);
+    width: calc(100% / 12 * 10) !important;
   }
 
   .col-11 {
-    width: calc(100% / 12 * 11);
+    width: calc(100% / 12 * 11) !important;
   }
 
   .col-12 {
-    width: calc(100%);
+    width: calc(100%) !important;
 		grid-column: span 3;
   }
 
@@ -888,4 +926,34 @@ button.copy-button:hover {
 
 .flex-wrap {
 	flex-wrap: wrap;
+}
+
+.span-1 {
+	grid-column: span 1;
+	width: 100% !important;
+}
+
+.span-2 {
+	grid-column: span 2;
+	width: 100% !important;
+}
+
+.span-3 {
+	grid-column: span 3;
+	width: 100% !important;
+}
+
+.span-4 {
+	grid-column: span 4;
+	width: 100% !important;
+}
+
+.span-5 {
+	grid-column: span 5;
+	width: 100% !important;
+}
+
+.span-6 {
+	grid-column: span 6;
+	width: 100% !important;
 }

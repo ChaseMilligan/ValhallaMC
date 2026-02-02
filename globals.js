@@ -24,6 +24,15 @@ const md = window.markdownit({
 });
 console.log(window)
 md.use(window.markdownItAttrs);
+md.use(window.markdownitLinkAttributes, {
+	matcher(href, config) {
+    return !href.startsWith("https://valhallamc.ca/") && !href.startsWith("http://localhost");
+  },
+  attrs: {
+    target: "_blank",
+    rel: "noopener",
+  },
+});
 md.use(window.markdownitContainer, 'section');
 md.use(window.markdownitContainer, 'container');
 md.use(window.markdownitContainer, 'row');

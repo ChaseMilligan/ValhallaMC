@@ -46,66 +46,75 @@
           });
         });
     </script>
+  </div>  
 
-    <section>
-      <h2>Welcome to the ValhallaMC Shop</h2>
-      <p class="muted warn">The shop is currently under development and may have limited features. If any problems should arise, please contact <a href="mailto:support@valhallamc.ca">support</a>.</p>
-      <p class="muted">Browse and purchase in-game packages to enhance your Minecraft experience on ValhallaMC SMP.</p>
-      <p class="muted">Your purchases support the ongoing development and maintenance of the server.</p>
-    </section>
-
-    <!-- CART / CHECKOUT -->
-    <section id="cart-panel">
-      <h2>Cart + Checkout</h2>
-      <p class="muted">Enter your Minecraft username, add packages, adjust quantities, then checkout.</p>
-
-      <div class="field-row">
-        <div class="field">
-          <small class="muted">Minecraft username</small>
-          <input id="mc-username" class="input" placeholder="e.g. MrOzoskiniki" autocomplete="off" />
-          <small id="basket-status" class="muted">Basket: not created</small>
+  <div id="above-the-fold">
+    <div id="server-status">
+      <div class="wrap">
+        <div class="ip">
+          <h2>Welcome to the ValhallaMC Shop</h2>
+          <p class="muted warn">The shop is currently under development and may have limited features. If any problems should
+            arise, please contact <a href="mailto:support@valhallamc.ca">support</a>.</p>
+          <p class="muted">Browse and purchase in-game packages to enhance your Minecraft experience on ValhallaMC SMP.</p>
+          <p class="muted">Your purchases support the ongoing development and maintenance of the server.</p>
+          <!-- CART / CHECKOUT -->
+          <div id="cart-panel">
+            <div class="row" style="width: 100%;">
+              <div class="col-6" style="align-items: start;">
+                <h2>Checkout Info</h2>
+                <p class="muted">Enter your Minecraft username, add packages, adjust quantities, then checkout.</p>
+                <div class="field-row" style="align-items: start;">
+                  <div class="field"  style="align-items: start;">
+                    <small class="muted">Minecraft username</small>
+                    <div class="row">
+                      <input id="mc-username" class="input" placeholder="e.g. MrOzoskiniki" autocomplete="off" />
+                      <button id="btn-new-basket" class="btn" type="button">New Basket</button>
+                    </div>
+                    <small id="basket-status" class="muted">Basket: not created</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6" style="align-items: start;height:100%;">
+                <h2>Cart (<span class="total-item-count">0</span>)</h2>
+                <div class="cart-list card" id="cart-list" style="align-items: start;"></div>
+              </div>
+            </div>          
+            <div class="cart-summary">
+              <div>
+                <div class="muted">Total</div>
+                <div id="cart-total" class="cart-total">—</div>
+              </div>
+              <div class="muted" id="cart-hint">Add something to your cart to enable checkout.</div>
+              <button id="btn-checkout" class="btn" type="button" style="border-color: var(--accent2);"><small>Checkout</small></button>
+            </div>
+          </div>
         </div>
-
-        <div style="display:flex; gap:10px; align-items:flex-end; flex-wrap:wrap;">
-          <button id="btn-new-basket" class="btn" type="button">New Basket</button>
-        </div>
+        <a class="scroll-prompt" href="#below-the-fold" onclick="smoothScroll(event)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-mouse"
+            viewBox="0 0 16 16">
+            <path
+              d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3m4 8a4 4 0 0 1-8 0V5a4 4 0 1 1 8 0zM8 0a5 5 0 0 0-5 5v6a5 5 0 0 0 10 0V5a5 5 0 0 0-5-5" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-double-down"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+            <path fill-rule="evenodd"
+              d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+          </svg>
+          <small>scroll down</small>
+        </a>
       </div>
-
-      <div class="cart-list" id="cart-list"></div>
-
-      <div class="cart-summary">
-        <div>
-          <div class="muted">Total</div>
-          <div id="cart-total" class="cart-total">—</div>
-        </div>
-        <div class="muted" id="cart-hint">Add something to your cart to enable checkout.</div>
-        <button id="btn-checkout" class="btn" type="button" style="border-color: var(--accent2);">Checkout</button>
-      </div>
-    </section>
-
-    <!-- PRODUCTS -->
-    <div class="product-grid" id="product-grid"></div>
-
-    <!-- Ko-fi (unchanged) -->
-    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-    <script>
-      kofiWidgetOverlay.draw('valhallamcsmp', {
-        'type': 'floating-chat',
-        'floating-chat.donateButton.text': 'Tip Me',
-        'floating-chat.donateButton.background-color': '#00b9fe',
-        'floating-chat.donateButton.text-color': '#fff'
-      });
-    </script>
-
-    <footer>
-      <div>Server IP: <strong style="color:var(--accent)">play.valhallamc.ca</strong></div>
-      <div>&copy; <span id="current-year"></span> ValhallaMC. All rights reserved.</div>
-      <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-      </script>
-      <div>Contact: <strong><a href="mailto:support@valhallamc.ca">support@valhallamc.ca</a></strong></div>
-    </footer>
+    </div>
   </div>
+
+  <div class="output" id="below-the-fold">
+    <div class="wrap">
+      <!-- PRODUCTS -->
+      <div class="product-grid" id="product-grid"></div>
+    </div>
+  </div>
+</div>
 
 <script>
   fetch('/get-token')
@@ -334,6 +343,9 @@
       await apiJson(url, { method: "POST", body: JSON.stringify(payload) });
 
       await refreshCart();
+
+      const totalItems = normalizeCartItems(basket).reduce((sum, it) => sum + it.qty, 0);
+      document.querySelector(".total-item-count").textContent = String(totalItems);
     }
 
     async function removePackageFromBasket(packageId) {
@@ -341,6 +353,9 @@
       const url = `https://headless.tebex.io/api/baskets/${encodeURIComponent(state.basketIdent)}/packages/remove`;
       await apiJson(url, { method: "POST", body: JSON.stringify({ package_id: Number(packageId) }) });
       await refreshCart();
+
+      const totalItems = normalizeCartItems(await fetchBasket()).reduce((sum, it) => sum + it.qty, 0);
+      document.querySelector(".total-item-count").textContent = String(totalItems);
     }
 
     async function updatePackageQuantity(packageId, quantity) {
@@ -701,5 +716,37 @@
     });
 </script>
 
+<footer>
+  <script>
+    fetch('components/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        const element = document.createElement('div');
+        element.classList.add('footer-content', 'wrap');
+        document.querySelector('footer').appendChild(element);
+        element.innerHTML = data;
+
+        const scripts = element.querySelectorAll('script');
+        scripts.forEach(oldScript => {
+          const newScript = document.createElement('script');
+          Array.from(oldScript.attributes).forEach(attr =>
+            newScript.setAttribute(attr.name, attr.value)
+          );
+          newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+          oldScript.parentNode.replaceChild(newScript, oldScript);
+        });
+      });
+  </script>
+</footer>
+<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+  kofiWidgetOverlay.draw('valhallamcsmp', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Tip Me',
+    'floating-chat.donateButton.background-color': '#00b9fe',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
+</script>
+<script src="./globals.js"></script>
 </body>
 </html>
