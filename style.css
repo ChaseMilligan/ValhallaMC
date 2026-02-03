@@ -468,8 +468,32 @@ footer {
 	margin-top: 12px;
 	display: grid;
 	gap: 10px;
-	overflow-y: scroll;
-	max-height: 300px;
+	overflow-y: auto;
+	min-height: 250px;
+	max-height: 250px;
+	/* Firefox */
+	scrollbar-width: thin;
+	scrollbar-color: var(--accent) rgba(125, 211, 252, 0.04);
+}
+
+/* WebKit (Chrome, Edge, Safari) */
+.cart-list::-webkit-scrollbar {
+	width: 10px;
+}
+
+.cart-list::-webkit-scrollbar-track {
+	background: rgba(125, 211, 252, 0.04);
+	border-radius: 12px;
+}
+
+.cart-list::-webkit-scrollbar-thumb {
+	background: linear-gradient(180deg, var(--accent), var(--accent2));
+	border-radius: 12px;
+	border: 2px solid rgba(255, 255, 255, 0.9);
+}
+
+.cart-list::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(143, 250, 139, 0.9));
 }
 
 .cart-item {
@@ -558,6 +582,11 @@ footer {
 	font-weight: 900;
 	color: var(--accent);
 	font-size: 18px;
+}
+
+.package-card img {
+	width: 128px;
+	max-width: 128px !important;
 }
 
 .product-category h3, .warn {
@@ -956,4 +985,27 @@ button.copy-button:hover {
 .span-6 {
 	grid-column: span 6;
 	width: 100% !important;
+}
+
+/* Force the Ko-fi floating container to have a transparent background */
+.floatingchat-container-wrap, 
+.floatingchat-container-wrap-mobi,
+iframe[id^="kofi-widget"] {
+    background-color: transparent !important;
+    background: none !important;
+    border: none !important;
+    color-scheme: light !important; /* Prevents dark-mode browser forced backgrounds */
+}
+
+/* Sets the width of the Ko-fi floating chat button container */
+.floatingchat-container-wrap, 
+.floatingchat-container-wrap-mobi {
+    width: 300px !important;
+    max-width: 300px !important;
+}
+
+/* Ensures the actual iframe inside expands to the new width */
+.floating-chat-kofi-popup-iframe,
+iframe[id^="kofi-widget"] {
+    width: 300px !important;
 }

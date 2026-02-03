@@ -19,12 +19,13 @@ Anyone can join as a visitor and explore freely, but to unlock game play fully y
 ---
 
 ::: div ip
-## ⚔ What’s New in v2.1
-ValhallaMC SMP is an economy & adventure focused survival server, now with a heavier emphasis on territory control. Enchants and effects have been toned down, villagers are back to vanilla (ish), the economy has been upgraded, and worldgen/structures have been improved across the board.{.muted}
+## What’s Under The Hood
+ValhallaMC is a soft-whitelisted, semi-vanilla, SMP
+focused on exploration, economy, PvE, PvP, and costly land claims with some quality-of-life features. **We run on Minecraft 1.21.10** with a bucnh of server-side mods / resources to enhance gameplay without straying too far from vanilla.{.muted}
 
-[<small>Read More</small>](/blog){.btn}
+[<small>Read More</small>](/about){.btn}
 :::
 
 ::: div wrap
-### The end goal is simple: Get rich. Hold land. Become the richest player on the server.{.centered}
+# The end goal is simple: Get rich. Hold land. Become the richest player on the server.{.centered}
 :::

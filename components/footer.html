@@ -1,5 +1,7 @@
 <div class="footer-top row between">
-  <div>Server IP: <strong style="color:var(--accent)">play.valhallamc.ca</strong></div>
+  <div>
+    <p>Server IP: <strong style="color:var(--accent)">play.valhallamc.ca</strong></p>
+  </div>
   <nav aria-label="Footer navigation">
     <ul class="row">
       <li><a href="/" rel="noopener">Home</a></li>
@@ -25,7 +27,15 @@
     <div class="right">Contact: <strong><a href="mailto:support@valhallamc.ca">support@valhallamc.ca</a></strong></div>
   </div>
 </div>
-
 <script>
   document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
+
+<script>
+  kofiWidgetOverlay.draw('valhallamcsmp', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Tip Jar',
+    'floating-chat.donateButton.background-color': '#323842',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
 </script>

@@ -8,7 +8,7 @@ classlist=row,wrap,flex-wrap,card-grid
 
 :::
 
-::: div col-12
+::: div span-3
 ## Get Started{.large}
 :::
 
@@ -44,7 +44,7 @@ Place a Camp for protection.
 Or prepare to survive in the wild{.muted}
 :::
 
-::: div centered ip card
+::: div centered ip card span-2
 <small>**5**</small>{.large}
 
 Sell items and XP for income.
@@ -60,7 +60,7 @@ Earn your first ᚠ1,000.
 You’ll need it soon.{.muted}
 :::
 
-::: div centered ip card
+::: div centered ip card span-2
 <small>**7**</small>{.large}
 
 Create your first Land.
@@ -68,7 +68,7 @@ Create your first Land.
 `/land`
 :::
 
-::: div centered ip card
+::: div centered ip card span-2
 <small>**8**</small>{.large}
 
 Claim your first chunk.
@@ -76,7 +76,7 @@ Claim your first chunk.
 `/lands claim radius 0`
 :::
 
-::: div centered ip card
+::: div centered ip card span-2
 <small>**9**</small>{.large}
 
 Deposit funds to keep claims active.
@@ -124,10 +124,6 @@ Form Nations and wage war.
 Politics get spicy.{.muted}
 :::
 
-::: div centered ip card
-<small>**15**</small>{.large}
-
-Become the richest player.
-
-That’s the endgame.{.muted}
+::: div span-3
+## GET RICH ᚠ{.large}
 :::
