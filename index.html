@@ -6,7 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ValhallaMC SMP</title>
   <meta name="description" content="ValhallaMC SMP v2 — info, rules, commands, and map link." />
+  <meta name="keywords" content="ValhallaMC, Minecraft SMP, Minecraft server, SMP, rules, map, commands" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#000000" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ValhallaMC SMP" />
+  <meta property="og:description" content="ValhallaMC SMP v2 — info, rules, commands, and map link." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="server-icon.png" />
+  <meta property="og:site_name" content="ValhallaMC" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ValhallaMC SMP" />
+  <meta name="twitter:description" content="ValhallaMC SMP v2 — info, rules, commands, and map link." />
+  <meta name="twitter:image" content="server-icon.png" />
+
   <link rel="icon" href="server-icon.png" type="image/png">
+  <link rel="canonical" href="" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="./style.css" />
@@ -19,6 +40,32 @@
   <script src="https://cdn.jsdelivr.net/npm/markdown-it-attrs@4.3.1/markdown-it-attrs.browser.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/markdown-it-container@4.0.0/dist/markdown-it-container.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/markdown-it-link-attributes@4.0.1/dist/markdown-it-link-attributes.min.js"></script>
+
+  <!-- Set URL-dependent metadata (canonical, og:url) and inject JSON-LD -->
+  <script>
+    (function() {
+      const url = location.href;
+      const canonical = document.querySelector('link[rel="canonical"]') || document.createElement('link');
+      canonical.rel = 'canonical';
+      canonical.href = url;
+      if (!document.querySelector('link[rel="canonical"]')) document.head.appendChild(canonical);
+
+      const ogUrl = document.querySelector('meta[property="og:url"]');
+      if (ogUrl) ogUrl.content = url;
+
+      const jsonld = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "ValhallaMC SMP",
+        "url": url,
+        "description": "ValhallaMC SMP v2 — info, rules, commands, and map link."
+      };
+      const s = document.createElement('script');
+      s.type = 'application/ld+json';
+      s.text = JSON.stringify(jsonld);
+      document.head.appendChild(s);
+    })();
+  </script>
 </head>
 
 <body>
