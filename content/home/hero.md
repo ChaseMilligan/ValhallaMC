@@ -20,9 +20,7 @@ Anyone can join as a visitor and explore freely, but to unlock game play fully y
 
 ::: div ip
 ## What’s Under The Hood?
-**We run on Minecraft 1.21.10** with a bucnh of server-side mods / resources to enhance gameplay without straying too far from vanilla.{.muted}
-
-The mods are focused on exploration, economy, PvE, economy interaction, and costly land claims with some quality-of-life features.
+**We run on Minecraft 1.21.10** with a bucnh of server-side mods / resources to enhance gameplay without straying too far from vanilla. The mods are focused on exploration, economy, PvE, economy interaction, and costly land claims with some quality-of-life features.{.muted}
 
 [<small>Read More</small>](/about){.btn}
 :::
