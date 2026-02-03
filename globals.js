@@ -26,7 +26,7 @@ console.log(window)
 md.use(window.markdownItAttrs);
 md.use(window.markdownitLinkAttributes, {
 	matcher(href, config) {
-    return !href.startsWith("https://valhallamc.ca/") && !href.startsWith("http://localhost");
+    return !href.startsWith("https://valhallamc.ca/") && !href.startsWith("http://localhost") && !href.startsWith("/");
   },
   attrs: {
     target: "_blank",
