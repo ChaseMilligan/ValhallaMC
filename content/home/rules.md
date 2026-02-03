@@ -24,7 +24,7 @@ classlist=row,center,stretch,wrap
 ### Optional Client-side Mods Recommended (Fabric){.centered}
 None of these mods are required to play on the server, but adding them will offer you the best possible experience. Without installing these mods, you won't be able to use the in-game voice chat feature, but that is all.{.muted}
 
-Download the optional client-side mods [here](../../optional-mods.zip).
+Download the optional client-side mods [here](https://drive.usercontent.google.com/download?id=1riDFtAYWLekKnGb8mJzQPLWZ8CIAO8b4&export=download&authuser=0).
 
 Simply extract the .zip file into your minecraft mods folder.{.muted}
 :::
