@@ -12,7 +12,7 @@ classlist=wrap,card-grid
 # FAQ{.large}
 :::
 
-::: div span-6
+::: div span-4
 ## Can't Move?
 If you can't move upon connecting to the server, just wait a minute or two since you are likely downloading the multiple custom resource packs used for the custom items and music discs. This should not take as long after your first time connecting. If you are still having trouble, make sure your game is on the correct version (1.21.10).{.muted}
 :::
