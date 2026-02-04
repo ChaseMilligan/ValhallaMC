@@ -423,6 +423,10 @@ footer {
 		align-items: start;
 	}
 
+	#server-ip {
+		font-size: 14px;
+	}
+
 	.buttons .btn {
 		width: 100%;
 		margin-bottom: 10px;
