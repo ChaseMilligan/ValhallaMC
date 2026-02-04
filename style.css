@@ -364,6 +364,8 @@ li {
 	border-radius: var(--radius);
 	margin-bottom: 8px;
 	position: relative;
+	min-height: 48px;
+	justify-content: center;
 }
 
 .command-card button {
