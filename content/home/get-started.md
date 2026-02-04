@@ -8,11 +8,13 @@ classlist=row,wrap,flex-wrap,card-grid
 
 :::
 
-::: div span-3
+::: div span-3 span-3-sm span-6-xs
+
 ## Get Started{.large}
+
 :::
 
-::: div centered ip card
+::: div centered ip card span-3-sm span-6-xs
 <small>**1**</small>{.large}
 
 Join the server.
@@ -20,7 +22,7 @@ Join the server.
 Start your adventure.{.muted}
 :::
 
-::: div centered ip card
+::: div centered ip card span-2-sm span-3-xs
 <small>**2**</small>{.large}
 
 Link Minecraft + Discord.
@@ -28,7 +30,7 @@ Link Minecraft + Discord.
 Required to begin playing.{.muted}
 :::
 
-::: div centered ip card
+::: div centered ip card span-2-sm span-3-xs
 <small>**3**</small>{.large}
 
 Teleport into the wilderness.
@@ -36,7 +38,7 @@ Teleport into the wilderness.
 `/wild`
 :::
 
-::: div centered ip card
+::: div centered ip card span-2-sm span-6-xs
 <small>**4**</small>{.large}
 
 Place a Camp for protection.
@@ -44,7 +46,7 @@ Place a Camp for protection.
 Or prepare to survive in the wild{.muted}
 :::
 
-::: div centered ip card span-2
+::: div centered ip card span-2 span-3-sm span-6-xs
 <small>**5**</small>{.large}
 
 Sell items and XP for income.
@@ -52,7 +54,7 @@ Sell items and XP for income.
 `/sellxp or /askaup`
 :::
 
-::: div centered ip card
+::: div centered ip card span-3-sm span-3-xs
 <small>**6**</small>{.large}
 
 Earn your first ᚠ1,000.
@@ -60,7 +62,7 @@ Earn your first ᚠ1,000.
 You’ll need it soon.{.muted}
 :::
 
-::: div centered ip card span-2
+::: div centered ip card span-2 span-3-sm span-3-xs
 <small>**7**</small>{.large}
 
 Create your first Land.
@@ -68,7 +70,7 @@ Create your first Land.
 `/land`
 :::
 
-::: div centered ip card span-2
+::: div centered ip card span-2 span-3-sm span-6-xs
 <small>**8**</small>{.large}
 
 Claim your first chunk.
@@ -76,7 +78,7 @@ Claim your first chunk.
 `/lands claim radius 0`
 :::
 
-::: div centered ip card span-2
+::: div centered ip card span-2 span-3-sm span-6-xs
 <small>**9**</small>{.large}
 
 Deposit funds to keep claims active.
@@ -84,7 +86,7 @@ Deposit funds to keep claims active.
 `/lands deposit 1010`
 :::
 
-::: div centered ip card
+::: div centered ip card span-3-sm span-3-xs
 <small>**10**</small>{.large}
 
 Upkeep costs money every day.
@@ -92,7 +94,7 @@ Upkeep costs money every day.
 1 chunk = ᚠ1,010 / 24h{.muted}
 :::
 
-::: div centered ip card
+::: div centered ip card span-2-sm span-3-xs
 <small>**11**</small>{.large}
 
 Explore and loot rare items.
@@ -100,7 +102,7 @@ Explore and loot rare items.
 Earn more ᚠ faster.{.muted}
 :::
 
-::: div centered ip card
+::: div centered ip card span-2-sm span-3-xs
 <small>**12**</small>{.large}
 
 Invite trusted players to your Land.
@@ -108,7 +110,7 @@ Invite trusted players to your Land.
 Allies help you grow.{.muted}
 :::
 
-::: div centered ip card
+::: div centered ip card span-2-sm span-3-xs
 <small>**13**</small>{.large}
 
 Keep earning so claims don’t expire.
@@ -116,7 +118,7 @@ Keep earning so claims don’t expire.
 Stay funded.{.muted}
 :::
 
-::: div centered ip card
+::: div centered ip card span-3-sm span-6-xs
 <small>**14**</small>{.large}
 
 Form Nations and wage war.
@@ -124,6 +126,8 @@ Form Nations and wage war.
 Politics get spicy.{.muted}
 :::
 
-::: div span-3
+::: div span-3 span-3-sm span-6-xs
+
 ## GET RICH ᚠ{.large}
+
 :::

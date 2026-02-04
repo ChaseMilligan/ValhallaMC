@@ -24,15 +24,7 @@ classlist=wrap,card-grid
 
 :::
 
-::: div card span-2 left
-<small>**Basic commands**</small>
-
-- `/bal` or `/money` — Show your Fehu balance
-- `/money pay` — Send Fehu to other players
-- `/baltop` — The richest players
-  :::
-
-::: div card span-2 left
+::: div card span-2 span-6-sm left
 <small>**Buying + selling**</small>
 
 - `/askaup` or `/market` — Open the store menu
@@ -42,7 +34,15 @@ classlist=wrap,card-grid
 
 :::
 
-::: div card span-2 left
+::: div card span-2 span-3-sm span-6-xs left
+<small>**Basic commands**</small>
+
+- `/bal` or `/money` — Show your Fehu balance
+- `/money pay` — Send Fehu to other players
+- `/baltop` — The richest players
+  :::
+
+::: div card span-2 span-3-sm span-6-xs left
 <small>**Extra money methods**</small>
 
 - `/withdraw` - Withdraw **Fehu (ᚠ)** into physical bank notes
@@ -102,7 +102,7 @@ classlist=wrap,card-grid
 
 :::
 
-::: div span-2 card left
+::: div span-2 span-3-sm span-6-xs card left
 **Battlepass**
 
 - Quest-based rewards system for **Fehu** and items
@@ -111,7 +111,7 @@ classlist=wrap,card-grid
 
 :::
 
-::: div span-2 card left
+::: div span-2 span-3-sm span-6-xs card left
 **PlayerStats**
 
 - Share your stats in chat + leaderboards for basically everything
@@ -119,7 +119,7 @@ classlist=wrap,card-grid
 
 :::
 
-::: div span-2 card left
+::: div span-2 span-6-sm card left
 **Tool Stats**
 
 - Items track history and performance via NBT tags (crafted/looted, damage dealt/taken, blocks broken, etc.)
@@ -140,7 +140,7 @@ classlist=wrap,card-grid
 
 :::
 
-::: div span-2 card left
+::: div span-2 span-6-sm card left
 
 **Stellarity (End content)**
 
@@ -152,7 +152,7 @@ classlist=wrap,card-grid
 
 :::
 
-::: div span-2 card left
+::: div span-2 span-3-sm span-6-xs card left
 
 **Yggdrasil**
 
@@ -162,7 +162,7 @@ classlist=wrap,card-grid
 
 :::
 
-::: div span-2 card left
+::: div span-2 span-3-sm span-6-xs card left
 
 **Web map**
 
@@ -281,7 +281,7 @@ classlist=wrap,card-grid
 
 :::
 
-::: div span-3 center
+::: div span-3 span-3-sm span-6-xs center
 
 <small>**Simple Voice Chat**</small>
 
@@ -291,7 +291,7 @@ classlist=wrap,card-grid
 
 :::
 
-::: div span-3 center
+::: div span-3 span-3-sm span-6-xs center
 
 <small>**Furnicraft**</small>
 
@@ -332,7 +332,7 @@ classlist=wrap,card-grid
 
 :::
 
-::: div card span-2 left
+::: div card span-2 span-3-sm span-6-xs left
 
 ### World + utility
 
@@ -345,7 +345,7 @@ classlist=wrap,card-grid
 
 :::
 
-::: div card span-2 left
+::: div card span-2 span-3-sm span-6-xs left
 
 ### Progress + UI
 
