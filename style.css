@@ -416,7 +416,11 @@ footer {
 	}
 
 	.brand {
-		font-size: 12px;
+		font-size: 11px;
+	}
+
+	#server-status .ip:has(#server-ip) {
+		align-items: start;
 	}
 
 	.buttons .btn {
