@@ -166,7 +166,7 @@ classlist=wrap,card-grid
 
 **Web map**
 
-- Map: http://play.valhallamc.ca:8100/
+- Map: http://play.valhallamc.ca:8101/
 - Land claims are visible on the world map
 - 3D-models of the whole world surface allow you to see your builds in teh browser.
 - `/webmap` — Get the browser map link
